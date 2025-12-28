@@ -7,6 +7,7 @@ using RobotFramework.Controllers.PidSystems;
 using RobotFramework.Enums;
 using RobotFramework.GamePieceSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Prefabs.Reefscape.Robots.Mods.AlonsMod._3501
 {
@@ -43,6 +44,10 @@ public class Firebots: ReefscapeRobotBase
     private float _daleTargetAngle;
     private float _daleRollerTargetVelocity;
     
+    private ReefscapeAutoAlign _align;
+    
+    private float _daleXOffset;
+    
     protected override void Start()
     {
         base.Start();
@@ -61,6 +66,9 @@ public class Firebots: ReefscapeRobotBase
             coralStowState
         };
         _coralController.intakes.Add(coralIntake);
+        
+        _align = gameObject.GetComponent<ReefscapeAutoAlign>();
+        _daleXOffset = -2.75f;
     }
 
     private void SetSetpoint(FirebotsSetpoint setpoint)
@@ -117,23 +125,30 @@ public class Firebots: ReefscapeRobotBase
                 break;
             case ReefscapeSetpoints.L1:
                 SetSetpoint(l1);
+                _align.offset = new Vector3(0f, 0f, 8f);
                 break;
             case ReefscapeSetpoints.Stack:
                 break;
             case ReefscapeSetpoints.L2:
                 SetSetpoint(l2);
+                _align.offset = new Vector3(0f, 0f, 8f);
+                // align.offset = new Vector3(0, 0, zOffset);
                 break;
             case ReefscapeSetpoints.LowAlgae:
                 SetSetpoint(lowAlgae);
+                _align.offset = new Vector3(_daleXOffset, 0f, 8f);
                 break;
             case ReefscapeSetpoints.L3:
                 SetSetpoint(l3);
+                _align.offset = new Vector3(0f, 0f, 8f);
                 break;
             case ReefscapeSetpoints.HighAlgae:
                 SetSetpoint(highAlgae);
+                _align.offset = new Vector3(_daleXOffset, 0f, 8f);
                 break;
             case ReefscapeSetpoints.L4:
                 SetSetpoint(l4);
+                _align.offset = new Vector3(0f, 0f, 8f);
                 break;
             case ReefscapeSetpoints.Processor:
                 break;
