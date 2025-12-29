@@ -8,6 +8,5 @@ namespace Prefabs.Reefscape.Robots.Mods.AlonsMod._3501
         [Tooltip("Inches")] public float elevatorHeight;
         [Tooltip("Degrees")] public float daleAngle;
         [Tooltip("Degrees per second")] public float daleRollerVelocity;
-        // [Tooltip("Degrees per second")] public float tootsieRollerVelocity;
     }
 }
