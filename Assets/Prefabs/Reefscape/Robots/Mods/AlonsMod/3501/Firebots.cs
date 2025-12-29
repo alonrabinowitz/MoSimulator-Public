@@ -1,3 +1,4 @@
+using System.Collections;
 using Games.Reefscape.Enums;
 using Games.Reefscape.GamePieceSystem;
 using Games.Reefscape.Robots;
@@ -18,9 +19,13 @@ public class Firebots: ReefscapeRobotBase
     [SerializeField] private GenericElevator elevator;
     [SerializeField] private GenericJoint dale;
     [SerializeField] private GenericRoller daleRoller;
+    [SerializeField] private GenericRoller upperTootsieRoller;
+    [SerializeField] private GenericRoller lowerTootsieRoller;
 
-    [Header("PIDs")]
+    [Header("Constants")]
     [SerializeField] private PidConstants dalePid;
+    [SerializeField] private float tootsieRollersOuttakeVelocity;
+    [SerializeField] private float tootsieRollersIntakeVelocity;
 
     [Header("Setpoints")]
     [SerializeField] private FirebotsSetpoint stow;
@@ -78,11 +83,13 @@ public class Firebots: ReefscapeRobotBase
         _daleRollerTargetVelocity = setpoint.daleRollerVelocity;
     }
 
-    private void PlacePiece()
+    private IEnumerator PlacePiece()
     {
         if (CurrentRobotMode == ReefscapeRobotMode.Coral)
         {
             _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3.0f), 0.5f, 0.5f);
+            yield return new WaitForSeconds(0.5f);
+            SetState(ReefscapeSetpoints.Stow);
         }
     }
 
@@ -119,9 +126,16 @@ public class Firebots: ReefscapeRobotBase
             case ReefscapeSetpoints.Intake:
                 SetSetpoint(intake);
                 _coralController.RequestIntake(coralIntake, CurrentRobotMode == ReefscapeRobotMode.Coral && !hasCoral);
+                if (!hasCoral || !_coralController.atTarget)
+                {
+                    upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersIntakeVelocity);
+                    lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersIntakeVelocity);
+                }
                 break;
             case ReefscapeSetpoints.Place:
-                PlacePiece();
+                upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersOuttakeVelocity);
+                lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersOuttakeVelocity);
+                StartCoroutine(PlacePiece());
                 break;
             case ReefscapeSetpoints.L1:
                 SetSetpoint(l1);
