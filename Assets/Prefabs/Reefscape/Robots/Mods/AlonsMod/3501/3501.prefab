@@ -29469,7 +29469,7 @@ MonoBehaviour:
   - {fileID: 7024431128925479993}
   elevatorType: 0
   pidConstants:
-    kP: 5
+    kP: 8
     kI: 0
     kD: 0.01
     Max: 1
