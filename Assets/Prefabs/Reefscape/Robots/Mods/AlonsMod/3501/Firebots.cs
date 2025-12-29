@@ -93,8 +93,16 @@ public class Firebots: ReefscapeRobotBase
     {
         if (CurrentRobotMode == ReefscapeRobotMode.Coral)
         {
-            _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3.0f), 0.5f, 0.5f);
-            yield return new WaitForSeconds(0.5f);
+            if (LastSetpoint == ReefscapeSetpoints.L1)
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -3.8f), 0.7f, 0.75f);
+                yield return new WaitForSeconds(0.7f);
+            }
+            else
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3.0f), 0.5f, 0.5f);
+                yield return new WaitForSeconds(0.5f);
+            }
             SetState(ReefscapeSetpoints.Stow);
         }
     }
@@ -144,8 +152,21 @@ public class Firebots: ReefscapeRobotBase
                 }
                 break;
             case ReefscapeSetpoints.Place:
-                upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersOuttakeVelocity);
-                lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersOuttakeVelocity);
+                if (LastSetpoint == ReefscapeSetpoints.L1)
+                {
+                    upperTootsieRoller.ChangeAngularVelocity(tootsieRollersOuttakeVelocity);
+                    lowerTootsieRoller.ChangeAngularVelocity(-tootsieRollersOuttakeVelocity);
+                    
+                    backLeftFunnelRoller.ChangeAngularVelocity(funnelRollersIntakeVelocity);
+                    backRightFunnelRoller.ChangeAngularVelocity(0.8f * -funnelRollersIntakeVelocity);
+                    frontLeftFunnelRoller.ChangeAngularVelocity(funnelRollersIntakeVelocity);
+                    frontRightFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeVelocity);
+                }
+                else
+                {
+                    upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersOuttakeVelocity);
+                    lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersOuttakeVelocity);
+                }
                 StartCoroutine(PlacePiece());
                 break;
             case ReefscapeSetpoints.L1:
