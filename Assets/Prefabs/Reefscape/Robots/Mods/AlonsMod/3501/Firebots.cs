@@ -1,3 +1,4 @@
+using System.Collections;
 using Games.Reefscape.Enums;
 using Games.Reefscape.GamePieceSystem;
 using Games.Reefscape.Robots;
@@ -18,9 +19,19 @@ public class Firebots: ReefscapeRobotBase
     [SerializeField] private GenericElevator elevator;
     [SerializeField] private GenericJoint dale;
     [SerializeField] private GenericRoller daleRoller;
+    [SerializeField] private GenericRoller upperTootsieRoller;
+    [SerializeField] private GenericRoller lowerTootsieRoller;
+    [SerializeField] private GenericRoller backRightFunnelRoller;
+    [SerializeField] private GenericRoller backLeftFunnelRoller;
+    [SerializeField] private GenericRoller frontRightFunnelRoller;
+    [SerializeField] private GenericRoller frontLeftFunnelRoller;
 
-    [Header("PIDs")]
+    [Header("Constants")]
     [SerializeField] private PidConstants dalePid;
+    [SerializeField] private float tootsieRollersOuttakeSpeed;
+    [SerializeField] private float tootsieRollersIntakeSpeed;
+    [SerializeField] private float funnelRollersIntakeSpeed;
+    [SerializeField] private float funnelRollersL1Speed;
 
     [Header("Setpoints")]
     [SerializeField] private FirebotsSetpoint stow;
@@ -82,7 +93,14 @@ public class Firebots: ReefscapeRobotBase
     {
         if (CurrentRobotMode == ReefscapeRobotMode.Coral)
         {
-            _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3.0f), 0.5f, 0.5f);
+            if (LastSetpoint == ReefscapeSetpoints.L1)
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -3.6f), 0.75f, 0.6f);
+            }
+            else
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3.0f), 0.25f, 0.5f);
+            }
         }
     }
 
@@ -110,6 +128,36 @@ public class Firebots: ReefscapeRobotBase
     {
         bool hasCoral = _coralController.HasPiece();
         _coralController.SetTargetState(coralStowState);
+
+        if (CurrentSetpoint == ReefscapeSetpoints.Intake && !hasCoral)
+        {
+            upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersIntakeSpeed);
+            lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersIntakeSpeed);
+            
+            backLeftFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeSpeed);
+            backRightFunnelRoller.ChangeAngularVelocity(0.8f * funnelRollersIntakeSpeed);
+            frontLeftFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeSpeed);
+            frontRightFunnelRoller.ChangeAngularVelocity(funnelRollersIntakeSpeed);
+        }
+        
+        if (CurrentSetpoint == ReefscapeSetpoints.Place)
+        {
+            if (LastSetpoint == ReefscapeSetpoints.L1)
+            {
+                upperTootsieRoller.ChangeAngularVelocity(tootsieRollersOuttakeSpeed);
+                lowerTootsieRoller.ChangeAngularVelocity(-tootsieRollersOuttakeSpeed);
+                
+                backLeftFunnelRoller.ChangeAngularVelocity(funnelRollersL1Speed);
+                backRightFunnelRoller.ChangeAngularVelocity(0.8f * -funnelRollersL1Speed);
+                frontLeftFunnelRoller.ChangeAngularVelocity(funnelRollersL1Speed);
+                frontRightFunnelRoller.ChangeAngularVelocity(-funnelRollersL1Speed);
+            }
+            else
+            {
+                upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersOuttakeSpeed);
+                lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersOuttakeSpeed);
+            }
+        }
         
         switch (CurrentSetpoint)
         {
@@ -121,6 +169,7 @@ public class Firebots: ReefscapeRobotBase
                 _coralController.RequestIntake(coralIntake, CurrentRobotMode == ReefscapeRobotMode.Coral && !hasCoral);
                 break;
             case ReefscapeSetpoints.Place:
+                // StartCoroutine(PlacePiece());
                 PlacePiece();
                 break;
             case ReefscapeSetpoints.L1:
