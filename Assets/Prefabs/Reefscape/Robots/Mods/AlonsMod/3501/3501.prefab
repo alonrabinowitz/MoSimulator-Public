@@ -28555,6 +28555,10 @@ MonoBehaviour:
   daleRoller: {fileID: 5027806526488731029}
   upperTootsieRoller: {fileID: 5034947448263185129}
   lowerTootsieRoller: {fileID: 3711169034443889516}
+  backLeftFunnelRoller: {fileID: 3898597787041894047}
+  backRightFunnelRoller: {fileID: 1322363119485479678}
+  frontLeftFunnelRoller: {fileID: 142406973998395439}
+  frontRightFunnelRoller: {fileID: 2958361007964753999}
   dalePid:
     kP: 0.6
     kI: 0
@@ -28563,6 +28567,8 @@ MonoBehaviour:
     Isaturation: 0
   tootsieRollersOuttakeVelocity: 1000
   tootsieRollersIntakeVelocity: 750
+  funnelRollersL1OuttakeVelocity: 1000
+  funnelRollersIntakeVelocity: 1000
   stow: {fileID: 11400000, guid: ece530dc308b84faa8effdd426b75c70, type: 2}
   intake: {fileID: 11400000, guid: 9cb1527b7225947fea5f33116c0cc59c, type: 2}
   l1: {fileID: 11400000, guid: 6ab27157a5e734fd995380a95543497c, type: 2}
@@ -54980,7 +54986,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 8921164627416285410}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0

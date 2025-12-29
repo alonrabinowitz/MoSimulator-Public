@@ -21,11 +21,17 @@ public class Firebots: ReefscapeRobotBase
     [SerializeField] private GenericRoller daleRoller;
     [SerializeField] private GenericRoller upperTootsieRoller;
     [SerializeField] private GenericRoller lowerTootsieRoller;
+    [SerializeField] private GenericRoller backLeftFunnelRoller;
+    [SerializeField] private GenericRoller backRightFunnelRoller;
+    [SerializeField] private GenericRoller frontLeftFunnelRoller;
+    [SerializeField] private GenericRoller frontRightFunnelRoller;
 
     [Header("Constants")]
     [SerializeField] private PidConstants dalePid;
     [SerializeField] private float tootsieRollersOuttakeVelocity;
     [SerializeField] private float tootsieRollersIntakeVelocity;
+    [SerializeField] private float funnelRollersL1OuttakeVelocity;
+    [SerializeField] private float funnelRollersIntakeVelocity;
 
     [Header("Setpoints")]
     [SerializeField] private FirebotsSetpoint stow;
@@ -130,6 +136,11 @@ public class Firebots: ReefscapeRobotBase
                 {
                     upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersIntakeVelocity);
                     lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersIntakeVelocity);
+                    
+                    backLeftFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeVelocity);
+                    backRightFunnelRoller.ChangeAngularVelocity(0.8f * funnelRollersIntakeVelocity);
+                    frontLeftFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeVelocity);
+                    frontRightFunnelRoller.ChangeAngularVelocity(funnelRollersIntakeVelocity);
                 }
                 break;
             case ReefscapeSetpoints.Place:
