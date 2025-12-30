@@ -18,10 +18,30 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1816
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1816
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1816
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: Lynk Can Hold Only One Piece Total, Be Smart With Your Cycles
+      value: Intake from up to one coral away from the coral station
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -32,8 +52,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2b429d68a79bb4c4ba03c51f26170464,
+      objectReference: {fileID: 21300000, guid: 1e85e77fe3244438b95b33b75e33e11b,
         type: 3}
+    - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7647712989278884331, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_Pivot.x
