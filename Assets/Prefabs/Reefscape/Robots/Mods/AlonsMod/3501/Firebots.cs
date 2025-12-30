@@ -95,8 +95,8 @@ public class Firebots: ReefscapeRobotBase
         {
             if (LastSetpoint == ReefscapeSetpoints.L1)
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -3.8f), 0.7f, 0.75f);
-                yield return new WaitForSeconds(0.7f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -4f), 0.8f, 0.8f);
+                yield return new WaitForSeconds(0.8f);
             }
             else
             {
