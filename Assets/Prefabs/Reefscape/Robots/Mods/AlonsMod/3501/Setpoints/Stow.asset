@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Stow
   m_EditorClassIdentifier: 
   elevatorHeight: 11.81
+  daleAngle: 0
+  daleRollerVelocity: 0

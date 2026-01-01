@@ -45,6 +45,11 @@ public class Firebots: ReefscapeRobotBase
 
     [Header("Intake Components")] 
     [SerializeField] private ReefscapeGamePieceIntake coralIntake;
+    
+    [Header("Colliders")]
+    [SerializeField] private GameObject leftFunnelWall;
+    [SerializeField] private GameObject lowerFunnelFloor;
+    [SerializeField] private GameObject l1LowerFunnelWall;
 
     [Header("Game Piece States")]
     [SerializeField] private GamePieceState coralStowState;
@@ -54,6 +59,9 @@ public class Firebots: ReefscapeRobotBase
     private float _elevatorTargetHeight;
     private float _daleTargetAngle;
     private float _daleRollerTargetVelocity;
+    
+    // private BoxCollider _upperFunnelFloorCollider;
+    // private BoxCollider _lowerFunnelFloorCollider;
     
     private ReefscapeAutoAlign _align;
     
@@ -78,6 +86,9 @@ public class Firebots: ReefscapeRobotBase
         };
         _coralController.intakes.Add(coralIntake);
         
+        // _upperFunnelFloorCollider = upperFunnelFloor.GetComponent<BoxCollider>();
+        // _lowerFunnelFloorCollider = lowerFunnelFloor.GetComponent<BoxCollider>();
+        
         _align = gameObject.GetComponent<ReefscapeAutoAlign>();
         _daleXOffset = -2.75f;
     }
@@ -95,15 +106,24 @@ public class Firebots: ReefscapeRobotBase
         {
             if (LastSetpoint == ReefscapeSetpoints.L1)
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -4f), 0.8f, 0.8f);
-                yield return new WaitForSeconds(0.8f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -3.5f), 0.65f, 0.5f);
+                yield return new WaitForSeconds(0.75f);
+            }
+            else if (LastSetpoint == ReefscapeSetpoints.L4)
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0f, 3.5f), 0.6f, 0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
             else
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3.0f), 0.5f, 0.5f);
-                yield return new WaitForSeconds(0.5f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0f, 3.25f), 0.5f, 0.6f);
+                yield return new WaitForSeconds(0.2f);
             }
-            SetState(ReefscapeSetpoints.Stow);
+
+            if (!IntakeAction.inProgress && CurrentSetpoint != ReefscapeSetpoints.HighAlgae && CurrentSetpoint != ReefscapeSetpoints.LowAlgae)
+            {
+                SetState(ReefscapeSetpoints.Stow);
+            }
         }
     }
 
@@ -120,6 +140,17 @@ public class Firebots: ReefscapeRobotBase
         {
             daleRoller.stopAngularVelocity();
         }
+
+        if (CurrentSetpoint == ReefscapeSetpoints.L1)
+        {
+            lowerFunnelFloor.SetActive(false);
+            l1LowerFunnelWall.SetActive(true);
+        }
+        else
+        {
+            lowerFunnelFloor.SetActive(true);
+            l1LowerFunnelWall.SetActive(false);
+        }
     }
 
     private void LateUpdate()
@@ -131,6 +162,11 @@ public class Firebots: ReefscapeRobotBase
     {
         bool hasCoral = _coralController.HasPiece();
         _coralController.SetTargetState(coralStowState);
+
+        if (CurrentSetpoint == ReefscapeSetpoints.Stow && !_coralController.atTarget)
+        {
+            SetState(ReefscapeSetpoints.Intake);
+        }
         
         switch (CurrentSetpoint)
         {
@@ -149,6 +185,21 @@ public class Firebots: ReefscapeRobotBase
                     backRightFunnelRoller.ChangeAngularVelocity(0.8f * funnelRollersIntakeVelocity);
                     frontLeftFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeVelocity);
                     frontRightFunnelRoller.ChangeAngularVelocity(funnelRollersIntakeVelocity);
+                }
+                
+                if ((hasCoral && !_coralController.atTarget) || coralIntake.hasGamePiece)
+                {
+                    // _upperFunnelFloorCollider.enabled = false;
+                    // _lowerFunnelFloorCollider.enabled = false;
+                    leftFunnelWall.SetActive(false);
+                    lowerFunnelFloor.SetActive(false);
+                }
+                else
+                {
+                    // _upperFunnelFloorCollider.enabled = true;
+                    // _lowerFunnelFloorCollider.enabled = true;
+                    leftFunnelWall.SetActive(true);
+                    lowerFunnelFloor.SetActive(true);
                 }
                 break;
             case ReefscapeSetpoints.Place:

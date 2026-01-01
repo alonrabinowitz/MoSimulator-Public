@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1617543f3bd064412994614882a492b4, type: 3}
   m_Name: L1
   m_EditorClassIdentifier: 
-  elevatorHeight: 2.3
+  elevatorHeight: 2.6
   daleAngle: 0
   daleRollerVelocity: 0
