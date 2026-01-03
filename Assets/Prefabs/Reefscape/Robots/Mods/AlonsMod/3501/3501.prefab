@@ -3070,6 +3070,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &215442686644892643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480717412297073173}
+  m_Layer: 6
+  m_Name: L1 Coral Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &480717412297073173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215442686644892643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2659265, y: 0, z: 0, w: 0.9639933}
+  m_LocalPosition: {x: -0.45348257, y: 0.2539, z: -0.014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8678052007429110319}
+  m_LocalEulerAnglesHint: {x: 30.844032, y: 0, z: 0}
 --- !u!1 &220280695640157982
 GameObject:
   m_ObjectHideFlags: 0
@@ -8388,13 +8419,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637505936030907984}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26454633, y: -0, z: -0, w: 0.964373}
+  m_LocalRotation: {x: 0.2659265, y: 0, z: 0, w: 0.9639933}
   m_LocalPosition: {x: -0.45348257, y: 0.282, z: -0.061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8678052007429110319}
-  m_LocalEulerAnglesHint: {x: 30.68, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.844032, y: 0, z: 0}
 --- !u!114 &6758981253799541413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18776,6 +18807,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5891935944596028392}
+  - {fileID: 480717412297073173}
+  - {fileID: 5734480136202460463}
   - {fileID: 5142377523426502888}
   - {fileID: 8638213451692758496}
   - {fileID: 4192905625768242033}
@@ -28814,14 +28847,25 @@ MonoBehaviour:
   lowAlgae: {fileID: 11400000, guid: c86d3c5dce52741b197c6cca832386f3, type: 2}
   highAlgae: {fileID: 11400000, guid: 113ea10b02a5448f787b4af8a3e0bc1e, type: 2}
   coralIntake: {fileID: 6758981253799541413}
-  leftFunnelWall: {fileID: 2110421733984994429}
-  lowerFunnelFloor: {fileID: 820710934148267711}
-  l1LowerFunnelWall: {fileID: 322112467086913184}
   coralStowState:
     name: Coral Stow State
     stateNum: 1
     stateMoveSpeed: 60
     stateTarget: {fileID: 3297321113409984501}
+    smoothHandoff: 0
+    angularSpeed: 0
+  MidwayStowState:
+    name: Midway Stow State
+    stateNum: 2
+    stateMoveSpeed: 60
+    stateTarget: {fileID: 5734480136202460463}
+    smoothHandoff: 1
+    angularSpeed: 0
+  l1StowState:
+    name: L1 Stow State
+    stateNum: 3
+    stateMoveSpeed: 60
+    stateTarget: {fileID: 480717412297073173}
     smoothHandoff: 0
     angularSpeed: 0
 --- !u!114 &6800611649284511049
@@ -39973,7 +40017,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 20e7d1a69977f2248b454fb4fca44b0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -47423,7 +47467,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 20e7d1a69977f2248b454fb4fca44b0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -50220,7 +50264,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 20e7d1a69977f2248b454fb4fca44b0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -56365,6 +56409,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4964383225241639337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5734480136202460463}
+  m_Layer: 6
+  m_Name: Midway Coral Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5734480136202460463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964383225241639337}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2659265, y: 0, z: 0, w: 0.9639933}
+  m_LocalPosition: {x: -0.45348257, y: 0.1529, z: 0.0952}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8678052007429110319}
+  m_LocalEulerAnglesHint: {x: 30.844032, y: 0, z: 0}
 --- !u!1 &4967937771931785866
 GameObject:
   m_ObjectHideFlags: 0
@@ -60936,7 +61011,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 20e7d1a69977f2248b454fb4fca44b0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
