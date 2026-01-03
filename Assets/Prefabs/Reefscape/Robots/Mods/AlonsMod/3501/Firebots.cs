@@ -141,16 +141,16 @@ public class Firebots: ReefscapeRobotBase
             daleRoller.stopAngularVelocity();
         }
 
-        if (CurrentSetpoint == ReefscapeSetpoints.L1)
-        {
-            lowerFunnelFloor.SetActive(false);
-            l1LowerFunnelWall.SetActive(true);
-        }
-        else
-        {
-            lowerFunnelFloor.SetActive(true);
-            l1LowerFunnelWall.SetActive(false);
-        }
+        // if (CurrentSetpoint == ReefscapeSetpoints.L1)
+        // {
+        //     lowerFunnelFloor.SetActive(false);
+        //     l1LowerFunnelWall.SetActive(true);
+        // }
+        // else
+        // {
+        //     lowerFunnelFloor.SetActive(true);
+        //     l1LowerFunnelWall.SetActive(false);
+        // }
     }
 
     private void LateUpdate()
@@ -187,20 +187,20 @@ public class Firebots: ReefscapeRobotBase
                     frontRightFunnelRoller.ChangeAngularVelocity(funnelRollersIntakeVelocity);
                 }
                 
-                if ((hasCoral && !_coralController.atTarget) || coralIntake.hasGamePiece)
-                {
-                    // _upperFunnelFloorCollider.enabled = false;
-                    // _lowerFunnelFloorCollider.enabled = false;
-                    leftFunnelWall.SetActive(false);
-                    lowerFunnelFloor.SetActive(false);
-                }
-                else
-                {
-                    // _upperFunnelFloorCollider.enabled = true;
-                    // _lowerFunnelFloorCollider.enabled = true;
-                    leftFunnelWall.SetActive(true);
-                    lowerFunnelFloor.SetActive(true);
-                }
+                // if ((hasCoral && !_coralController.atTarget) || coralIntake.hasGamePiece)
+                // {
+                //     // _upperFunnelFloorCollider.enabled = false;
+                //     // _lowerFunnelFloorCollider.enabled = false;
+                //     leftFunnelWall.SetActive(false);
+                //     lowerFunnelFloor.SetActive(false);
+                // }
+                // else
+                // {
+                //     // _upperFunnelFloorCollider.enabled = true;
+                //     // _lowerFunnelFloorCollider.enabled = true;
+                //     leftFunnelWall.SetActive(true);
+                //     lowerFunnelFloor.SetActive(true);
+                // }
                 break;
             case ReefscapeSetpoints.Place:
                 if (LastSetpoint == ReefscapeSetpoints.L1)
