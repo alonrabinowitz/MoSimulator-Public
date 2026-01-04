@@ -9,12 +9,12 @@ using RobotFramework.Controllers.PidSystems;
 using RobotFramework.Enums;
 using RobotFramework.GamePieceSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Prefabs.Reefscape.Robots.Mods.AlonsMod._3501
 {
 public class Firebots: ReefscapeRobotBase
 {
-    
     [Header("Components")]
     [SerializeField] private GenericElevator elevator;
     [SerializeField] private GenericJoint dale;
@@ -53,7 +53,7 @@ public class Firebots: ReefscapeRobotBase
 
     [Header("Game Piece States")]
     [SerializeField] private GamePieceState coralStowState;
-    [SerializeField] private GamePieceState MidwayStowState;
+    [FormerlySerializedAs("MidwayStowState")] [SerializeField] private GamePieceState midwayStowState;
     [SerializeField] private GamePieceState l1StowState;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
@@ -89,7 +89,7 @@ public class Firebots: ReefscapeRobotBase
         {
             coralStowState,
             l1StowState,
-            MidwayStowState
+            midwayStowState
         };
         _coralController.intakes.Add(coralIntake);
         
@@ -148,7 +148,7 @@ public class Firebots: ReefscapeRobotBase
                 _currentCoralStow = TOOTSIE_CORAL_STOW;
                 break;
             case MIDWAY_CORAL_STOW:
-                _coralController.SetTargetState(MidwayStowState);
+                _coralController.SetTargetState(midwayStowState);
                 _currentCoralStow = MIDWAY_CORAL_STOW;
                 break;
             case L1_CORAL_STOW:
@@ -221,6 +221,28 @@ public class Firebots: ReefscapeRobotBase
                 frontRightFunnelRoller.ChangeAngularVelocity(-funnelRollersIntakeVelocity);
             }
         }
+
+        // if (CurrentSetpoint == ReefscapeSetpoints.L1)
+        // {
+        //     _align.enableBackwardsAlign = true;
+        //     _align.enableForwardAlign = false;
+        //     
+        //     if (AutoAlignLeftAction.inProgress)
+        //     {
+        //         _align.offset = new Vector3(0f, 0f, 0f);
+        //         _align.rotation = -40;
+        //     } 
+        //     else if (AutoAlignRightAction.inProgress)
+        //     {
+        //         _align.offset = new Vector3(0f, 0f, 0f);
+        //         _align.rotation = 40;
+        //     }
+        // }
+        // else
+        // {
+        //     _align.enableBackwardsAlign = false;
+        //     _align.enableForwardAlign = true;
+        // }
         
         switch (CurrentSetpoint)
         {
@@ -233,8 +255,8 @@ public class Firebots: ReefscapeRobotBase
                 SetCoralStow(TOOTSIE_CORAL_STOW);
                 _coralController.RequestIntake(coralIntake, CurrentRobotMode == ReefscapeRobotMode.Coral && !hasCoral);
                 
-                _align.offset = new Vector3(0f, 0f, 8f);
-                _align.rotation = 0;
+                // _align.offset = new Vector3(0f, 0f, 8f);
+                // _align.rotation = 0;
                 
                 if (!hasCoral || !_coralController.atTarget)
                 {
@@ -293,17 +315,7 @@ public class Firebots: ReefscapeRobotBase
                     {
                         SetCoralStow(L1_CORAL_STOW);
                     }
-
-                    // if (AutoAlignLeftAction.triggered)
-                    // {
-                    //     _align.offset = new Vector3(0f, 0f, 0f);
-                    //     _align.rotation = 140;
-                    // } 
-                    // else if (AutoAlignRightAction.enabled)
-                    // {
-                    //     _align.offset = new Vector3(0f, 0f, -2f);
-                    //     _align.rotation = 220;
-                    // }
+                    
                 }
                 // _align.offset = new Vector3(0f, 0f, 8f);
                 break;
@@ -314,31 +326,31 @@ public class Firebots: ReefscapeRobotBase
                 SetCoralStow(TOOTSIE_CORAL_STOW);
                 SetSetpoint(l2);
                 _align.offset = new Vector3(0f, 0f, 8f);
-                _align.rotation = 0;
+                // _align.rotation = 0;
                 break;
             case ReefscapeSetpoints.LowAlgae:
                 SetSetpoint(lowAlgae);
                 _align.offset = new Vector3(_daleXOffset, 0f, 8f);
-                _align.rotation = 0;
+                // _align.rotation = 0;
                 break;
             case ReefscapeSetpoints.L3:
                 // _coralController.SetTargetState(coralStowState);
                 SetCoralStow(TOOTSIE_CORAL_STOW);
                 SetSetpoint(l3);
                 _align.offset = new Vector3(0f, 0f, 8f);
-                _align.rotation = 0;
+                // _align.rotation = 0;
                 break;
             case ReefscapeSetpoints.HighAlgae:
                 SetSetpoint(highAlgae);
                 _align.offset = new Vector3(_daleXOffset, 0f, 8f);
-                _align.rotation = 0;
+                // _align.rotation = 0;
                 break;
             case ReefscapeSetpoints.L4:
                 // _coralController.SetTargetState(coralStowState);
                 SetCoralStow(TOOTSIE_CORAL_STOW);
                 SetSetpoint(l4);
                 _align.offset = new Vector3(0f, 0f, 8f);
-                _align.rotation = 0;
+                // _align.rotation = 0;
                 break;
             case ReefscapeSetpoints.Processor:
                 break;

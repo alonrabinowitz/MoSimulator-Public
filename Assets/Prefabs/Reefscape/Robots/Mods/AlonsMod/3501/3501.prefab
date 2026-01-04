@@ -28614,11 +28614,11 @@ MonoBehaviour:
   drivetrainParent: {fileID: 6852044451109248894}
   wheelDiameter: 4
   maxSpeed:
-    _obfuscationKey: 1765983238
-    _encryptedValue: 684377094
+    _obfuscationKey: 1254517096
+    _encryptedValue: 189688168
   accelerationForce:
-    _obfuscationKey: 96249107
-    _encryptedValue: 1153213715
+    _obfuscationKey: 596405090
+    _encryptedValue: 1653369698
   falloffPercent: 0.075
   falloffExponent: 10
   steerMultiplier: 1
@@ -28854,7 +28854,7 @@ MonoBehaviour:
     stateTarget: {fileID: 3297321113409984501}
     smoothHandoff: 0
     angularSpeed: 0
-  MidwayStowState:
+  midwayStowState:
     name: Midway Stow State
     stateNum: 2
     stateMoveSpeed: 60
@@ -28941,9 +28941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drivePID:
-    kP: 30
+    kP: 31
     kI: 0
-    kD: 1.5
+    kD: 1.6
     Max: 0.85
     Isaturation: 1
   rotatePID:
@@ -56434,7 +56434,7 @@ Transform:
   m_GameObject: {fileID: 4964383225241639337}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2659265, y: 0, z: 0, w: 0.9639933}
-  m_LocalPosition: {x: -0.45348257, y: 0.1529, z: 0.0952}
+  m_LocalPosition: {x: -0.45348257, y: 0.1642, z: 0.1362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
