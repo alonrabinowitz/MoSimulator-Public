@@ -198,7 +198,7 @@ public class Firebots: ReefscapeRobotBase
             SetState(ReefscapeSetpoints.Intake);
         }
 
-        if (!_coralController.atTarget && hasCoral)
+        if (!_coralController.atTarget && hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
         {
             if (_currentCoralStow == TOOTSIE_CORAL_STOW)
             {
@@ -258,7 +258,7 @@ public class Firebots: ReefscapeRobotBase
                 // _align.offset = new Vector3(0f, 0f, 8f);
                 // _align.rotation = 0;
                 
-                if (!hasCoral || !_coralController.atTarget)
+                if ((IntakeAction.inProgress && !hasCoral) || (hasCoral && !_coralController.atTarget))
                 {
                     upperTootsieRoller.ChangeAngularVelocity(-tootsieRollersIntakeVelocity);
                     lowerTootsieRoller.ChangeAngularVelocity(tootsieRollersIntakeVelocity);
