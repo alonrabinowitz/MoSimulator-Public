@@ -83,3 +83,4 @@ Mods/Robonauts/Build/robonautsmod_assets_all_5774bae440d1954dc02e1305d3e24445.bu
 # Macos directory metadata files
 .DS_Store
 Mods/.DS_Store
+*.DS_Store
