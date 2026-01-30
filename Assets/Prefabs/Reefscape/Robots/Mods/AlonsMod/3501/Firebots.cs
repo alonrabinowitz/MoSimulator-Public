@@ -2,6 +2,8 @@ using System.Collections;
 using Games.Reefscape.Enums;
 using Games.Reefscape.GamePieceSystem;
 using Games.Reefscape.Robots;
+using MoSimCore.BaseClasses.GameManagement;
+using MoSimCore.Enums;
 using MoSimLib;
 using RobotFramework.Components;
 using RobotFramework.Controllers.GamePieceSystem;
@@ -56,6 +58,23 @@ public class Firebots: ReefscapeRobotBase
     [FormerlySerializedAs("MidwayStowState")] [SerializeField] private GamePieceState midwayStowState;
     [SerializeField] private GamePieceState l1StowState;
     
+    [Header("Roller Audio")]
+    [SerializeField] private AudioSource rollerSource;
+    [SerializeField] private AudioClip rollerClip;
+    
+    [Header("Tootsie Slide Audio")]
+    [SerializeField] private AudioSource tootsieSource;
+    [SerializeField] private AudioClip tootsieClip;
+        
+    [Header("Funnel Audio")]
+    [SerializeField] private AudioSource funnelSource;
+    [SerializeField] private AudioClip funnelClackClip;
+    [SerializeField] private BoxCollider coralTrigger;
+    private OverlapBoxBounds soundDetector;
+    
+    [SerializeField] private AudioSource funnelRollersSource;
+    [SerializeField] private AudioClip funnelRollersClip;
+    
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     
     private float _elevatorTargetHeight;
@@ -70,6 +89,10 @@ public class Firebots: ReefscapeRobotBase
     private ReefscapeAutoAlign _align;
     
     private float _daleXOffset;
+    
+    private LayerMask coralMask;
+    private bool canClack;
+    private bool outtakingL1;
     
     protected override void Start()
     {
@@ -95,6 +118,28 @@ public class Firebots: ReefscapeRobotBase
         
         _align = gameObject.GetComponent<ReefscapeAutoAlign>();
         _daleXOffset = -2.75f;
+        
+        rollerSource.clip = rollerClip;
+        rollerSource.loop = true;
+        rollerSource.Stop();
+        
+        tootsieSource.clip = tootsieClip;
+        tootsieSource.loop = false;
+        tootsieSource.Stop();
+        
+        funnelRollersSource.clip = funnelRollersClip;
+        funnelRollersSource.loop = true;
+        funnelRollersSource.Stop();
+        
+        funnelSource.clip = funnelClackClip;
+        funnelSource.loop = false;
+        funnelRollersSource.Stop();
+        
+        soundDetector = new OverlapBoxBounds(coralTrigger);
+        
+        coralMask = LayerMask.GetMask("Coral");
+        canClack = true;
+        outtakingL1 = false;
     }
 
     private void SetSetpoint(FirebotsSetpoint setpoint)
@@ -119,7 +164,9 @@ public class Firebots: ReefscapeRobotBase
             {
                 // _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, -3.5f), 0.2f, 0.75f);
                 _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, -5f));
+                outtakingL1 = true;
                 yield return new WaitForSeconds(0.5f);
+                outtakingL1 = false;
             }
             else if (LastSetpoint == ReefscapeSetpoints.L4)
             {
@@ -136,6 +183,8 @@ public class Firebots: ReefscapeRobotBase
             {
                 SetState(ReefscapeSetpoints.Stow);
             }
+            // yield return new WaitForSeconds(1.0f);
+            // outtakingL1 = false;
         }
     }
 
@@ -253,7 +302,7 @@ public class Firebots: ReefscapeRobotBase
                 SetSetpoint(intake);
                 // _coralController.SetTargetState(coralStowState);
                 SetCoralStow(TOOTSIE_CORAL_STOW);
-                _coralController.RequestIntake(coralIntake, CurrentRobotMode == ReefscapeRobotMode.Coral && !hasCoral);
+                _coralController.RequestIntake(coralIntake, !hasCoral);
                 
                 // _align.offset = new Vector3(0f, 0f, 8f);
                 // _align.rotation = 0;
@@ -366,8 +415,73 @@ public class Firebots: ReefscapeRobotBase
         }
         
         UpdateSetpoints();
+        UpdateAudio();
     }
 
+    private void UpdateAudio()
+    {
+        if (BaseGameManager.Instance.RobotState == RobotState.Disabled)
+        {
+            if (rollerSource.isPlaying || funnelRollersSource.isPlaying || funnelSource.isPlaying || tootsieSource.isPlaying)
+            {
+                rollerSource.Stop();
+                funnelRollersSource.Stop();
+                funnelSource.Stop();
+                tootsieSource.Stop();
+            }
 
+            return;
+        }
+        
+        // Dale Roller
+        if (_daleRollerTargetVelocity > 0 && !rollerSource.isPlaying)
+        {
+            rollerSource.Play();
+        }
+        else  if (_daleRollerTargetVelocity == 0 && rollerSource.isPlaying)
+        {
+            rollerSource.Stop();
+        }
+        
+        // Score Sound
+        if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !tootsieSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral)
+        {
+            tootsieSource.Play();
+        }
+        
+        // Funnel Rollers
+        bool hasCoral = _coralController.HasPiece();
+        if (!funnelRollersSource.isPlaying && (
+            (!_coralController.atTarget && hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place) ||
+            (IntakeAction.inProgress && !hasCoral) || (hasCoral && !_coralController.atTarget) ||
+            (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint == ReefscapeSetpoints.L1)
+            ))
+        {
+            funnelRollersSource.Play();
+        }
+        else if (funnelRollersSource.isPlaying && !(
+                     (!_coralController.atTarget && hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place) ||
+                     (IntakeAction.inProgress && !hasCoral) || (hasCoral && !_coralController.atTarget) ||
+                     (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint == ReefscapeSetpoints.L1)
+                 ))
+        {
+            funnelRollersSource.Stop();
+        }
+        
+        // Funnel Clack
+        var a = soundDetector.OverlapBox(coralMask);
+        if (a.Length > 0)
+        {
+            if (canClack && !funnelSource.isPlaying && !outtakingL1)
+            {
+                funnelSource.Play();
+                canClack = false;
+            }
+        }
+        else
+        {
+            canClack = true;
+        }
+    }
 }
 }
