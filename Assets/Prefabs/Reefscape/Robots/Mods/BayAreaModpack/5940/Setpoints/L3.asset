@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: L3
   m_EditorClassIdentifier: 
   elevatorHeight: 33
-  armAngle: -40
+  armAngle: 320
   climbAngle: 0

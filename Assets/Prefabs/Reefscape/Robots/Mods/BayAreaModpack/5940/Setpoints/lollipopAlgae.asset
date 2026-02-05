@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: lollipopAlgae
   m_EditorClassIdentifier: 
   elevatorHeight: 5
-  armAngle: -10
+  armAngle: 350
   climbAngle: 0

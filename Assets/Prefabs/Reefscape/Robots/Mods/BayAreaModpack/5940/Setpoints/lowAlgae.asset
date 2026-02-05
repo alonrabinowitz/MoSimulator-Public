@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: lowAlgae
   m_EditorClassIdentifier: 
   elevatorHeight: 27
-  armAngle: -40
+  armAngle: 320
   climbAngle: 0

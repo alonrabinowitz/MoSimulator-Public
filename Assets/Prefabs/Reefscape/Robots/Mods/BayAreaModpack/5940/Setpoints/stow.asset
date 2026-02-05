@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: stow
   m_EditorClassIdentifier: 
   elevatorHeight: 15
-  armAngle: -1
+  armAngle: 359
   climbAngle: 0

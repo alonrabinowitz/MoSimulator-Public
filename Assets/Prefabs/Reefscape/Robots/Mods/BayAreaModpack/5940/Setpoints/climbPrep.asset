@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: climbPrep
   m_EditorClassIdentifier: 
   elevatorHeight: 0
-  armAngle: 0
+  armAngle: 330
   climbAngle: -65

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: groundAlgae
   m_EditorClassIdentifier: 
   elevatorHeight: 0
-  armAngle: -30
+  armAngle: 330
   climbAngle: 0

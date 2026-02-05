@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: processor
   m_EditorClassIdentifier: 
   elevatorHeight: 0
-  armAngle: -10
+  armAngle: 350
   climbAngle: 0
