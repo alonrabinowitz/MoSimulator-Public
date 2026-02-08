@@ -19,15 +19,16 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private GenericJoint arm;
     [SerializeField] private GenericJoint climber;
     [SerializeField] private GenericJoint intakeJoint;
-    // [SerializeField] private GenericJoint floatingRoller;
+    [SerializeField] private GenericJoint l1Bar;
     [SerializeField] private GenericRoller[] intakeRollers;
     [SerializeField] private GenericRoller[] endEffectorRollers;
+    [SerializeField] private GenericRoller[] indexerRollers;
 
     [Header("PIDs")]
     [SerializeField] private PidConstants armPid;
     [SerializeField] private PidConstants climbPid;
     [SerializeField] private PidConstants intakePid;
-    // [SerializeField] private PidConstants floatingRollerPid;
+    [SerializeField] private PidConstants l1BarPid;
     
     [Header("Intakes")]
     [SerializeField] private ReefscapeGamePieceIntake coralIntake;
@@ -55,13 +56,35 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private BREADSetpoint processor;
     [SerializeField] private BREADSetpoint climbPrep;
     [SerializeField] private BREADSetpoint climbed;
-
+    
+    [Header("Intake Roller Audio")]
+    [SerializeField] private AudioSource intakeRollerSource;
+    [SerializeField] private AudioClip intakeRollerClip;
+    
+    [Header("Indexer Roller Audio")]
+    [SerializeField] private AudioSource indexerRollerSource;
+    [SerializeField] private AudioClip indexerRollerClip;
+    
+    [Header("End Effector Roller Audio")]
+    [SerializeField] private AudioSource endEffectorRollerSource;
+    [SerializeField] private AudioClip endEffectorRollerClip;
+    
+    [Header("Score Audio")]
+    [SerializeField] private AudioSource scoreSource;
+    [SerializeField] private AudioClip scoreClip;
+    
+    [Header("Debug")]
     private float _elevatorTargetHeight;
     private float _armTargetAngle;
     private float _climberTargetAngle;
     private float _intakeTargetAngle;
-    private bool _handoffComplete;
-    private GamePieceState _currentStowState;
+    private float _l1BarTargetAngle;
+    private bool _handoff;
+    private int _levelSelected;
+    private bool _playedScoreSound;
+    [SerializeField] private float l1IntakeAngle;
+    [SerializeField] private float bargeDelay;
+    [SerializeField] private float bargeForce;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -73,14 +96,16 @@ public class BREAD: ReefscapeRobotBase
         arm.SetPid(armPid);
         climber.SetPid(climbPid);
         intakeJoint.SetPid(intakePid);
-        // floatingRoller.SetPid(floatingRollerPid);
+        l1Bar.SetPid(l1BarPid);
         
         _elevatorTargetHeight = 0;
         _armTargetAngle = 0;
         _climberTargetAngle = 0;
         _intakeTargetAngle = 0;
-        _handoffComplete = true;
-        _currentStowState = coralStowState;
+        _l1BarTargetAngle = 40;
+        _handoff = true;
+        _levelSelected = 0;
+        _playedScoreSound = false;
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -97,17 +122,25 @@ public class BREAD: ReefscapeRobotBase
         _algaeController.gamePieceStates = new[] { algaeStowState };
         _algaeController.intakes.Add(algaeIntake);
 
-        // climber.noWrap = true;
         climber.noWrapAngle = 180f;
 
         arm.noWrapAngle = 120f;
 
-
-        // intakeJoint.useStartingOffset = true;
-        // intakeJoint.transform.eulerAngles = new Vector3(-90f, 0f, 0f);
-
-        // transform.Rotate(0f, 180f, 0f);
-        // transform.SetPositionAndRotation(transform.position, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y+180, transform.eulerAngles.z));
+        intakeRollerSource.clip = intakeRollerClip;
+        intakeRollerSource.loop = true;
+        intakeRollerSource.Stop();
+        
+        indexerRollerSource.clip = indexerRollerClip;
+        indexerRollerSource.loop = true;
+        indexerRollerSource.Stop();
+        
+        endEffectorRollerSource.clip = endEffectorRollerClip;
+        endEffectorRollerSource.loop = true;
+        endEffectorRollerSource.Stop();
+        
+        scoreSource.clip = scoreClip;
+        scoreSource.loop = false;
+        scoreSource.Stop();
     }
 
     private void LateUpdate()
@@ -115,7 +148,7 @@ public class BREAD: ReefscapeRobotBase
         arm.UpdatePid(armPid);
         climber.UpdatePid(climbPid);
         intakeJoint.UpdatePid(intakePid);
-        // floatingRoller.UpdatePid(floatingRollerPid);
+        l1Bar.UpdatePid(l1BarPid);
     }
 
     private void SetSetpoint(BREADSetpoint setpoint)
@@ -124,7 +157,6 @@ public class BREAD: ReefscapeRobotBase
         _armTargetAngle = setpoint.armAngle;
         _climberTargetAngle = setpoint.climbAngle;
         
-        // bool armAtTarget = Mathf.Abs(arm.transform.eulerAngles.x - _armTargetAngle) < 10f;
         bool armAtTarget = Utils.InAngularRange(arm.transform.eulerAngles.x, _armTargetAngle, 10f);
         
         if (_elevatorTargetHeight < 14 && !armAtTarget)
@@ -132,44 +164,133 @@ public class BREAD: ReefscapeRobotBase
             _elevatorTargetHeight = 14f;
         }
 
-        // bool elevatorAtTarget = Mathf.Abs(elevator.GetElevatorHeight() - _elevatorTargetHeight) < 10f;
+        if (CoralAtStow(l1StowState))
+        {
+            _intakeTargetAngle = l1IntakeAngle;
+        }
+        else
+        {
+            _intakeTargetAngle = 0;
+        }
+
+        if (CurrentIntakeMode == ReefscapeIntakeMode.L1)
+        {
+            _l1BarTargetAngle = 100;
+        }
+        else
+        {
+            _l1BarTargetAngle = 40;
+        }
     }
 
     private void UpdateSetpoints()
     {
         elevator.SetTarget(_elevatorTargetHeight);
-        arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X);
-        climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X);
-        intakeJoint.SetTargetAngle(_intakeTargetAngle);
-        // floatingRoller.SetTargetAngle(-20f).withAxis(JointAxis.X);
+        arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X).noWrap(120f);
+        climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X).noWrap(180f);
+        l1Bar.SetTargetAngle(_l1BarTargetAngle).withAxis(JointAxis.X).noWrap(0f);
+        intakeJoint.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X);
     }
     
     private IEnumerator PlacePiece(bool hasCoral, bool hasAlgae)
     {
-        if (hasAlgae)
+        if (CoralAtStow(l1StowState))
+        {
+            if (hasAlgae && CurrentRobotMode == ReefscapeRobotMode.Algae)
+            {
+                if (LastSetpoint == ReefscapeSetpoints.Barge)
+                {
+                    yield return new WaitForSeconds(bargeDelay);
+                }
+                if (LastSetpoint == ReefscapeSetpoints.Processor)
+                {
+                    _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -2f));
+                }
+                else
+                {
+                    _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+                }
+
+                foreach (var roller in endEffectorRollers)
+                {
+                    roller.SetAngularVelocity(-800f);
+                }
+                
+                if (_coralController.HasPiece())
+                {
+                    SetRobotMode(ReefscapeRobotMode.Coral);
+                }
+            }
+            else
+            {
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 2, 0), 0.25f, 0.6f);
+                foreach (var roller in intakeRollers)
+                {
+                    roller.SetAngularVelocity(-1000f);
+                }
+
+                yield return new WaitForSeconds(1.0f);
+                
+                foreach (var roller in intakeRollers)
+                {
+                    roller.SetAngularVelocity(0f);
+                }
+            }
+        }
+        else if (hasAlgae)
         {
             if (LastSetpoint == ReefscapeSetpoints.Barge)
             {
-                yield return new WaitForSeconds(0.165f);
+                yield return new WaitForSeconds(bargeDelay);
             }
-            _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -7.5f));
-            if (hasCoral)
+
+            if (LastSetpoint == ReefscapeSetpoints.Processor)
+            {
+                _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -3f));
+            }
+            else
+            {
+                _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+            }
+            
+            foreach (var roller in endEffectorRollers)
+            {
+                roller.SetAngularVelocity(-800f);
+            }
+            
+            if (_coralController.HasPiece())
             {
                 SetRobotMode(ReefscapeRobotMode.Coral);
             }
         }
-        else if (hasCoral)
+        else if (hasCoral && CoralAtStow(coralStowState))
         {
-            if (LastSetpoint != ReefscapeSetpoints.L1 || CurrentIntakeMode == ReefscapeIntakeMode.Normal)
+            // if (LastSetpoint != ReefscapeSetpoints.L1 || CurrentIntakeMode == ReefscapeIntakeMode.Normal)
+            // {
+            //     _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 5f));
+            // }
+            // else
+            // {
+            //     _coralController.ReleaseGamePieceWithForce(new Vector3(0, 3f, 0));
+            // }
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 5f));
+            
+            foreach (var roller in endEffectorRollers)
             {
-                _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 5f));
+                roller.SetAngularVelocity(800f);
             }
-            else
-            {
-                _coralController.ReleaseGamePieceWithForce(new Vector3(0, 3f, 0));
-                _handoffComplete = false;
-            }
+            
+            _handoff = false;
+            _levelSelected = 0;
         }
+        
+        yield return new WaitForSeconds(0.5f);
+        foreach (var roller in endEffectorRollers)
+        {
+            roller.SetAngularVelocity(0f);
+        }
+
+        // _justEjected = true;
     }
 
     private void UpdateRollers(bool hasCoral, bool hasAlgae)
@@ -181,69 +302,192 @@ public class BREAD: ReefscapeRobotBase
                 roller.ChangeAngularVelocity(1000f);
             }
         }
+
+        if (IntakeAction.IsPressed() && CurrentRobotMode == ReefscapeRobotMode.Algae)
+        {
+            foreach (var roller in endEffectorRollers)
+            {
+                roller.ChangeAngularVelocity(500f);
+            }
+        }
+
+        if (hasCoral && !_coralController.atTarget)
+        {
+            foreach (var roller in indexerRollers)
+            {
+                roller.ChangeAngularVelocity(500f);
+            }
+        }
     }
 
-    private void UpdateStows(bool hasCoral, bool hasAlgae)
+    private void UpdateAudio()
     {
-        // bool armAtTarget = Mathf.Abs(arm.transform.eulerAngles.x - _armTargetAngle) < 10f;
-        bool armAtTarget = Utils.InAngularRange(arm.transform.eulerAngles.x, _armTargetAngle, 10f);
-        // bool elevatorAtTarget = Mathf.Abs(elevator.GetElevatorHeight() - _elevatorTargetHeight) < 2f;
-        bool elevatorAtTarget = Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 2f);
-
-        // Debug.Log(CurrentIntakeMode);
-        
-        // if (CurrentIntakeMode == ReefscapeIntakeMode.L1)
-        // {
-        //     _coralController.SetTargetState(l1StowState);
-        // }
-        // else if (CurrentIntakeMode == ReefscapeIntakeMode.Normal && (hasAlgae || CurrentRobotMode == ReefscapeRobotMode.Algae || !armAtTarget || !elevatorAtTarget || (IntakeAction.triggered && CurrentSetpoint != ReefscapeSetpoints.Intake && !hasCoral)))
-        // {
-        //     _coralController.SetTargetState(indexerStowState);
-        // }
-        // else if (CurrentIntakeMode == ReefscapeIntakeMode.Normal)
-        // {
-        //     _coralController.SetTargetState(coralStowState);
-        // }
-
-        if (_currentStowState == coralStowState && _coralController.atTarget)
+        // Score Sound
+        if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
         {
-            _handoffComplete = true;
+            scoreSource.Play();
+            _playedScoreSound = true;
         }
         
-        // Debug.Log(_handoffComplete);
+        // Intake Rollers
+        float intakeRollerSpeed = intakeRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x;
+        if (Mathf.Abs(intakeRollerSpeed) > 10 && !intakeRollerSource.isPlaying)
+        {
+            intakeRollerSource.Play();
+        }
+        else if (Mathf.Abs(intakeRollerSpeed) <= 10 && intakeRollerSource.isPlaying)
+        {
+            intakeRollerSource.Stop();
+        }
+        
+        // Indexer Rollers
+        float indexerRollerSpeed = indexerRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.y;
+        if (Mathf.Abs(indexerRollerSpeed) > 10 && !indexerRollerSource.isPlaying)
+        {
+            indexerRollerSource.Play();
+        }
+        else if (Mathf.Abs(intakeRollerSpeed) <= 10 && indexerRollerSource.isPlaying)
+        {
+            indexerRollerSource.Stop();
+        }
+        
+        // EE Rollers
+        float endEffectorRollerSpeed = endEffectorRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x;
+        if (Mathf.Abs(endEffectorRollerSpeed) > 10 && !endEffectorRollerSource.isPlaying)
+        {
+            endEffectorRollerSource.Play();
+        }
+        else if (Mathf.Abs(endEffectorRollerSpeed) <= 10 && endEffectorRollerSource.isPlaying)
+        {
+            endEffectorRollerSource.Stop();
+        }
+    }
+    
+    private bool AtSetpoint(BREADSetpoint stp)
+    {
+        return
+            Utils.InRange(elevator.GetElevatorHeight(), stp.elevatorHeight, 2f) &&
+            Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp.armAngle, 2f);
+    }
 
-        if (_handoffComplete)
-        {
-            _coralController.SetTargetState(coralStowState);
-            _currentStowState = coralStowState;
-        }
-        else if (CurrentIntakeMode == ReefscapeIntakeMode.Normal)
-        {
-            if (!hasAlgae && armAtTarget && elevatorAtTarget && CurrentRobotMode == ReefscapeRobotMode.Coral)
-            {
-                _coralController.SetTargetState(coralStowState);
-                _currentStowState = coralStowState;
-            }
-            else
-            {
-                _coralController.SetTargetState(indexerStowState);
-                _currentStowState = indexerStowState;
-            }
-        }
+    private bool CoralAtStow(GamePieceState stowState)
+    {
+        return _coralController.currentStateNum == stowState.stateNum && _coralController.atTarget;
     }
 
     private void FixedUpdate()
     {
         bool hasAlgae = _algaeController.HasPiece();
         bool hasCoral = _coralController.HasPiece();
+        bool indexerHasCoral = _coralController.atTarget && _coralController.currentStateNum == indexerStowState.stateNum;
+        bool armHasCoral = _coralController.atTarget && _coralController.currentStateNum == coralStowState.stateNum;
+        bool l1HasCoral = _coralController.atTarget && _coralController.currentStateNum == l1StowState.stateNum;
+        
+        // Debug.Log((indexerHasCoral ? "i+" : "i-") + (armHasCoral ? "a+" : "a-") + (CurrentRobotMode == ReefscapeRobotMode.Coral ? "coral" : "algae"));
+        // Debug.Log((hasCoral ? "yes " : "no ") + (CurrentRobotMode == ReefscapeRobotMode.Coral ? "coral " : "algae ") + (armHasCoral ? "yesarm " : "noarm "));
         
         _algaeController.SetTargetState(algaeStowState);
         // _coralController.SetTargetState(coralStowState);
+
+        if (hasCoral)
+        {
+            _playedScoreSound = false;
+        }
+        
+        // Coral Stow Management
+
+        if (indexerHasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral && (
+                CurrentSetpoint == ReefscapeSetpoints.L1 ||
+                CurrentSetpoint == ReefscapeSetpoints.L2 ||
+                CurrentSetpoint == ReefscapeSetpoints.L3 ||
+                CurrentSetpoint == ReefscapeSetpoints.L4))
+        {
+            _levelSelected = CurrentSetpoint switch
+            {
+                ReefscapeSetpoints.L1 => 1,
+                ReefscapeSetpoints.L2 => 2,
+                ReefscapeSetpoints.L3 => 3,
+                ReefscapeSetpoints.L4 => 4,
+                ReefscapeSetpoints.Intake => _levelSelected,
+                _ => 0
+            };
+        }
+
+        if ((_levelSelected != 0 && CurrentSetpoint != ReefscapeSetpoints.Intake) || (_handoff && !armHasCoral))
+        {
+            SetState(ReefscapeSetpoints.Intake);
+        }
+
+        if (_levelSelected != 0 && armHasCoral)
+        {
+            SetState(_levelSelected switch
+            {
+                1 => ReefscapeSetpoints.L1,
+                2 => ReefscapeSetpoints.L2,
+                3 => ReefscapeSetpoints.L3,
+                4 => ReefscapeSetpoints.L4,
+                _ => ReefscapeSetpoints.Stow
+            });
+            _levelSelected = 0;
+        }
+
+        if (armHasCoral && CurrentRobotMode != ReefscapeRobotMode.Coral)
+        {
+            SetRobotMode(ReefscapeRobotMode.Coral);
+        }
+        
+        if (indexerHasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral && AtSetpoint(intake))
+        {
+            _handoff = true;
+        }
+
+        if (!_handoff)
+        {
+            if (l1HasCoral || (CurrentIntakeMode == ReefscapeIntakeMode.L1 && !indexerHasCoral))
+            {
+                _coralController.SetTargetState(l1StowState);
+            }
+            else
+            {
+                _coralController.SetTargetState(indexerStowState);
+            }
+        }
+        else
+        {
+            _coralController.SetTargetState(coralStowState);
+        }
+        
+        
+        if (!IntakeAction.IsPressed())
+        {
+            _algaeController.RequestIntake(algaeIntake, false);
+            _coralController.RequestIntake(coralIntake, false);
+        }
+
+        if (_handoff && !CoralAtStow(coralStowState))
+        {
+            SetState(ReefscapeSetpoints.Intake);
+        }
+
+        if (_handoff)
+        {
+            SetRobotMode(ReefscapeRobotMode.Coral);
+        }
+
+        if (indexerHasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral &&
+            LastSetpoint == ReefscapeSetpoints.Intake)
+        {
+            SetState(ReefscapeSetpoints.Intake);
+        }
         
         switch (CurrentSetpoint)
         {
             case ReefscapeSetpoints.Stow:
-                if (hasCoral && !_coralController.atTarget)
+                if (hasAlgae)
+                {
+                    SetSetpoint(stow);
+                }
+                else if (hasCoral && !(CoralAtStow(coralStowState)))
                 {
                     SetSetpoint(intake);
                 }
@@ -266,7 +510,7 @@ public class BREAD: ReefscapeRobotBase
                     SetSetpoint(groundAlgae);
                 }
                 
-                _algaeController.RequestIntake(algaeIntake, CurrentRobotMode == ReefscapeRobotMode.Algae && !hasAlgae && IntakeAction.IsPressed());
+                _algaeController.RequestIntake(algaeIntake, CurrentRobotMode == ReefscapeRobotMode.Algae && !hasAlgae && IntakeAction.IsPressed() && !CoralAtStow(coralStowState));
                 _coralController.RequestIntake(coralIntake, !hasCoral && IntakeAction.IsPressed());
                 break;
             case ReefscapeSetpoints.Place:
@@ -333,7 +577,7 @@ public class BREAD: ReefscapeRobotBase
         
         UpdateSetpoints();
         UpdateRollers(hasCoral, hasAlgae);
-        UpdateStows(hasCoral, hasAlgae);
+        UpdateAudio();
     }
 }
 }

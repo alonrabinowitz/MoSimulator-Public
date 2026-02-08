@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: bargePlace
   m_EditorClassIdentifier: 
   elevatorHeight: 57.5
-  armAngle: 45
+  armAngle: 55
   climbAngle: 0
