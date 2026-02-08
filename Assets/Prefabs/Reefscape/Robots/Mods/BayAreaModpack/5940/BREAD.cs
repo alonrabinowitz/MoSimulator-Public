@@ -196,7 +196,7 @@ public class BREAD: ReefscapeRobotBase
         elevator.SetTarget(_elevatorTargetHeight);
         arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X).noWrap(120f);
         climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X).noWrap(180f);
-        l1Bar.SetTargetAngle(_l1BarTargetAngle).withAxis(JointAxis.X).noWrap(0f);
+        l1Bar.SetTargetAngle(_l1BarTargetAngle).withAxis(JointAxis.X);
         intakeJoint.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X);
     }
     
@@ -285,7 +285,14 @@ public class BREAD: ReefscapeRobotBase
             // {
             //     _coralController.ReleaseGamePieceWithForce(new Vector3(0, 3f, 0));
             // }
-            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 5f));
+            if (LastSetpoint == ReefscapeSetpoints.L4)
+            {
+                _coralController.ReleaseGamePieceWithForce(new Vector3(0, -3f, 2f));
+            }
+            else
+            {
+                _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 5f));
+            }
             
             foreach (var roller in endEffectorRollers)
             {
@@ -315,11 +322,19 @@ public class BREAD: ReefscapeRobotBase
             }
         }
 
-        if (IntakeAction.IsPressed() && CurrentRobotMode == ReefscapeRobotMode.Algae)
+        if (IntakeAction.IsPressed() && !_algaeController.atTarget && (CurrentRobotMode == ReefscapeRobotMode.Algae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentSetpoint == ReefscapeSetpoints.LowAlgae))
         {
             foreach (var roller in endEffectorRollers)
             {
                 roller.ChangeAngularVelocity(500f);
+            }
+        }
+
+        if (_coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget)
+        {
+            foreach (var roller in endEffectorRollers)
+            {
+                roller.ChangeAngularVelocity(-500f);
             }
         }
 
@@ -378,7 +393,7 @@ public class BREAD: ReefscapeRobotBase
     private void UpdateAutoAlign()
     {
         bool isCoralSetpoint = CurrentSetpoint == ReefscapeSetpoints.L1 || CurrentSetpoint == ReefscapeSetpoints.L2 || CurrentSetpoint == ReefscapeSetpoints.L3 || CurrentSetpoint == ReefscapeSetpoints.L4;
-        if ((AtSetpoint() && isCoralSetpoint) || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae)
+        if ((AtSetpoint() && isCoralSetpoint) || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentSetpoint == ReefscapeSetpoints.Place)
         {
             _align.offset = new Vector3(-0.1f, 0, atSetpointOffset);
         }

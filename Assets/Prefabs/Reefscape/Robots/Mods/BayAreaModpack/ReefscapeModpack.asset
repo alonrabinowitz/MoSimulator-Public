@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ReefscapeModpack
   m_EditorClassIdentifier: 
   modpackName: BayAreaModpack
-  modpackVersion: 2.0.0
+  modpackVersion: 2.0.0PreRelease
   authorName: alonrab
   description: 
   robots:
