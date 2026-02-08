@@ -73,6 +73,11 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private AudioSource scoreSource;
     [SerializeField] private AudioClip scoreClip;
     
+    [Header("Auto Align Offsets")]
+    [SerializeField] private float atSetpointOffset;
+    [SerializeField] private float preAlignOffset;
+    private ReefscapeAutoAlign _align;
+    
     [Header("Debug")]
     private float _elevatorTargetHeight;
     private float _armTargetAngle;
@@ -85,6 +90,7 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private float l1IntakeAngle;
     [SerializeField] private float bargeDelay;
     [SerializeField] private float bargeForce;
+    
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -141,6 +147,8 @@ public class BREAD: ReefscapeRobotBase
         scoreSource.clip = scoreClip;
         scoreSource.loop = false;
         scoreSource.Stop();
+        
+        _align = gameObject.GetComponent<ReefscapeAutoAlign>();
     }
 
     private void LateUpdate()
@@ -366,12 +374,32 @@ public class BREAD: ReefscapeRobotBase
             endEffectorRollerSource.Stop();
         }
     }
+
+    private void UpdateAutoAlign()
+    {
+        bool isCoralSetpoint = CurrentSetpoint == ReefscapeSetpoints.L1 || CurrentSetpoint == ReefscapeSetpoints.L2 || CurrentSetpoint == ReefscapeSetpoints.L3 || CurrentSetpoint == ReefscapeSetpoints.L4;
+        if ((AtSetpoint() && isCoralSetpoint) || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae)
+        {
+            _align.offset = new Vector3(-0.1f, 0, atSetpointOffset);
+        }
+        else
+        {
+            _align.offset = new Vector3(-0.1f, 0, preAlignOffset);
+        }
+    }
     
     private bool AtSetpoint(BREADSetpoint stp)
     {
         return
             Utils.InRange(elevator.GetElevatorHeight(), stp.elevatorHeight, 2f) &&
             Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp.armAngle, 2f);
+    }
+    
+    private bool AtSetpoint()
+    {
+        return
+            Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 2f) &&
+            Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), _armTargetAngle, 2f);
     }
 
     private bool CoralAtStow(GamePieceState stowState)
@@ -582,6 +610,7 @@ public class BREAD: ReefscapeRobotBase
         UpdateSetpoints();
         UpdateAudio();
         UpdateRollers(hasCoral, hasAlgae);
+        UpdateAutoAlign();
     }
 }
 }

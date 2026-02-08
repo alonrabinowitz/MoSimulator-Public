@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 9162ef73a8b7ff14a81079bd59987bc0
   m_currentHash:
     serializedVersion: 2
-    Hash: 394ba27b80de02d21e3d8d71ce70eaf8
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 50a8af40925b14ac5b1c753a5199cd83, type: 2}
   - {fileID: 11400000, guid: e02197fdf4254934fa6b0ab1762bb000, type: 2}
   - {fileID: 11400000, guid: 9cd31e1fc2fdeb84fbde0fabd689577f, type: 2}
   - {fileID: 11400000, guid: f5b71b85a798d6f40bb1c3812901e71f, type: 2}
@@ -90,12 +91,16 @@ MonoBehaviour:
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: a2842c0f9ded8a54d9ba8ec693eb3bcc
         m_Value: '{UnityEngine.Application.dataPath}/../Mods/Packed Assets'
+      - m_Id: c000ea1ea92854a16b2c50db3da63aae
+        m_Value: '{UnityEngine.Application.persistentDataPath}/Mods/BayAreaModpack'
       - m_Id: c60c9faa4c3ed4380829029eaf811bd8
         m_Value: '{UnityEngine.Application.dataPath}/../Mods/AlonsMod'
       - m_Id: c65595e78f4c7db44a4324f2e84106be
         m_Value: '{UnityEngine.Application.persistentDataPath}/Mods/MechTechMod'
       - m_Id: dc362afee9112ee489246a2a832e6005
         m_Value: '{UnityEngine.Application.dataPath}/../Mods/MechTechMod'
+      - m_Id: f8b88be1467e345b2a624b0254c35434
+        m_Value: '{UnityEngine.Application.dataPath}/../Mods/BayAreaModpack'
     m_ProfileEntryNames:
     - m_Id: 067e7677776176d459115365ce143ae6
       m_Name: Remote.LoadPath
@@ -121,6 +126,9 @@ MonoBehaviour:
     - m_Id: a2842c0f9ded8a54d9ba8ec693eb3bcc
       m_Name: Packed Assets_BuildPath
       m_InlineUsage: 0
+    - m_Id: c000ea1ea92854a16b2c50db3da63aae
+      m_Name: BayAreaModpack_LoadPath
+      m_InlineUsage: 0
     - m_Id: c60c9faa4c3ed4380829029eaf811bd8
       m_Name: AlonsMod_BuildPath
       m_InlineUsage: 0
@@ -129,6 +137,9 @@ MonoBehaviour:
       m_InlineUsage: 0
     - m_Id: dc362afee9112ee489246a2a832e6005
       m_Name: MechTechMod_BuildPath
+      m_InlineUsage: 0
+    - m_Id: f8b88be1467e345b2a624b0254c35434
+      m_Name: BayAreaModpack_BuildPath
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
