@@ -211,6 +211,8 @@ public class BREAD: ReefscapeRobotBase
                     _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
                 }
 
+                _playedScoreSound = true;
+
                 foreach (var roller in endEffectorRollers)
                 {
                     roller.SetAngularVelocity(-800f);
@@ -252,6 +254,8 @@ public class BREAD: ReefscapeRobotBase
             {
                 _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
             }
+
+            _playedScoreSound = true;
             
             foreach (var roller in endEffectorRollers)
             {
@@ -331,11 +335,11 @@ public class BREAD: ReefscapeRobotBase
         
         // Intake Rollers
         float intakeRollerSpeed = intakeRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x;
-        if (Mathf.Abs(intakeRollerSpeed) > 10 && !intakeRollerSource.isPlaying)
+        if (Mathf.Abs(intakeRollerSpeed) > 5 && !intakeRollerSource.isPlaying)
         {
             intakeRollerSource.Play();
         }
-        else if (Mathf.Abs(intakeRollerSpeed) <= 10 && intakeRollerSource.isPlaying)
+        else if (Mathf.Abs(intakeRollerSpeed) <= 5 && intakeRollerSource.isPlaying)
         {
             intakeRollerSource.Stop();
         }
@@ -389,7 +393,7 @@ public class BREAD: ReefscapeRobotBase
         _algaeController.SetTargetState(algaeStowState);
         // _coralController.SetTargetState(coralStowState);
 
-        if (hasCoral)
+        if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
         {
             _playedScoreSound = false;
         }
@@ -576,8 +580,8 @@ public class BREAD: ReefscapeRobotBase
         }
         
         UpdateSetpoints();
-        UpdateRollers(hasCoral, hasAlgae);
         UpdateAudio();
+        UpdateRollers(hasCoral, hasAlgae);
     }
 }
 }
