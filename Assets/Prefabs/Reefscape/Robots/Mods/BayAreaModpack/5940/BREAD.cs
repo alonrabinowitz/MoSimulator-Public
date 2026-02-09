@@ -287,7 +287,8 @@ public class BREAD: ReefscapeRobotBase
             // }
             if (LastSetpoint == ReefscapeSetpoints.L4)
             {
-                _coralController.ReleaseGamePieceWithForce(new Vector3(0, -3f, 2f));
+                // _coralController.ReleaseGamePieceWithForce(new Vector3(0, -3f, 2f));
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3f), 1f, 0.5f);
             }
             else
             {
@@ -413,8 +414,8 @@ public class BREAD: ReefscapeRobotBase
     private bool AtSetpoint()
     {
         return
-            Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 2f) &&
-            Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), _armTargetAngle, 2f);
+            Utils.InRange(elevator.GetElevatorHeight(), _elevatorTargetHeight, 7f) &&
+            Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), _armTargetAngle, 20f);
     }
 
     private bool CoralAtStow(GamePieceState stowState)

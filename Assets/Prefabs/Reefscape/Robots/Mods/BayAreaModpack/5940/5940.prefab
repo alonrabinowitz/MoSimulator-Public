@@ -16875,11 +16875,11 @@ MonoBehaviour:
   pieceName: 
   intakeSpeed: 118
   intakeForce: 80
-  usePlanarTolerancing: 0
-  boxExtents: {x: 0, y: 0, z: 0}
+  usePlanarTolerancing: 1
+  boxExtents: {x: 5, y: 2, z: 3}
   maxDistance: 3
-  accuracy: 0.75
-  lockXAxis: 0
+  accuracy: 1
+  lockXAxis: 1
   lockYAxis: 0
   lockZAxis: 0
   roationForce: 0
@@ -16907,8 +16907,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10999751, y: 0.32830736, z: 0.18541284}
-  m_Center: {x: -0.0011215063, y: 0.008933438, z: -0.028300462}
+  m_Size: {x: 0.10999751, y: 0.32830736, z: 0.1096513}
+  m_Center: {x: -0.001121521, y: 0.00893344, z: 0.009580294}
 --- !u!1 &1293490231614505714
 GameObject:
   m_ObjectHideFlags: 0
