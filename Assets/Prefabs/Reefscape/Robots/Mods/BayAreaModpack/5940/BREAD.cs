@@ -80,8 +80,9 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private float atSetpointOffset;
     [SerializeField] private float preAlignOffset;
     private ReefscapeAutoAlign _align;
-    
+
     [Header("Debug")]
+    [SerializeField] private Vector3 bargeAlgaeForce;
     private float _elevatorTargetHeight;
     private float _armTargetAngle;
     private float _climberTargetAngle;
@@ -219,7 +220,8 @@ public class BREAD: ReefscapeRobotBase
                 }
                 else
                 {
-                    _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+                    // _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+                    _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
                 }
 
                 _playedScoreSound = true;
@@ -263,7 +265,8 @@ public class BREAD: ReefscapeRobotBase
             }
             else
             {
-                _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+                // _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+                _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
             }
 
             _playedScoreSound = true;
