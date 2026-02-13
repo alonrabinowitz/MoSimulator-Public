@@ -94,8 +94,6 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private float l1IntakeAngle;
     [SerializeField] private float bargeDelay;
     [SerializeField] private float bargeForce;
-    [SerializeField] private MeshRenderer bumperMeshRenderer;
-    
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -446,8 +444,6 @@ public class BREAD: ReefscapeRobotBase
         bool indexerHasCoral = _coralController.atTarget && _coralController.currentStateNum == indexerStowState.stateNum;
         bool armHasCoral = _coralController.atTarget && _coralController.currentStateNum == coralStowState.stateNum;
         bool l1HasCoral = _coralController.atTarget && _coralController.currentStateNum == l1StowState.stateNum;
-        
-        // bumperMeshRenderer.materials[1] = bumperMeshRenderer.materials[0];
         
         // Debug.Log((indexerHasCoral ? "i+" : "i-") + (armHasCoral ? "a+" : "a-") + (CurrentRobotMode == ReefscapeRobotMode.Coral ? "coral" : "algae"));
         // Debug.Log((hasCoral ? "yes " : "no ") + (CurrentRobotMode == ReefscapeRobotMode.Coral ? "coral " : "algae ") + (armHasCoral ? "yesarm " : "noarm "));
