@@ -35086,7 +35086,6 @@ MonoBehaviour:
   l1IntakeAngle: -82.5
   bargeDelay: 0.2
   bargeForce: 7.5
-  bumperMeshRenderer: {fileID: 6827948711606974622}
 --- !u!114 &3569001664938813820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101208,8 +101207,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.00045516342, y: 0.00021540286, z: 0.00006350001}
-  m_Center: {x: 0.000021206844, y: -1.0028226e-11, z: 0.000031749718}
+  m_Size: {x: 0.00043856003, y: 0.00021540286, z: 0.00006350001}
+  m_Center: {x: 0.00001290519, y: -6.505896e-12, z: 0.000031749718}
 --- !u!65 &3359036792455270220
 BoxCollider:
   m_ObjectHideFlags: 0

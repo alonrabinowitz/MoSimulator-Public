@@ -363,34 +363,49 @@ public class BREAD: ReefscapeRobotBase
         }
         
         // Intake Rollers
-        float intakeRollerSpeed = intakeRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x;
-        if (Mathf.Abs(intakeRollerSpeed) > 5 && !intakeRollerSource.isPlaying)
+        float intakeRollerSpeed = Mathf.Max(new float[]
+        {
+            Mathf.Abs(intakeRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x),
+            Mathf.Abs(intakeRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.y),
+            Mathf.Abs(intakeRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.z)
+        });
+        if (intakeRollerSpeed > 5 && !intakeRollerSource.isPlaying)
         {
             intakeRollerSource.Play();
         }
-        else if (Mathf.Abs(intakeRollerSpeed) <= 5 && intakeRollerSource.isPlaying)
+        else if (intakeRollerSpeed <= 5 && intakeRollerSource.isPlaying)
         {
             intakeRollerSource.Stop();
         }
         
         // Indexer Rollers
-        float indexerRollerSpeed = indexerRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.y;
-        if (Mathf.Abs(indexerRollerSpeed) > 10 && !indexerRollerSource.isPlaying)
+        float indexerRollerSpeed = Mathf.Max(new float[]
+        {
+            Mathf.Abs(indexerRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x),
+            Mathf.Abs(indexerRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.y),
+            Mathf.Abs(indexerRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.z)
+        });
+        if (indexerRollerSpeed > 10 && !indexerRollerSource.isPlaying)
         {
             indexerRollerSource.Play();
         }
-        else if (Mathf.Abs(intakeRollerSpeed) <= 10 && indexerRollerSource.isPlaying)
+        else if (intakeRollerSpeed <= 10 && indexerRollerSource.isPlaying)
         {
             indexerRollerSource.Stop();
         }
         
         // EE Rollers
-        float endEffectorRollerSpeed = endEffectorRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x;
-        if (Mathf.Abs(endEffectorRollerSpeed) > 5 && !endEffectorRollerSource.isPlaying)
+        float endEffectorRollerSpeed = Mathf.Max(new float[]
+        {
+            Mathf.Abs(endEffectorRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.x),
+            Mathf.Abs(endEffectorRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.y),
+            Mathf.Abs(endEffectorRollers[0].gameObject.GetComponent<Rigidbody>().angularVelocity.z)
+        });
+        if (endEffectorRollerSpeed > 5 && !endEffectorRollerSource.isPlaying)
         {
             endEffectorRollerSource.Play();
         }
-        else if (Mathf.Abs(endEffectorRollerSpeed) <= 5 && endEffectorRollerSource.isPlaying)
+        else if (endEffectorRollerSpeed <= 5 && endEffectorRollerSource.isPlaying)
         {
             endEffectorRollerSource.Stop();
         }
