@@ -22,6 +22,8 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     [SerializeField] private GenericRoller[] endEffectorRollers;
     [SerializeField] private Transform algaeTarget;
     [SerializeField] private Transform algaeSlider;
+    [SerializeField] private Transform coralTarget;
+    [SerializeField] private Transform coralSlider;
 
     [Header("PIDs")]
     [SerializeField] private PidConstants armPid;
@@ -97,10 +99,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
 
         _algaeController.gamePieceStates = new[] { algaeStowState };
         _algaeController.intakes.Add(algaeIntake);
-
-        climber.noWrapAngle = 180f;
-
-        arm.noWrapAngle = 120f;
         
         // endEffectorRollerSource.clip = endEffectorRollerClip;
         // endEffectorRollerSource.loop = true;
@@ -122,9 +120,13 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     {
         _elevatorTargetHeight = setpoint.elevatorHeight;
         _armTargetAngle = setpoint.armAngle;
-        Debug.Log(setpoint.armAngle + ":" + _armTargetAngle);
         _wristTargetAngle = setpoint.wristAngle;
         _climberTargetAngle = setpoint.climbAngle;
+
+        if (_wristTargetAngle == 0 && coralSlider.localPosition.z > 0)
+        {
+            _wristTargetAngle = 180;
+        }
     }
 
     private void UpdateSetpoints()
@@ -133,10 +135,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X);
         wrist.SetTargetAngle(_wristTargetAngle).withAxis(JointAxis.Z);
         climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X);
-        // Debug.Log("Setting elevator target height: " + _elevatorTargetHeight);
-        // Debug.Log("Setting arm target angle: " + _armTargetAngle);
-        // Debug.Log("Setting wrist target angle: " + _wristTargetAngle);
-        // Debug.Log("Setting climber target angle: " + _climberTargetAngle);
     }
     
     private void PlacePiece(bool hasCoral, bool hasAlgae)
@@ -224,11 +222,20 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     
     private void AlgaeSlider()
     {
-        // if (algaeIntake.GamePiece != null)
-        // {
-        //     var localSliderSpaceX = algaeTarget.transform.InverseTransformPoint(algaeIntake.GamePiece.transform.position).x;
-        //     algaeSlider.localPosition = new Vector3(localSliderSpaceX, 0, 0);
-        // }
+        if (algaeIntake.GamePiece != null)
+        {
+            var localSliderSpaceY = algaeTarget.transform.InverseTransformPoint(algaeIntake.GamePiece.transform.position).y;
+            algaeSlider.localPosition = new Vector3(0, localSliderSpaceY, 0);
+        }
+    }
+    
+    private void CoralSlider()
+    {
+        if (coralIntake.GamePiece != null)
+        {
+            var localSliderSpaceZ = coralTarget.transform.InverseTransformPoint(coralIntake.GamePiece.transform.position).z;
+            coralSlider.localPosition = new Vector3(0, 0, localSliderSpaceZ);
+        }
     }
 
     private void FixedUpdate()
@@ -237,6 +244,9 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         bool hasCoral = _coralController.HasPiece();
         
         AlgaeSlider();
+        CoralSlider();
+        
+        // Debug.Log(coralSlider.localPosition.z);
         
         _algaeController.SetTargetState(algaeStowState);
         _coralController.SetTargetState(coralStowState);
