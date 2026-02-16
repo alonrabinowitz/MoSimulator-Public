@@ -93,6 +93,7 @@ public class Firebots: ReefscapeRobotBase
     private LayerMask coralMask;
     private bool canClack;
     private bool outtakingL1;
+    private bool _justPlayedScoreSound;
     
     protected override void Start()
     {
@@ -140,6 +141,7 @@ public class Firebots: ReefscapeRobotBase
         coralMask = LayerMask.GetMask("Coral");
         canClack = true;
         outtakingL1 = false;
+        _justPlayedScoreSound = false;
     }
 
     private void SetSetpoint(FirebotsSetpoint setpoint)
@@ -170,12 +172,12 @@ public class Firebots: ReefscapeRobotBase
             }
             else if (LastSetpoint == ReefscapeSetpoints.L4)
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0f, 3.5f), 0.6f, 0.5f);
-                yield return new WaitForSeconds(0.2f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0f, 2.5f), 1.5f, 0.25f);
+                yield return new WaitForSeconds(0.4f);
             }
             else
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0f, 3.25f), 0.5f, 0.6f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 1f, 3f), 0.5f, 0.5f);
                 yield return new WaitForSeconds(0.2f);
             }
 
@@ -415,10 +417,10 @@ public class Firebots: ReefscapeRobotBase
         }
         
         UpdateSetpoints();
-        UpdateAudio();
+        StartCoroutine(UpdateAudio());
     }
 
-    private void UpdateAudio()
+    private IEnumerator UpdateAudio()
     {
         if (BaseGameManager.Instance.RobotState == RobotState.Disabled)
         {
@@ -430,7 +432,7 @@ public class Firebots: ReefscapeRobotBase
                 tootsieSource.Stop();
             }
 
-            return;
+            yield return null;
         }
         
         // Dale Roller
@@ -444,9 +446,13 @@ public class Firebots: ReefscapeRobotBase
         }
         
         // Score Sound
-        if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !tootsieSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral)
+        if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !tootsieSource.isPlaying && !_justPlayedScoreSound && CurrentRobotMode == ReefscapeRobotMode.Coral)
         {
+            yield return new WaitForSeconds(0.08f);
             tootsieSource.Play();
+            _justPlayedScoreSound = true;
+            yield return new WaitForSeconds(2f);
+            _justPlayedScoreSound = false;
         }
         
         // Funnel Rollers

@@ -8445,17 +8445,17 @@ MonoBehaviour:
   requestIntake: 0
   pieceName: 
   intakeSpeed: 150
-  intakeForce: 80
+  intakeForce: 120
   usePlanarTolerancing: 0
   boxExtents: {x: 0, y: 0, z: 0}
-  maxDistance: 5
-  accuracy: 0.75
+  maxDistance: 6
+  accuracy: 2
   lockXAxis: 0
   lockYAxis: 0
   lockZAxis: 0
-  roationForce: 0
-  maxRotationSpeed: 0
-  useRotaion: 0
+  roationForce: 20
+  maxRotationSpeed: 10
+  useRotaion: 1
   smoothHandoff: 1
   target: {fileID: 5891935944596028392}
   securedGamePiece: 0
@@ -8478,8 +8478,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.18, y: 0.1, z: 0.34}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.18, y: 0.1, z: 0.54456997}
+  m_Center: {x: 0, y: 0.0000017188589, z: -0.1022858}
 --- !u!1 &642886772087763975
 GameObject:
   m_ObjectHideFlags: 0
@@ -18808,6 +18808,7 @@ Transform:
   m_Children:
   - {fileID: 5891935944596028392}
   - {fileID: 480717412297073173}
+  - {fileID: 2472306490670973143}
   - {fileID: 5734480136202460463}
   - {fileID: 5142377523426502888}
   - {fileID: 8638213451692758496}
@@ -20116,6 +20117,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1705198589240677151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5873506905397759378}
+  - component: {fileID: 5364332963261200999}
+  m_Layer: 6
+  m_Name: lower CoM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5873506905397759378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705198589240677151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.625, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7508108429782771140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &5364332963261200999
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705198589240677151}
+  serializedVersion: 4
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1709221880878577281
 GameObject:
   m_ObjectHideFlags: 0
@@ -28572,6 +28632,7 @@ Transform:
   - {fileID: 8678052007429110319}
   - {fileID: 7312901865696620520}
   - {fileID: 1275979120604633587}
+  - {fileID: 5873506905397759378}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8921164627416285410
@@ -28813,12 +28874,12 @@ MonoBehaviour:
   <CurrentCoralStationMode>k__BackingField:
     <DropType>k__BackingField: 1
     <DropDistance>k__BackingField: 1.6
-    <DropStrength>k__BackingField: 2
+    <DropStrength>k__BackingField: 1.5
     <DropForceVariance>k__BackingField: 0.25
     <RotationVariance>k__BackingField: 0.1
     <DropOrientation>k__BackingField: 1
     <RequireIntaking>k__BackingField: 1
-    <TargetTransform>k__BackingField: {fileID: 0}
+    <TargetTransform>k__BackingField: {fileID: 2472306490670973143}
     <DrawDebugLines>k__BackingField: 0
   superCycler: 1
   elevator: {fileID: 6800611649284511049}
@@ -28834,7 +28895,7 @@ MonoBehaviour:
     kP: 0.6
     kI: 0
     kD: 0.1
-    Max: 5
+    Max: 8
     Isaturation: 0
   tootsieRollersOuttakeVelocity: 1000
   tootsieRollersIntakeVelocity: 750
@@ -41961,7 +42022,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaTensor: {x: 0.1, y: 0.1, z: 0.1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
@@ -41970,7 +42031,7 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 64
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -64929,7 +64990,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5748094096483051428}
-  m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
+  m_Material: {fileID: 13400000, guid: 20e7d1a69977f2248b454fb4fca44b0a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -81409,10 +81470,10 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -94677,6 +94738,37 @@ Transform:
   - {fileID: 2993840979891101972}
   m_Father: {fileID: 8859587464190484370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8544077909494368805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2472306490670973143}
+  m_Layer: 6
+  m_Name: Coral Station Transform Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2472306490670973143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544077909494368805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2659265, y: 0, z: 0, w: 0.9639933}
+  m_LocalPosition: {x: -0.4958, y: 0.444, z: -0.333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8678052007429110319}
+  m_LocalEulerAnglesHint: {x: 30.844032, y: 0, z: 0}
 --- !u!1 &8554943691196512123
 GameObject:
   m_ObjectHideFlags: 0
