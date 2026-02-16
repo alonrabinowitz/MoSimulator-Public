@@ -353,11 +353,12 @@ public class BREAD: ReefscapeRobotBase
         }
     }
 
-    private void UpdateAudio()
+    private IEnumerator UpdateAudio()
     {
         // Score Sound
-        if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
+        if (CurrentSetpoint == ReefscapeSetpoints.Place && CurrentIntakeMode != ReefscapeIntakeMode.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
         {
+            yield return new WaitForSeconds(0.08f);
             scoreSource.Play();
             _playedScoreSound = true;
         }
@@ -663,7 +664,7 @@ public class BREAD: ReefscapeRobotBase
         }
         
         UpdateSetpoints();
-        UpdateAudio();
+        StartCoroutine(UpdateAudio());
         UpdateRollers(hasCoral, hasAlgae);
         UpdateAutoAlign();
     }

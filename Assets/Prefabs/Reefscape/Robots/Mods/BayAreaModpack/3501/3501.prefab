@@ -8478,8 +8478,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.18, y: 0.1, z: 0.41259614}
-  m_Center: {x: 0, y: 0.0000009761029, z: -0.036298558}
+  m_Size: {x: 0.18, y: 0.1, z: 0.54456997}
+  m_Center: {x: 0, y: 0.0000017188589, z: -0.1022858}
 --- !u!1 &642886772087763975
 GameObject:
   m_ObjectHideFlags: 0
@@ -28895,7 +28895,7 @@ MonoBehaviour:
     kP: 0.6
     kI: 0
     kD: 0.1
-    Max: 5
+    Max: 8
     Isaturation: 0
   tootsieRollersOuttakeVelocity: 1000
   tootsieRollersIntakeVelocity: 750
