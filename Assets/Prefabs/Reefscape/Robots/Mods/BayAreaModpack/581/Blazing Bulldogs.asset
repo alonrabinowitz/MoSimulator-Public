@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aff2b59de2c4a0c96d6b848990b46af, type: 3}
   m_Name: Blazing Bulldogs
   m_EditorClassIdentifier: 
-  teamNumber: 5940
-  teamName: BREAD
+  teamNumber: 581
+  teamName: Blazing Bullsogs
   robotPrefab: {fileID: 2534371394911199621, guid: 03b02e34292d34556b5cee286c5de38f,
     type: 3}
   robotPreloadGamePiece: {fileID: 2185987706872048638, guid: 970bdf84a203d9a4b8dc602974341a07,

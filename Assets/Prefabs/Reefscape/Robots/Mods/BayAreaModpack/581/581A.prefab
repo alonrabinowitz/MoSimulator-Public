@@ -27473,6 +27473,7 @@ MonoBehaviour:
   coralSlider: {fileID: 1342471902351769134}
   climbScorerCollider: {fileID: 8407070105044450134}
   climbCollider: {fileID: 3296086910241085325}
+  scorer: {fileID: 279762633080191265}
   armPid:
     kP: 0.3
     kI: 0

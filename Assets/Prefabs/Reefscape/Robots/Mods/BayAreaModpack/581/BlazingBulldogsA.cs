@@ -30,6 +30,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     [SerializeField] private Transform coralSlider;
     [SerializeField] private BoxCollider climbScorerCollider;
     [SerializeField] private BoxCollider climbCollider;
+    [SerializeField] private ClimbScorer scorer;
     private OverlapBoxBounds _cageDetector;
 
     [Header("PIDs")]
@@ -388,6 +389,10 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 break;
             case ReefscapeSetpoints.Climb:
                 SetSetpoint(climbPrep);
+                if (scorer.AutoClimbTriggered)
+                {
+                    SetState(ReefscapeSetpoints.Climbed);
+                }
                 break;
             case ReefscapeSetpoints.Climbed:
                 SetSetpoint(climbed);
