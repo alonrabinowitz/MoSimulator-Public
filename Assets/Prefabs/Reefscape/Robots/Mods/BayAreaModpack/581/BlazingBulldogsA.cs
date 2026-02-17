@@ -2,6 +2,7 @@ using System.Collections;
 using Games.Reefscape.Enums;
 using Games.Reefscape.GamePieceSystem;
 using Games.Reefscape.Robots;
+using Games.Reefscape.Scoring.Scorers;
 using MoSimLib;
 using RobotFramework.Components;
 using RobotFramework.Controllers.GamePieceSystem;
@@ -19,16 +20,23 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     [SerializeField] private GenericJoint arm;
     [SerializeField] private GenericJoint wrist;
     [SerializeField] private GenericJoint climber;
+    [SerializeField] private GenericJoint leftLatch;
+    [SerializeField] private GenericJoint rightLatch;
     [SerializeField] private GenericRoller[] endEffectorRollers;
+    [SerializeField] private GenericRoller[] climbRollers;
     [SerializeField] private Transform algaeTarget;
     [SerializeField] private Transform algaeSlider;
     [SerializeField] private Transform coralTarget;
     [SerializeField] private Transform coralSlider;
+    [SerializeField] private BoxCollider climbScorerCollider;
+    [SerializeField] private BoxCollider climbCollider;
+    private OverlapBoxBounds _cageDetector;
 
     [Header("PIDs")]
     [SerializeField] private PidConstants armPid;
     [SerializeField] private PidConstants wristPid;
     [SerializeField] private PidConstants climbPid;
+    [SerializeField] private PidConstants climbLatchPid;
     
     [Header("Intakes")]
     [SerializeField] private ReefscapeGamePieceIntake coralIntake;
@@ -69,6 +77,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private float _wristTargetAngle;
     private float _climberTargetAngle;
     private bool _playedScoreSound;
+    private bool _placedVerticalCoral;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -80,16 +89,21 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         arm.SetPid(armPid);
         climber.SetPid(climbPid);
         wrist.SetPid(wristPid);
+        rightLatch.SetPid(climbLatchPid);
+        leftLatch.SetPid(climbLatchPid);
         
         _elevatorTargetHeight = 0;
         _armTargetAngle = 0;
         _climberTargetAngle = 0;
         _wristTargetAngle = 0;
         _playedScoreSound = false;
+        _placedVerticalCoral = false;
+        _cageDetector = new OverlapBoxBounds(climbScorerCollider);
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
         _algaeController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Algae.ToString());
+        
 
         _coralController.gamePieceStates = new[]
         {
@@ -114,6 +128,8 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         arm.UpdatePid(armPid);
         climber.UpdatePid(climbPid);
         wrist.UpdatePid(wristPid);
+        rightLatch.UpdatePid(climbLatchPid);
+        leftLatch.UpdatePid(climbLatchPid);
     }
 
     private void SetSetpoint(BlazingBulldogsASetpoint setpoint)
@@ -127,6 +143,11 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         {
             _wristTargetAngle = 180;
         }
+
+        if (CurrentSetpoint == ReefscapeSetpoints.L2 || CurrentSetpoint == ReefscapeSetpoints.L3 ||  CurrentSetpoint == ReefscapeSetpoints.L4)
+        {
+            _elevatorTargetHeight -= Mathf.Abs(coralSlider.localPosition.z*25.4f);
+        }
     }
 
     private void UpdateSetpoints()
@@ -135,19 +156,55 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X);
         wrist.SetTargetAngle(_wristTargetAngle).withAxis(JointAxis.Z);
         climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X);
+        leftLatch.SetTargetAngle(0).withAxis(JointAxis.X);
+        rightLatch.SetTargetAngle(0).withAxis(JointAxis.X);
     }
     
-    private void PlacePiece(bool hasCoral, bool hasAlgae)
+    private IEnumerator PlacePiece(bool hasCoral, bool hasAlgae)
     {
-        _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
+        if (LastSetpoint == ReefscapeSetpoints.L2 || LastSetpoint == ReefscapeSetpoints.L3 ||  LastSetpoint == ReefscapeSetpoints.L4)
+        {
+            if (!_placedVerticalCoral)
+            {
+                _elevatorTargetHeight -= 8;
+                _placedVerticalCoral = true;
+            }
+            yield return new WaitForSeconds(LastSetpoint switch {
+                ReefscapeSetpoints.L2 => 0.02f,
+                ReefscapeSetpoints.L3 => 0.05f,
+                ReefscapeSetpoints.L4 => 0.1f,
+                _ => 0f
+                });
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, LastSetpoint switch {
+                ReefscapeSetpoints.L2 => 0.5f,
+                ReefscapeSetpoints.L3 => 0.1f,
+                ReefscapeSetpoints.L4 => 0f,
+                _ => 0f
+            }, 0));
+            // yield return new WaitForSeconds(0.5f);
+            // _placedVerticalCoral = false;
+        }
+        else
+        {
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 2f, 0));
+        }
         _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3f));
     }
 
     private void UpdateRollers(bool hasCoral, bool hasAlgae)
     {
-        if ((IntakeAction.IsPressed() && !_coralController.atTarget) || coralIntake.requestIntake)
+        // if ((IntakeAction.IsPressed() && !_coralController.atTarget) || coralIntake.requestIntake)
+        if (IntakeAction.IsPressed() && !hasCoral && !hasAlgae)
         {
             foreach (var roller in endEffectorRollers)
+            {
+                roller.ChangeAngularVelocity(1000f);
+            }
+        }
+
+        if (CurrentSetpoint == ReefscapeSetpoints.Climb)
+        {
+            foreach (var roller in climbRollers)
             {
                 roller.ChangeAngularVelocity(1000f);
             }
@@ -245,8 +302,15 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         
         AlgaeSlider();
         CoralSlider();
+
+        climbCollider.enabled = _cageDetector.OverlapBox().Length > 3;
         
-        // Debug.Log(coralSlider.localPosition.z);
+        Debug.Log(_cageDetector.OverlapBox().Length);
+
+        if (IsIntaking)
+        {
+            _placedVerticalCoral = false;
+        }
         
         _algaeController.SetTargetState(algaeStowState);
         _coralController.SetTargetState(coralStowState);
@@ -281,7 +345,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 _coralController.RequestIntake(coralIntake, CurrentRobotMode == ReefscapeRobotMode.Coral && !hasCoral && IntakeAction.IsPressed());
                 break;
             case ReefscapeSetpoints.Place:
-                PlacePiece(hasCoral, hasAlgae); 
+                StartCoroutine(PlacePiece(hasCoral, hasAlgae)); 
                 break;
             case ReefscapeSetpoints.L1:
                 SetSetpoint(l1);
