@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36463c69c49f548ad8e2b15314054c64, type: 3}
   m_Name: stationIntake
   m_EditorClassIdentifier: 
-  elevatorHeight: 0
-  armAngle: 0
-  wristAngle: 0
+  elevatorHeight: 10
+  armAngle: -80
+  wristAngle: 90
   climbAngle: 90

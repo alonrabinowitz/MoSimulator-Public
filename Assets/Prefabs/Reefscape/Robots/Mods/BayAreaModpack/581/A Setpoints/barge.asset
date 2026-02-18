@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: barge
   m_EditorClassIdentifier: 
   elevatorHeight: 59
-  armAngle: 0
+  armAngle: 5
   wristAngle: 90
   climbAngle: 90
