@@ -96,6 +96,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private Collider[] _colliders;
     private OverlapBoxBounds _visionDetect;
     private LayerMask _mask;
+    private BlazingBulldogsASetpoint _currSetpoint;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -122,6 +123,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         _colliders = new Collider[6];
         _visionDetect = new OverlapBoxBounds(intakeVision);
         _mask = LayerMask.GetMask("Coral");
+        _currSetpoint = stow;
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -168,6 +170,8 @@ public class BlazingBulldogsA: ReefscapeRobotBase
 
     private void SetSetpoint(BlazingBulldogsASetpoint setpoint)
     {
+        _currSetpoint = setpoint;
+        
         _elevatorTargetHeight = setpoint.elevatorHeight;
         _armTargetAngle = setpoint.armAngle;
         _wristTargetAngle = setpoint.wristAngle;
@@ -182,8 +186,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         {
             _elevatorTargetHeight -= Mathf.Abs(coralSlider.localPosition.z*25.4f);
         }
-
-        
     }
 
     private void UpdateSetpoints()
@@ -204,7 +206,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
             _elevatorTargetHeight = 0;
         }
         
-        elevator.SetTarget(_elevatorTargetHeight);
+        elevator.SetTarget(Mathf.Max(_elevatorTargetHeight, 0));
         arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X).noWrap(180f);
         wrist.SetTargetAngle(_wristTargetAngle).withAxis(JointAxis.Z);
         climber.SetTargetAngle(_climberTargetAngle).withAxis(JointAxis.X);
@@ -223,11 +225,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         }
         if (LastSetpoint == ReefscapeSetpoints.L2 || LastSetpoint == ReefscapeSetpoints.L3 ||  LastSetpoint == ReefscapeSetpoints.L4)
         {
-            if (!_placedVerticalCoral)
-            {
-                _elevatorTargetHeight -= 8;
-                _placedVerticalCoral = true;
-            }
             yield return new WaitForSeconds(LastSetpoint switch {
                 ReefscapeSetpoints.L2 => l2ScoreDelay,
                 ReefscapeSetpoints.L3 => l3ScoreDelay,
@@ -240,8 +237,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 ReefscapeSetpoints.L4 => 0f,
                 _ => 0f
             }, 0));
-            // yield return new WaitForSeconds(0.5f);
-            // _placedVerticalCoral = false;
         }
         else
         {
@@ -257,7 +252,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
 
     private void UpdateRollers(bool hasCoral, bool hasAlgae)
     {
-        // if ((IntakeAction.IsPressed() && !_coralController.atTarget) || coralIntake.requestIntake)
         if (IntakeAction.IsPressed() && !hasCoral && !hasAlgae)
         {
             foreach (var roller in endEffectorRollers)
@@ -273,30 +267,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 roller.ChangeAngularVelocity(1000f);
             }
         }
-        //
-        // if (IntakeAction.IsPressed() && !_algaeController.atTarget && (CurrentRobotMode == ReefscapeRobotMode.Algae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentSetpoint == ReefscapeSetpoints.LowAlgae))
-        // {
-        //     foreach (var roller in endEffectorRollers)
-        //     {
-        //         roller.ChangeAngularVelocity(500f);
-        //     }
-        // }
-        //
-        // if (_coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget)
-        // {
-        //     foreach (var roller in endEffectorRollers)
-        //     {
-        //         roller.ChangeAngularVelocity(-500f);
-        //     }
-        // }
-        //
-        // if (hasCoral && !_coralController.atTarget)
-        // {
-        //     foreach (var roller in indexerRollers)
-        //     {
-        //         roller.ChangeAngularVelocity(500f);
-        //     }
-        // }
     }
 
     private void UpdateAudio()
@@ -343,9 +313,11 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     
     private void CheckStationMode()
     {
+        bool changedMode = false;
         if (RobotSpecialAction.IsPressed() && !_robotSpecialPressed && BaseGameManager.Instance.RobotState == RobotState.Enabled)
         {
             _stationMode = !_stationMode;
+            changedMode = true;
         }
 
         if (_stationMode)
@@ -358,6 +330,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         }
             
         _robotSpecialPressed = RobotSpecialAction.IsPressed();
+        if (changedMode) SetState(LastSetpoint);
     }
     
     private bool AtSetpoint(BlazingBulldogsASetpoint stp)
@@ -433,9 +406,9 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         AlgaeSlider();
         CoralSlider();
 
-        climbCollider.enabled = _cageDetector.OverlapBox().Length > 3;
+        Debug.Log(CurrentSetpoint.ToString() + ":" + _currSetpoint.ToString());
         
-        // Debug.Log(_cageDetector.OverlapBox().Length);
+        climbCollider.enabled = _cageDetector.OverlapBox().Length > 3;
 
         if (IsIntaking)
         {
@@ -483,6 +456,13 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 break;
             case ReefscapeSetpoints.Place:
                 StartCoroutine(PlacePiece(hasCoral, hasAlgae)); 
+                
+                if (!_placedVerticalCoral)
+                {
+                    _elevatorTargetHeight -= 8;
+                    _placedVerticalCoral = true;
+                }
+                
                 break;
             case ReefscapeSetpoints.L1:
                 SetSetpoint(l1);

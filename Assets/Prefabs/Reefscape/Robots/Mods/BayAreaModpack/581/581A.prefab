@@ -27687,7 +27687,7 @@ MonoBehaviour:
     <DropDistance>k__BackingField: 1.5
     <DropStrength>k__BackingField: 7
     <DropForceVariance>k__BackingField: 1
-    <RotationVariance>k__BackingField: 0.1
+    <RotationVariance>k__BackingField: 0
     <DropOrientation>k__BackingField: 0
     <RequireIntaking>k__BackingField: 1
     <TargetTransform>k__BackingField: {fileID: 0}
