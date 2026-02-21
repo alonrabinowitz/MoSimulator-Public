@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10932e8466ade4d4cb8f5c390bd5b293, type: 3}
   m_Name: L4FrontPlace
   m_EditorClassIdentifier: 
-  elevatorHeight: 0
-  armAngle: 0
+  elevatorHeight: 56
+  armAngle: 90
   intakeAngle: 0
   climbAngle: 0

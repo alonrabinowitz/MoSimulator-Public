@@ -29880,7 +29880,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534371394911199621}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62833179775b24641ac356a730f39fd3, type: 3}
   m_Name: 
@@ -29977,6 +29977,12 @@ MonoBehaviour:
     kD: 0.2
     Max: 5
     Isaturation: 0
+  armPidWithPiece:
+    kP: 0.3
+    kI: 0
+    kD: 0.2
+    Max: 4.5
+    Isaturation: 0
   intakePid:
     kP: 0.3
     kI: 0
@@ -29993,26 +29999,27 @@ MonoBehaviour:
   algaeIntake: {fileID: 5562299936875086960}
   coralStowState:
     name: Coral Stow State
-    stateNum: 0
+    stateNum: 1
     stateMoveSpeed: 100
     stateTarget: {fileID: 5199023001014586241}
     smoothHandoff: 0
     angularSpeed: 0
   intakeStowState:
     name: Intake Stow State
-    stateNum: 1
+    stateNum: 2
     stateMoveSpeed: 100
     stateTarget: {fileID: 932396870201060113}
     smoothHandoff: 0
     angularSpeed: 0
   algaeStowState:
     name: Algae Stow State
-    stateNum: 0
+    stateNum: 1
     stateMoveSpeed: 100
     stateTarget: {fileID: 2813028232091988218}
     smoothHandoff: 0
     angularSpeed: 0
   stow: {fileID: 11400000, guid: 3eb99814b3219410191cdde568a264a3, type: 2}
+  transfer: {fileID: 11400000, guid: 0013a11db7e8e4ac78409bd294f6b967, type: 2}
   intake: {fileID: 11400000, guid: b8ab7ca43125a401aa7a3d0e5dea630e, type: 2}
   l1Front: {fileID: 11400000, guid: 63f1a71743aed46f7be8c44a30f9bb65, type: 2}
   l2Front: {fileID: 11400000, guid: ec117b124f7bb48d28601565db835b02, type: 2}
@@ -30040,6 +30047,22 @@ MonoBehaviour:
   climbPrep: {fileID: 11400000, guid: 1c97013d854454d2995842ba8651b1d7, type: 2}
   climbed: {fileID: 11400000, guid: 16ec079c341da45dab8941c67410cb1e, type: 2}
   lollipopCoral: {fileID: 11400000, guid: f9abab434e0714ab88b98d907ae75895, type: 2}
+  l4ScoreSettings:
+    yForce: 0
+    zForce: 0
+    scoreDelay: 0.12
+  l3ScoreSettings:
+    yForce: 0
+    zForce: 0
+    scoreDelay: 0
+  l2ScoreSettings:
+    yForce: 0
+    zForce: 0
+    scoreDelay: 0
+  l1ScoreSettings:
+    yForce: 0
+    zForce: 0
+    scoreDelay: 0
   endEffectorRollerSource: {fileID: 4372041129752575191}
   endEffectorRollerClip: {fileID: 0}
   intakeRollerSource: {fileID: 4981220741525354735}
@@ -30048,7 +30071,7 @@ MonoBehaviour:
   climbRollerClip: {fileID: 0}
   climbClickSource: {fileID: 5764749623853357068}
   climbClickClip: {fileID: 0}
-  zOffset: 0
+  zOffset: 1
   xOffset: 7
   l4ScoreDelay: 0
   l3ScoreDelay: 0
@@ -30119,7 +30142,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534371394911199621}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84285a51c5b987842b784c1508e6a743, type: 3}
   m_Name: 
@@ -30148,7 +30171,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534371394911199621}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40c9f738d2c54a48ad3e959efd15d13b, type: 3}
   m_Name: 
@@ -105022,7 +105045,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.0254, z: 0.01}
+  m_Size: {x: 0.02, y: 0.05, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9214742710987684360
 GameObject:

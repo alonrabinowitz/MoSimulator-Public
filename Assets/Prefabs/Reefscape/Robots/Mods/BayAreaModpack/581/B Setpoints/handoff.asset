@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10932e8466ade4d4cb8f5c390bd5b293, type: 3}
-  m_Name: processor
+  m_Name: handoff
   m_EditorClassIdentifier: 
-  elevatorHeight: 5
-  armAngle: 90
+  elevatorHeight: 42
+  armAngle: 180
   intakeAngle: 0
-  climbAngle: 0
+  climbAngle: 100
