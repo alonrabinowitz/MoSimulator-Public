@@ -89,7 +89,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private float _armTargetAngle;
     private float _wristTargetAngle;
     private float _climberTargetAngle;
-    private bool _playedScoreSound;
     private bool _placedVerticalCoral;
     private bool _stationMode;
     private bool _robotSpecialPressed;
@@ -115,7 +114,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         _armTargetAngle = 0;
         _climberTargetAngle = 0;
         _wristTargetAngle = 0;
-        _playedScoreSound = false;
         _placedVerticalCoral = false;
         _cageDetector = new OverlapBoxBounds(climbScorerCollider);
         _stationMode = false;
@@ -417,11 +415,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         
         _algaeController.SetTargetState(algaeStowState);
         _coralController.SetTargetState(coralStowState);
-
-        if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
-        {
-            _playedScoreSound = false;
-        }
         
         if (!IntakeAction.IsPressed())
         {

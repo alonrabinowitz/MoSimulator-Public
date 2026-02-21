@@ -20,7 +20,7 @@ MonoBehaviour:
     type: 3}
   mainMenuPrefab: {fileID: 2534371394911199621, guid: c4dfef61ae4af4c13a933d9fca41670d,
     type: 3}
-  hasAlternateRobot: 1
+  hasAlternateRobot: 0
   alternateRobotPrefab: {fileID: 2534371394911199621, guid: 8f2b37ba9c3b8471aa670bc3fd85c4e3,
     type: 3}
   alternateMainMenuPrefab: {fileID: 0}
@@ -31,4 +31,4 @@ MonoBehaviour:
   - {fileID: 6829736770845459078, guid: f5d408ad3682f48b0be0bc2f376a7c51, type: 3}
   alternateTutorialCards: []
   autoClimbs: 1
-  alternateAutoClimbs: 1
+  alternateAutoClimbs: 0

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36463c69c49f548ad8e2b15314054c64, type: 3}
-  m_Name: groundIntake
+  m_Script: {fileID: 11500000, guid: 10932e8466ade4d4cb8f5c390bd5b293, type: 3}
+  m_Name: lollipopCoral
   m_EditorClassIdentifier: 
   elevatorHeight: 0
-  armAngle: 100
-  wristAngle: 90
-  climbAngle: 90
+  armAngle: 0
+  intakeAngle: 0
+  climbAngle: 0
