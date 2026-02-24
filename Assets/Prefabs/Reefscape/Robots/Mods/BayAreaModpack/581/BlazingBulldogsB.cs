@@ -476,7 +476,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     
     private void RunIntakeVision()
         {
-            if (CurrentSetpoint != ReefscapeSetpoints.RobotSpecial || _coralController.HasPiece())
+            if ((CurrentSetpoint != ReefscapeSetpoints.RobotSpecial && CurrentSetpoint != ReefscapeSetpoints.Stack) || CurrentRobotMode == ReefscapeRobotMode.Algae || _coralController.HasPiece())
             {
                 return;
             }
@@ -503,8 +503,11 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 offsetTransform.rotation = Quaternion.Euler(lollipopCoralIntake.transform.rotation.eulerAngles.x, lollipopCoralIntake.transform.rotation.eulerAngles.y, lollipopCoralIntake.transform.rotation.eulerAngles.z);
                 var angle = Quaternion.LookRotation(offsetTransform.position - close.transform.position, offsetTransform.up).eulerAngles.y;
                 // DriveController.overideInput(new Vector2(0.6f*TranslateAction.ReadValue<Vector2>().y, 0f), Mathf.Clamp(-angle + offsetTransform.eulerAngles.y, -0.18f, 0.18f), DriveController.DriveMode.RobotRelative);
-                DriveController.overideInput(new Vector2(0.6f*TranslateAction.ReadValue<Vector2>().y, 0f), 0, DriveController.DriveMode.RobotRelative);
-                DriveController.SoftSteer(Mathf.Clamp(-angle + offsetTransform.eulerAngles.y, 0.18f, -0.18f));
+                // DriveController.overideInput(new Vector2(0.6f*TranslateAction.ReadValue<Vector2>().y, 0f), 0, DriveController.DriveMode.RobotRelative);
+                float turnValue = Mathf.Clamp(-angle + offsetTransform.eulerAngles.y, 0.18f, -0.18f);
+                // if (Utils.InRange(turnValue, 0f, .01f)) turnValue = 0;
+                DriveController.SoftSteer(Mathf.Clamp((-angle + offsetTransform.eulerAngles.y)/100, 0.18f, -0.18f));
+                Debug.Log(Mathf.Clamp((0.1f*(-angle + offsetTransform.eulerAngles.y)), 0.18f, -0.18f));
             }
         }
 
@@ -583,6 +586,10 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         switch (CurrentSetpoint)
         {
             case ReefscapeSetpoints.Stow:
+                if (L1Action.IsPressed() && LastSetpoint == ReefscapeSetpoints.Stow)
+                {
+                    SetState(ReefscapeSetpoints.Stack);
+                }
                 if (hasAlgae || CoralAtStow(coralStowState))
                 {
                     SetSetpoint(stow);
@@ -641,10 +648,17 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 SetSetpoint(IsFacingReef(GetClosestReef()) ? l1Front : l1Back);
                 break;
             case ReefscapeSetpoints.Stack:
-                SetSetpoint(lollipopAlgae);
+                if (CurrentRobotMode == ReefscapeRobotMode.Coral)
+                {
+                    SetSetpoint(lollipopCoral);
+                }
+                else
+                {
+                    SetSetpoint(lollipopAlgae);
+                }
                 
                 _algaeController.RequestIntake(algaeIntake, IntakeAction.IsPressed() && !hasAlgae);
-                _coralController.RequestIntake(coralIntake, false);
+                _coralController.RequestIntake(lollipopCoralIntake, IntakeAction.IsPressed() && !hasCoral);
                 break;
             case ReefscapeSetpoints.L2:
                 SetSetpoint(IsFacingReef(GetClosestReef()) ? l2Front : l2Back);

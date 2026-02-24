@@ -76625,8 +76625,8 @@ MonoBehaviour:
   intakeForce: 30
   usePlanarTolerancing: 1
   boxExtents: {x: 5, y: 5, z: 10}
-  maxDistance: 0
-  accuracy: 0
+  maxDistance: 3
+  accuracy: 1
   lockXAxis: 0
   lockYAxis: 0
   lockZAxis: 1
