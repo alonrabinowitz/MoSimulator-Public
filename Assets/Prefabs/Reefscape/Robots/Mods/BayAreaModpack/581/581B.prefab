@@ -30083,6 +30083,9 @@ MonoBehaviour:
   l2FrontPlace: {fileID: 11400000, guid: 8e41e2646f6604d44976fa3dc6afb2b9, type: 2}
   l3FrontPlace: {fileID: 11400000, guid: 5afe70df6b0e74390a6b46811acb0e36, type: 2}
   l4FrontPlace: {fileID: 11400000, guid: 5df62f40d26d84e31801a2fc34e81fd0, type: 2}
+  l2FrontRelease: {fileID: 11400000, guid: d1e2daa470900494c96e106085656edf, type: 2}
+  l3FrontRelease: {fileID: 11400000, guid: 3a046dd175d3a407e9117c1f4597836e, type: 2}
+  l4FrontRelease: {fileID: 11400000, guid: 4ca0c070055304b57aa979fe4bb25ca8, type: 2}
   lowAlgaeFront: {fileID: 11400000, guid: 7c2741d2f096e43aea4481fa901f66bd, type: 2}
   highAlgaeFront: {fileID: 11400000, guid: 575255a2d1a86455f99b500980b0b736, type: 2}
   l1Back: {fileID: 11400000, guid: ba29435961dcd49b6a70ca31aa766bdd, type: 2}
@@ -30092,6 +30095,9 @@ MonoBehaviour:
   l2BackPlace: {fileID: 11400000, guid: 595f399a803f7478993225b2378e3c0e, type: 2}
   l3BackPlace: {fileID: 11400000, guid: 0536cb75a31d44f78a306a2b5942a354, type: 2}
   l4BackPlace: {fileID: 11400000, guid: 0135fecdbc1f84bef8cc0a669d06dd73, type: 2}
+  l2BackRelease: {fileID: 11400000, guid: dbd13fb27d7d940f0a0f8f753cf7052d, type: 2}
+  l3BackRelease: {fileID: 11400000, guid: ad363dab985fc4da98f670dcfd7e6f70, type: 2}
+  l4BackRelease: {fileID: 11400000, guid: c65e8f31b5f4c46bd9495f67bc763667, type: 2}
   lowAlgaeBack: {fileID: 11400000, guid: 769efcfb063ee49cb8ecdddc625439b2, type: 2}
   highAlgaeBack: {fileID: 11400000, guid: 4f22c6a8834ca4e849920169b072ec96, type: 2}
   lollipopAlgae: {fileID: 11400000, guid: 7fe317a37da4b4adc8af8f38510f3129, type: 2}
