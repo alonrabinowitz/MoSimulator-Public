@@ -19161,7 +19161,7 @@ Transform:
   m_GameObject: {fileID: 1620116803604260279}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.047, y: -0.267, z: 0.995}
+  m_LocalPosition: {x: -0.046, y: -0.267, z: 0.844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19187,7 +19187,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0040541, y: 0.15, z: 1.2977856}
-  m_Center: {x: 0, y: 0, z: 0.24889278}
+  m_Center: {x: 0, y: 0, z: 0.4488928}
 --- !u!1 &1628319230143562390
 GameObject:
   m_ObjectHideFlags: 0
@@ -64239,7 +64239,7 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 64
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -88397,8 +88397,8 @@ MonoBehaviour:
   intakeForce: 40
   usePlanarTolerancing: 0
   boxExtents: {x: 0, y: 0, z: 0}
-  maxDistance: 2
-  accuracy: 1
+  maxDistance: 3
+  accuracy: 1.5
   lockXAxis: 0
   lockYAxis: 0
   lockZAxis: 0

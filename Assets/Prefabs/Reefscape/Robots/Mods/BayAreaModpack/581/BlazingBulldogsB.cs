@@ -484,7 +484,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     
     private void RunIntakeVision()
         {
-            if ((CurrentSetpoint != ReefscapeSetpoints.RobotSpecial && CurrentSetpoint != ReefscapeSetpoints.Stack) || CurrentRobotMode == ReefscapeRobotMode.Algae || _coralController.HasPiece())
+            if ((CurrentSetpoint != ReefscapeSetpoints.RobotSpecial && CurrentSetpoint != ReefscapeSetpoints.Stack) || CurrentRobotMode == ReefscapeRobotMode.Algae || _coralController.HasPiece() || !IsIntaking)
             {
                 return;
             }
@@ -506,20 +506,12 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                     }
                 }
                 
-                Transform offsetTransform = new GameObject().transform;
-                offsetTransform.position = lollipopCoralIntake.transform.position;
-                offsetTransform.rotation = Quaternion.Euler(lollipopCoralIntake.transform.rotation.eulerAngles.x, lollipopCoralIntake.transform.rotation.eulerAngles.y, lollipopCoralIntake.transform.rotation.eulerAngles.z);
-                var angle = Quaternion.LookRotation(offsetTransform.position - close.transform.position, offsetTransform.up).eulerAngles.y;
-                // DriveController.overideInput(new Vector2(0.6f*TranslateAction.ReadValue<Vector2>().y, 0f), Mathf.Clamp(-angle + offsetTransform.eulerAngles.y, -0.18f, 0.18f), DriveController.DriveMode.RobotRelative);
-                // DriveController.overideInput(new Vector2(0.6f*TranslateAction.ReadValue<Vector2>().y, 0f), 0, DriveController.DriveMode.RobotRelative);
-                float turnValue = Mathf.Clamp(-angle + offsetTransform.eulerAngles.y, 0.18f, -0.18f);
+                var angle = Quaternion.LookRotation(lollipopIntakeVision.transform.position - close.transform.position, lollipopIntakeVision.transform.up).eulerAngles.y - 180f;
                 Vector2 translateInput = TranslateAction.ReadValue<Vector2>();
                 float translateAngle = Mathf.Atan2(translateInput.y, translateInput.x) * Mathf.Rad2Deg;
                 float heading = transform.rotation.eulerAngles.y - 90f;
                 DriveController.overideInput(new Vector2(0.6f*translateInput.magnitude*Mathf.Sin(Mathf.Deg2Rad * (translateAngle+heading)), 0f), 0, DriveController.DriveMode.RobotRelative);
-                // if (Utils.InRange(turnValue, 0f, .01f)) turnValue = 0;
-                DriveController.SoftSteer(Mathf.Clamp((-angle + offsetTransform.eulerAngles.y)/100, 0.18f, -0.18f));
-                Debug.Log(Mathf.Clamp((0.1f*(-angle + offsetTransform.eulerAngles.y)), 0.12f, -0.12f));
+                DriveController.SoftSteer(Mathf.Clamp((-angle + lollipopIntakeVision.transform.eulerAngles.y)/100, 0.18f, -0.18f));
             }
         }
 
@@ -530,8 +522,6 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         
         AlgaeSlider();
         CoralSlider();
-        
-        Debug.Log(CurrentSetpoint + ", " + LastSetpoint);
         
         // climbCollider.enabled = _cageDetector.OverlapBox().Length > 7;
         climbCollider.enabled = scorer.AutoClimbTriggered;
