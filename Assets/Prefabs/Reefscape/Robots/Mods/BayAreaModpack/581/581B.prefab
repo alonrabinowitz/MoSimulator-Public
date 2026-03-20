@@ -29986,7 +29986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333f19b2c98764c36ba4517d6a574fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alliance: 0
+  alliance: 1
   bumperMeshes:
   - {fileID: 1689584558246139205}
   blueBumperMaterial: {fileID: 2100000, guid: 593dd39015683cb438aeedbbde183e47, type: 2}
@@ -30076,6 +30076,8 @@ MonoBehaviour:
   stow: {fileID: 11400000, guid: 3eb99814b3219410191cdde568a264a3, type: 2}
   transfer: {fileID: 11400000, guid: 0013a11db7e8e4ac78409bd294f6b967, type: 2}
   intake: {fileID: 11400000, guid: b8ab7ca43125a401aa7a3d0e5dea630e, type: 2}
+  intakeL1: {fileID: 11400000, guid: 0a38e74f16a5848729a4072c4a39080f, type: 2}
+  l1Intake: {fileID: 11400000, guid: 173349c0792a248eabfc213f278606ed, type: 2}
   l1Front: {fileID: 11400000, guid: 63f1a71743aed46f7be8c44a30f9bb65, type: 2}
   l2Front: {fileID: 11400000, guid: ec117b124f7bb48d28601565db835b02, type: 2}
   l3Front: {fileID: 11400000, guid: 3b3af9335a0fa422498ff579582794e5, type: 2}
@@ -30135,6 +30137,7 @@ MonoBehaviour:
   zOffset: 2.5
   xOffset: 7
   reefAvoidanceDistance: 1.5
+  bargeAvoidanceDistance: 1.5
 --- !u!114 &5588633104187154344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40464,8 +40467,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.07, z: 0.005}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.02, y: 0.08516248, z: 0.01753694}
+  m_Center: {x: 0, y: -0.0004202854, z: -0.0062683984}
 --- !u!1 &3446717248214357413
 GameObject:
   m_ObjectHideFlags: 0
@@ -61691,7 +61694,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5356823158414170043}
   serializedVersion: 4
-  m_Mass: 4
+  m_Mass: 6
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -64226,7 +64229,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5555912783930656656}
   serializedVersion: 4
-  m_Mass: 3
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
