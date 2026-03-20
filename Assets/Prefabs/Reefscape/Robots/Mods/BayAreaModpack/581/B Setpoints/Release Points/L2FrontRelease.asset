@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: L2FrontRelease
   m_EditorClassIdentifier: 
   elevatorHeight: 13
-  armAngle: 70
+  armAngle: 65
   intakeAngle: 0
   climbAngle: 85

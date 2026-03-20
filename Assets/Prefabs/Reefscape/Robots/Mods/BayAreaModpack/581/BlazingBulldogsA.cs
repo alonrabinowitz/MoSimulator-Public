@@ -331,6 +331,35 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         if (changedMode) SetState(LastSetpoint);
     }
     
+    private int GetLevelByState()
+    {
+        switch (CurrentSetpoint)
+        {
+            case ReefscapeSetpoints.L1:
+                return 1;
+            case ReefscapeSetpoints.L2:
+                return 2;
+            case ReefscapeSetpoints.L3:
+                return 3;
+            case ReefscapeSetpoints.L4:
+                return 4;
+        }
+            
+        switch (LastSetpoint)
+        {
+            case ReefscapeSetpoints.L1:
+                return 1;
+            case ReefscapeSetpoints.L2:
+                return 2;
+            case ReefscapeSetpoints.L3:
+                return 3;
+            case ReefscapeSetpoints.L4:
+                return 4;
+        }
+
+        return 0;
+    }
+    
     private bool AtSetpoint(BlazingBulldogsASetpoint stp)
     {
         return
@@ -428,7 +457,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 SetSetpoint(stow);
                 break;
             case ReefscapeSetpoints.Intake:
-                if (CurrentRobotMode == ReefscapeRobotMode.Coral)
+                if (CurrentRobotMode == ReefscapeRobotMode.Coral && !hasAlgae)
                 {
                     if (_stationMode)
                     {
@@ -448,9 +477,9 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 _coralController.RequestIntake(coralIntake, !hasAlgae && !hasCoral && IntakeAction.IsPressed());
                 break;
             case ReefscapeSetpoints.Place:
-                StartCoroutine(PlacePiece(hasCoral, hasAlgae)); 
+                StartCoroutine(PlacePiece(hasCoral, hasAlgae));
                 
-                if (!_placedVerticalCoral)
+                if (!_placedVerticalCoral && GetLevelByState() > 1)
                 {
                     _elevatorTargetHeight -= 8;
                     _placedVerticalCoral = true;

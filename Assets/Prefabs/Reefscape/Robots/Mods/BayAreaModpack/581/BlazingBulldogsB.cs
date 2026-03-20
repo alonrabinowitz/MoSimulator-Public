@@ -8,6 +8,7 @@ using Games.Reefscape.Scoring.Scorers;
 using MoSimCore.BaseClasses.GameManagement;
 using MoSimCore.Enums;
 using MoSimLib;
+using PlasticGui.Help.Conditions;
 using RobotFramework.Components;
 using RobotFramework.Controllers.Drivetrain;
 using RobotFramework.Controllers.GamePieceSystem;
@@ -125,6 +126,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     [Header("Miscellaneous")]
     [SerializeField] private float reefAvoidanceDistance;
     [SerializeField] private float bargeAvoidanceDistance;
+    
     private float _elevatorTargetHeight;
     private float _armTargetAngle;
     private float _intakeTargetAngle;
@@ -140,6 +142,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     private bool _justPlacedAlgae;
     private bool _wasCoralMode;
     private int _levelSelected;
+    private bool _bypassL1Mode;
     // private PlayerInput _playerInput;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
@@ -170,27 +173,28 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         _justPlacedAlgae = false;
         _wasCoralMode = false;
         _levelSelected = 0;
+        _bypassL1Mode = false;
         // _playerInput = GetComponent<PlayerInput>();
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
         _algaeController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Algae.ToString());
         
-        // endEffectorRollerSource.clip = endEffectorRollerClip;
-        // endEffectorRollerSource.loop = true;
-        // endEffectorRollerSource.Stop();
-        //
-        // intakeRollerSource.clip = endEffectorRollerClip;
-        // intakeRollerSource.loop = true;
-        // intakeRollerSource.Stop();
-        //
-        // climbRollerSource.clip = climbRollerClip;
-        // climbRollerSource.loop = true;
-        // climbRollerSource.Stop();
-        //
-        // climbClickSource.clip = climbClickClip;
-        // climbClickSource.loop = false;
-        // climbClickSource.Stop();
+        endEffectorRollerSource.clip = endEffectorRollerClip;
+        endEffectorRollerSource.loop = true;
+        endEffectorRollerSource.Stop();
+        
+        intakeRollerSource.clip = endEffectorRollerClip;
+        intakeRollerSource.loop = true;
+        intakeRollerSource.Stop();
+        
+        climbRollerSource.clip = climbRollerClip;
+        climbRollerSource.loop = true;
+        climbRollerSource.Stop();
+        
+        climbClickSource.clip = climbClickClip;
+        climbClickSource.loop = false;
+        climbClickSource.Stop();
 
         _coralController.gamePieceStates = new[]
         {
@@ -243,7 +247,8 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         
         if (DistanceToReef(GetClosestReef()) < reefAvoidanceDistance)
         {
-            armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 135 : 225;
+            // armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 135 : 225;
+            armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 100 : 160;
         }
         else if (DistanceToBarge() < bargeAvoidanceDistance)
         {
@@ -253,7 +258,11 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         {
             armNoWarpAngle = -1;
         }
-        if (elevator.GetElevatorHeight() < 40)
+
+        bool targetOnRight = _armTargetAngle > 180;
+        bool armOnRight = arm.GetSingleAxisAngle(JointAxis.X) < 180;
+        
+        if (elevator.GetElevatorHeight() < 40 && targetOnRight != armOnRight && !(Utils.InAngularRange(_armTargetAngle, 180, 5) || Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), 180, 5)))
         {
             armNoWarpAngle = 180;
         }
@@ -271,15 +280,27 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     
     private IEnumerator PlacePiece(bool hasCoral, bool hasAlgae)
     {
-        if (hasAlgae && (CurrentIntakeMode == ReefscapeIntakeMode.Normal || !hasCoral)) // Place algae
+        if (hasAlgae && (CurrentIntakeMode == ReefscapeIntakeMode.Normal || !hasCoral || CurrentRobotMode == ReefscapeRobotMode.Algae)) // Place algae
         {
             _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, 0));
             _justPlacedAlgae = true;
             if (hasCoral || _wasCoralMode)
             {
                 SetRobotMode(ReefscapeRobotMode.Coral);
+                _wasCoralMode = false;
+            }
+            
+            foreach (var roller in endEffectorRollers)
+            {
+                roller.SetAngularVelocity(-500f);
             }
             yield return new WaitForSeconds(0.5f);
+            foreach (var roller in endEffectorRollers)
+            {
+                roller.SetAngularVelocity(0f);
+            }
+            
+            yield return new WaitForSeconds(0.25f);
             _justPlacedAlgae = false;
 
             if (CurrentSetpoint == ReefscapeSetpoints.Place)
@@ -294,16 +315,19 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 switch (GetLevelByState())
                 {
                     case 4:
+                        yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l4Front :  l4Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l4FrontRelease :  l4BackRelease));
-                        _coralController.ReleaseGamePieceWithForce(new Vector3(0, l4ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l4ScoreSettings.zForce : -l4ScoreSettings.zForce));
+                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, l4ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l4ScoreSettings.zForce : -l4ScoreSettings.zForce));
                         break;
                     case 3:
+                        yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l3Front :  l3Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l3FrontRelease :  l3BackRelease));
-                        _coralController.ReleaseGamePieceWithForce(new Vector3(0, l3ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l3ScoreSettings.zForce : -l3ScoreSettings.zForce));
+                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, l3ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l3ScoreSettings.zForce : -l3ScoreSettings.zForce));
                         break;
                     case 2:
+                        yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l2Front :  l2Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l2FrontRelease :  l2BackRelease));
-                        _coralController.ReleaseGamePieceWithForce(new Vector3(0, l2ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l2ScoreSettings.zForce : -l2ScoreSettings.zForce));
+                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, l2ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l2ScoreSettings.zForce : -l2ScoreSettings.zForce));
                         break;
                     case 1:
                         yield return new WaitForSeconds(l1ScoreSettings.scoreDelay);
@@ -313,22 +337,49 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                         _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1f, 0));
                         break;
                 }
+                foreach (var roller in endEffectorRollers)
+                {
+                    roller.SetAngularVelocity(-500f);
+                }
+                yield return new WaitForSeconds(0.5f);
+                foreach (var roller in endEffectorRollers)
+                {
+                    roller.SetAngularVelocity(0f);
+                }
             }
             else
             {
-                _coralController.ReleaseGamePieceWithForce(new Vector3(0, 3f, 0));
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(-0.05f, 3f, 0), 0.1f, 0.7f);
+                foreach (var roller in intakeRollers)
+                {
+                    roller.SetAngularVelocity(-500f);
+                }
+                yield return new WaitForSeconds(0.5f);
+                foreach (var roller in intakeRollers)
+                {
+                    roller.SetAngularVelocity(0f);
+                }
             }
             _handoff = false;
             _justPlaced = true;
             _levelSelected = 0;
+            _bypassL1Mode = false;
         }
     }
 
     private void UpdateRollers(bool hasCoral, bool hasAlgae)
     {
-        if (IntakeAction.IsPressed() && !hasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral)
+        if (IntakeAction.IsPressed() && !hasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral && CurrentSetpoint != ReefscapeSetpoints.Stack && CurrentSetpoint != ReefscapeSetpoints.RobotSpecial)
         {
             foreach (var roller in intakeRollers)
+            {
+                roller.ChangeAngularVelocity(1000f);
+            }
+        }
+        
+        if (IntakeAction.IsPressed() && (CurrentSetpoint == ReefscapeSetpoints.Stack || CurrentSetpoint != ReefscapeSetpoints.RobotSpecial || CurrentRobotMode == ReefscapeRobotMode.Algae) && !(hasAlgae || CoralAtStow(coralStowState)))
+        {
+            foreach (var roller in endEffectorRollers)
             {
                 roller.ChangeAngularVelocity(1000f);
             }
@@ -554,10 +605,9 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         
         AlgaeSlider();
         CoralSlider();
-
-        // Debug.Log(CurrentSetpoint);
         
-        // climbCollider.enabled = _cageDetector.OverlapBox().Length > 7;
+        Debug.Log(CurrentSetpoint);
+        
         climbCollider.enabled = scorer.AutoClimbTriggered;
         
         _algaeController.SetTargetState(algaeStowState);
@@ -628,24 +678,25 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         // }
         
         if (intakeHasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral && (
+                CurrentSetpoint == ReefscapeSetpoints.L1 ||
                 CurrentSetpoint == ReefscapeSetpoints.L2 ||
                 CurrentSetpoint == ReefscapeSetpoints.L3 ||
                 CurrentSetpoint == ReefscapeSetpoints.L4))
         {
             _levelSelected = CurrentSetpoint switch
             {
+                ReefscapeSetpoints.L1 => 1,
                 ReefscapeSetpoints.L2 => 2,
                 ReefscapeSetpoints.L3 => 3,
                 ReefscapeSetpoints.L4 => 4,
                 ReefscapeSetpoints.Intake => _levelSelected,
                 _ => 0
             };
-            SetIntakeMode(ReefscapeIntakeMode.Normal);
+            _bypassL1Mode = true;
         }
 
-        if (CurrentIntakeMode == ReefscapeIntakeMode.Normal && ((_levelSelected != 0 && CurrentSetpoint != ReefscapeSetpoints.Stow) || (_handoff && !armHasCoral)))
+        if ((CurrentIntakeMode == ReefscapeIntakeMode.Normal || _bypassL1Mode) && ((_levelSelected != 0 && CurrentSetpoint != ReefscapeSetpoints.Stow) || (_handoff && !armHasCoral)))
         {
-            // Debug.Log("Set Stow Setpoint");
             SetState(ReefscapeSetpoints.Stow);
         }
 
@@ -653,6 +704,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         {
             SetState(_levelSelected switch
             {
+                1 => ReefscapeSetpoints.L1,
                 2 => ReefscapeSetpoints.L2,
                 3 => ReefscapeSetpoints.L3,
                 4 => ReefscapeSetpoints.L4,
@@ -668,14 +720,19 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 {
                     SetState(ReefscapeSetpoints.Stack);
                 }
-                if (hasAlgae || CoralAtStow(coralStowState) || CurrentIntakeMode == ReefscapeIntakeMode.L1)
+                if (hasAlgae || CoralAtStow(coralStowState) || (CurrentIntakeMode == ReefscapeIntakeMode.L1 && !_bypassL1Mode))
                 {
-                    Debug.Log("Set stow");
-                    SetSetpoint(stow);
+                    if (CurrentIntakeMode == ReefscapeIntakeMode.L1 && CoralAtStow(intakeStowState))
+                    {
+                        SetSetpoint(l1Intake);
+                    }
+                    else
+                    {
+                        SetSetpoint(stow);
+                    }
                 }
                 else
                 {
-                    Debug.Log("Set transfer");
                     SetSetpoint(transfer);
                 }
                 break;
@@ -710,7 +767,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 StartCoroutine(PlacePiece(hasCoral, hasAlgae));
                 break;
             case ReefscapeSetpoints.L1:
-                if (CurrentIntakeMode == ReefscapeIntakeMode.L1)
+                if (CurrentIntakeMode == ReefscapeIntakeMode.L1 && !_bypassL1Mode)
                 {
                    SetSetpoint(l1Intake); 
                 }

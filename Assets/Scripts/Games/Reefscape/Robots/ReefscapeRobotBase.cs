@@ -258,11 +258,6 @@ namespace Games.Reefscape.Robots
         {
             CurrentRobotMode = mode;
         }
-        
-        protected void SetIntakeMode(ReefscapeIntakeMode mode)
-        {
-            CurrentIntakeMode = mode;
-        }
 
         private void CheckFacingReef()
         {
