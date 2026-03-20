@@ -349,11 +349,14 @@ public class BlazingBulldogsB: ReefscapeRobotBase
             }
             else
             {
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(-0.05f, 3f, 0), 0.1f, 0.7f);
-                foreach (var roller in intakeRollers)
+                if (hasCoral)
                 {
-                    roller.SetAngularVelocity(-500f);
+                    foreach (var roller in intakeRollers)
+                    {
+                        roller.SetAngularVelocity(-500f);
+                    }
                 }
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(-0.05f, 3f, 0), 0.1f, 0.7f);
                 yield return new WaitForSeconds(0.5f);
                 foreach (var roller in intakeRollers)
                 {
@@ -369,8 +372,20 @@ public class BlazingBulldogsB: ReefscapeRobotBase
 
     private void UpdateRollers(bool hasCoral, bool hasAlgae)
     {
-        if (IntakeAction.IsPressed() && !hasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral && CurrentSetpoint != ReefscapeSetpoints.Stack && CurrentSetpoint != ReefscapeSetpoints.RobotSpecial)
+        if (IntakeAction.IsPressed() && !hasCoral && (CurrentRobotMode == ReefscapeRobotMode.Coral || hasAlgae) && CurrentSetpoint != ReefscapeSetpoints.Stack && CurrentSetpoint != ReefscapeSetpoints.RobotSpecial)
         {
+            foreach (var roller in intakeRollers)
+            {
+                roller.ChangeAngularVelocity(1000f);
+            }
+        }
+        
+        if (hasCoral && !_coralController.atTarget && _coralController.currentStateNum == coralStowState.stateNum)
+        {
+            foreach (var roller in intakeRollers)
+            {
+                roller.ChangeAngularVelocity(-500f);
+            }
             foreach (var roller in intakeRollers)
             {
                 roller.ChangeAngularVelocity(1000f);
@@ -605,8 +620,6 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         
         AlgaeSlider();
         CoralSlider();
-        
-        Debug.Log(CurrentSetpoint);
         
         climbCollider.enabled = scorer.AutoClimbTriggered;
         
