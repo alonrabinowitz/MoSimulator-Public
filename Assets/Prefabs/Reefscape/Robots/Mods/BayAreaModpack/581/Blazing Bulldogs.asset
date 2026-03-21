@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamNumber: 581
   teamName: Blazing Bullsogs
-  robotPrefab: {fileID: 2534371394911199621, guid: 8f2b37ba9c3b8471aa670bc3fd85c4e3,
+  robotPrefab: {fileID: 2534371394911199621, guid: 03b02e34292d34556b5cee286c5de38f,
     type: 3}
   robotPreloadGamePiece: {fileID: 2185987706872048638, guid: 970bdf84a203d9a4b8dc602974341a07,
     type: 3}

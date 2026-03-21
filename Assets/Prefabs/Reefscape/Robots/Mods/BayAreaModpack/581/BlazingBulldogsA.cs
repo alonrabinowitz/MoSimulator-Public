@@ -73,6 +73,10 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     [SerializeField] private AudioSource endEffectorRollerSource;
     [SerializeField] private AudioClip endEffectorRollerClip;
     
+    [Header("Score Audio")]
+    [SerializeField] private AudioSource scoreSource;
+    [SerializeField] private AudioClip scoreClip;
+    
     [Header("Climb Roller Audio")]
     [SerializeField] private AudioSource climbRollerSource;
     [SerializeField] private AudioClip climbRollerClip;
@@ -96,6 +100,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private OverlapBoxBounds _visionDetect;
     private LayerMask _mask;
     private BlazingBulldogsASetpoint _currSetpoint;
+    private bool _playedScoreSound;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -122,6 +127,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         _visionDetect = new OverlapBoxBounds(intakeVision);
         _mask = LayerMask.GetMask("Coral");
         _currSetpoint = stow;
+        _playedScoreSound = false;
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -135,6 +141,10 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         climbRollerSource.loop = true;
         climbRollerSource.Stop();
         
+        scoreSource.clip = scoreClip;
+        scoreSource.loop = false;
+        scoreSource.Stop();
+        
         climbClickSource.clip = climbClickClip;
         climbClickSource.loop = false;
         climbClickSource.Stop();
@@ -147,14 +157,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
 
         _algaeController.gamePieceStates = new[] { algaeStowState };
         _algaeController.intakes.Add(algaeIntake);
-        
-        // endEffectorRollerSource.clip = endEffectorRollerClip;
-        // endEffectorRollerSource.loop = true;
-        // endEffectorRollerSource.Stop();
-        //
-        // scoreSource.clip = scoreClip;
-        // scoreSource.loop = false;
-        // scoreSource.Stop();
     }
 
     private void LateUpdate()
@@ -240,7 +242,12 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         {
             _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0.5f, 0));
         }
-        _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3f));
+
+        if (hasAlgae)
+        {
+            _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3f));
+            _playedScoreSound = true;
+        }
         yield return new WaitForSeconds(0.2f);
         foreach (var roller in endEffectorRollers)
         {
@@ -267,14 +274,15 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         }
     }
 
-    private void UpdateAudio()
+    private IEnumerator UpdateAudio()
     {
         // // Score Sound
-        // if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
-        // {
-        //     scoreSource.Play();
-        //     _playedScoreSound = true;
-        // }
+        if (CurrentSetpoint == ReefscapeSetpoints.Place && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
+        {
+            yield return new WaitForSeconds(0.08f);
+            scoreSource.Play();
+            _playedScoreSound = true;
+        }
         
         // EE Rollers
         float endEffectorRollerSpeed = Mathf.Max(new float[]
@@ -433,8 +441,6 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         AlgaeSlider();
         CoralSlider();
 
-        Debug.Log(CurrentSetpoint.ToString() + ":" + _currSetpoint.ToString());
-        
         climbCollider.enabled = _cageDetector.OverlapBox().Length > 3;
 
         if (IsIntaking)
@@ -449,6 +455,11 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         {
             _algaeController.RequestIntake(algaeIntake, false);
             _coralController.RequestIntake(coralIntake, false);
+        }
+        
+        if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
+        {
+            _playedScoreSound = false;
         }
 
         switch (CurrentSetpoint)
@@ -539,7 +550,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         }
         
         UpdateSetpoints();
-        UpdateAudio();
+        StartCoroutine(UpdateAudio());
         UpdateRollers(hasCoral, hasAlgae);
         CheckStationMode();
         RunIntakeVision();

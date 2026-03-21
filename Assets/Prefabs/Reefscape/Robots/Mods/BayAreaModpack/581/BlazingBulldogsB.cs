@@ -95,15 +95,13 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     [SerializeField] private BlazingBulldogsBSetpoint climbed;
     [SerializeField] private BlazingBulldogsBSetpoint lollipopCoral;
     
-    [Header("Score Settings")]
-    [SerializeField] private BlazingBulldogsBScoreSettings l4ScoreSettings;
-    [SerializeField] private BlazingBulldogsBScoreSettings l3ScoreSettings;
-    [SerializeField] private BlazingBulldogsBScoreSettings l2ScoreSettings;
-    [SerializeField] private BlazingBulldogsBScoreSettings l1ScoreSettings;
-    
     [Header("End Effector Roller Audio")]
     [SerializeField] private AudioSource endEffectorRollerSource;
     [SerializeField] private AudioClip endEffectorRollerClip;
+    
+    [Header("Score Audio")]
+    [SerializeField] private AudioSource scoreSource;
+    [SerializeField] private AudioClip scoreClip;
     
     [Header("Intake Roller Audio")]
     [SerializeField] private AudioSource intakeRollerSource;
@@ -142,7 +140,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     private bool _wasCoralMode;
     private int _levelSelected;
     private bool _bypassL1Mode;
-    // private PlayerInput _playerInput;
+    private bool _playedScoreSound;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -173,7 +171,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         _wasCoralMode = false;
         _levelSelected = 0;
         _bypassL1Mode = false;
-        // _playerInput = GetComponent<PlayerInput>();
+        _playedScoreSound = false;
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -182,6 +180,10 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         endEffectorRollerSource.clip = endEffectorRollerClip;
         endEffectorRollerSource.loop = true;
         endEffectorRollerSource.Stop();
+        
+        scoreSource.clip = scoreClip;
+        scoreSource.loop = false;
+        scoreSource.Stop();
         
         intakeRollerSource.clip = endEffectorRollerClip;
         intakeRollerSource.loop = true;
@@ -205,13 +207,6 @@ public class BlazingBulldogsB: ReefscapeRobotBase
 
         _algaeController.gamePieceStates = new[] { algaeStowState };
         _algaeController.intakes.Add(algaeIntake);
-
-        //
-        // scoreSource.clip = scoreClip;
-        // scoreSource.loop = false;
-        // scoreSource.Stop();
-
-        // _coralController.SetTargetState(coralStowState);
     }
 
     private void LateUpdate()
@@ -226,7 +221,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         _currentSetpoint = setpoint;
         
         _elevatorTargetHeight = setpoint.elevatorHeight;
-        _armTargetAngle = setpoint.armAngle;
+        _armTargetAngle = setpoint == transfer ? GetTransferArmAngle() : setpoint.armAngle;
         _intakeTargetAngle = setpoint.intakeAngle;
         _climberTargetAngle = setpoint.climbAngle;
     }
@@ -259,9 +254,9 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         }
 
         bool targetOnRight = _armTargetAngle > 180;
-        bool armOnRight = arm.GetSingleAxisAngle(JointAxis.X) < 180;
+        bool armOnRight = arm.GetSingleAxisAngle(JointAxis.X) > 180;
         
-        if (elevator.GetElevatorHeight() < 40 && targetOnRight != armOnRight && !(Utils.InAngularRange(_armTargetAngle, 180, 5) || Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), 180, 5)))
+        if (elevator.GetElevatorHeight() < 40 && targetOnRight != armOnRight && !Utils.InAngularRange(_armTargetAngle, 180, 10) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), 180, 20))
         {
             armNoWarpAngle = 180;
         }
@@ -283,6 +278,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         {
             _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, 0));
             _justPlacedAlgae = true;
+            _playedScoreSound = true;
             if (hasCoral || _wasCoralMode)
             {
                 SetRobotMode(ReefscapeRobotMode.Coral);
@@ -316,21 +312,28 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                     case 4:
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l4Front :  l4Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l4FrontRelease :  l4BackRelease));
-                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, l4ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l4ScoreSettings.zForce : -l4ScoreSettings.zForce));
+                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
+                        if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
+                        _playedScoreSound = true;
                         break;
                     case 3:
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l3Front :  l3Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l3FrontRelease :  l3BackRelease));
-                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, l3ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l3ScoreSettings.zForce : -l3ScoreSettings.zForce));
+                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, IsFacingReef(GetClosestReef()) ? 2.5f : -2.5f));
+                        if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
+                        _playedScoreSound = true;
                         break;
                     case 2:
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l2Front :  l2Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l2FrontRelease :  l2BackRelease));
-                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, l2ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l2ScoreSettings.zForce : -l2ScoreSettings.zForce));
+                        if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, IsFacingReef(GetClosestReef()) ? 2.5f : -2.5f));
+                        if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
+                        _playedScoreSound = true;
                         break;
                     case 1:
-                        yield return new WaitForSeconds(l1ScoreSettings.scoreDelay);
-                        _coralController.ReleaseGamePieceWithForce(new Vector3(0, l1ScoreSettings.yForce, IsFacingReef(GetClosestReef()) ? l1ScoreSettings.zForce : -l1ScoreSettings.zForce));
+                        _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, 0));
+                        if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
+                        _playedScoreSound = true;
                         break;
                     default:
                         _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1f, 0));
@@ -355,8 +358,11 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                         roller.SetAngularVelocity(-500f);
                     }
                 }
-                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(-0.05f, 3f, 0), 0.1f, 0.7f);
-                yield return new WaitForSeconds(0.5f);
+                _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(-0.05f, 3f, 0), 0.09f, 0.8f);
+                yield return new WaitForSeconds(0.1f);
+                if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
+                _playedScoreSound = true;
+                yield return new WaitForSeconds(0.4f);
                 foreach (var roller in intakeRollers)
                 {
                     roller.SetAngularVelocity(0f);
@@ -381,17 +387,17 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         
         if (hasCoral && !_coralController.atTarget && _coralController.currentStateNum == coralStowState.stateNum)
         {
+            foreach (var roller in endEffectorRollers)
+            {
+                roller.ChangeAngularVelocity(500f);
+            }
             foreach (var roller in intakeRollers)
             {
                 roller.ChangeAngularVelocity(-500f);
             }
-            foreach (var roller in intakeRollers)
-            {
-                roller.ChangeAngularVelocity(1000f);
-            }
         }
         
-        if (IntakeAction.IsPressed() && (CurrentSetpoint == ReefscapeSetpoints.Stack || CurrentSetpoint != ReefscapeSetpoints.RobotSpecial || CurrentRobotMode == ReefscapeRobotMode.Algae) && !(hasAlgae || CoralAtStow(coralStowState)))
+        if (IntakeAction.IsPressed() && (CurrentSetpoint == ReefscapeSetpoints.Stack || CurrentSetpoint == ReefscapeSetpoints.RobotSpecial || CurrentRobotMode == ReefscapeRobotMode.Algae) && !(hasAlgae || CoralAtStow(coralStowState)))
         {
             foreach (var roller in endEffectorRollers)
             {
@@ -408,11 +414,12 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         }
     }
 
-    private void UpdateAudio()
+    private IEnumerator UpdateAudio()
     {
-        // // Score Sound
-        // if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
+         // Score Sound
+        // if (CurrentSetpoint == ReefscapeSetpoints.Place && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
         // {
+        //     yield return new WaitForSeconds(0.08f);
         //     scoreSource.Play();
         //     _playedScoreSound = true;
         // }
@@ -464,13 +471,15 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         {
             climbRollerSource.Stop();
         }
+
+        yield return null;
     }
     
     private bool AtSetpoint(BlazingBulldogsBSetpoint stp)
     {
         return
             Utils.InRange(elevator.GetElevatorHeight(), stp.elevatorHeight, 2f) &&
-            Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp.armAngle, 2f) &&
+            Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp == transfer ? GetTransferArmAngle() : stp.armAngle, 2f) &&
             Utils.InAngularRange(intakeJoint.GetSingleAxisAngle(JointAxis.Z), stp.intakeAngle, 2f);
     }
     
@@ -543,6 +552,11 @@ public class BlazingBulldogsB: ReefscapeRobotBase
 
         return 0;
     }
+
+    private float GetTransferArmAngle()
+    {
+        return 180 - Mathf.Rad2Deg*Mathf.Atan2(coralSlider.localPosition.z/0.0254f, 28f);
+    }
     
     private void AlgaeSlider()
     {
@@ -559,6 +573,10 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         {
             var localSliderSpaceZ = intakeCoralTarget.transform.InverseTransformPoint(coralIntake.GamePiece.transform.position).z;
             coralSlider.localPosition = new Vector3(0, 0, Mathf.Clamp(localSliderSpaceZ, -0.0875f, 0.057f));
+        }
+        else if (!_coralController.HasPiece())
+        {
+            coralSlider.localPosition = new Vector3(0, 0, 0);
         }
     }
     
@@ -596,7 +614,8 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 float translateAngle = Mathf.Atan2(translateInput.y, translateInput.x) * Mathf.Rad2Deg;
                 float heading = transform.rotation.eulerAngles.y - 90f;
                 float forwardValue = 0.6f * translateInput.magnitude * Mathf.Sin(Mathf.Deg2Rad * (translateAngle + heading));
-                DriveController.overideInput(new Vector2(transform.position.x >= 0 ? forwardValue : -forwardValue, 0f), 0, DriveController.DriveMode.RobotRelative);
+                if (GetActiveCamera().transform.eulerAngles.y > 180) forwardValue *= -1;
+                DriveController.overideInput(new Vector2(forwardValue, 0f), 0, DriveController.DriveMode.RobotRelative);
                 if (transform.position.x >= 0)
                 {
                     DriveController.SoftSteer(Mathf.Clamp((-angle + lollipopIntakeVision.transform.eulerAngles.y)/100, 0.18f, -0.18f));
@@ -624,7 +643,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         
         _algaeController.SetTargetState(algaeStowState);
 
-        if (_handoff || (CoralAtStow(intakeStowState) && AtSetpoint(transfer)) || (AtSetpoint(lollipopCoral) && !CoralAtStow(intakeStowState)))
+        if (_handoff || CoralAtStow(coralStowState) || (CoralAtStow(intakeStowState) && AtSetpoint(transfer)) || (AtSetpoint(lollipopCoral) && !CoralAtStow(intakeStowState)))
         {
             _coralController.SetTargetState(coralStowState);
             _handoff = true;
@@ -647,6 +666,11 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         if (CurrentSetpoint == ReefscapeSetpoints.Place && hasCoral)
         {
             _justPlaced = true;
+        }
+        
+        if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
+        {
+            _playedScoreSound = false;
         }
 
         if (_justPlaced)
@@ -724,7 +748,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
             });
             _levelSelected = 0;
         }
-
+        
         switch (CurrentSetpoint)
         {
             case ReefscapeSetpoints.Stow:
@@ -863,17 +887,10 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         }
         
         UpdateSetpoints();
-        UpdateAudio();
+        StartCoroutine(UpdateAudio());
         UpdateRollers(hasCoral, hasAlgae);
         UpdateAutoAlign();
         RunIntakeVision();
     }
-}
-[Serializable]
-public struct BlazingBulldogsBScoreSettings
-{
-    public float yForce;
-    public float zForce;
-    public float scoreDelay;
 }
 }
