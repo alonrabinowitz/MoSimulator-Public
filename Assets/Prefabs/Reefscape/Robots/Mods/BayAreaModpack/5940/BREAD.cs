@@ -80,6 +80,7 @@ public class BREAD: ReefscapeRobotBase
     [Header("Auto Align Offsets")]
     [SerializeField] private float atSetpointOffset;
     [SerializeField] private float preAlignOffset;
+    [SerializeField] private float l1AlignOffset;
     private ReefscapeAutoAlign _align;
 
     [Header("Debug")]
@@ -415,14 +416,23 @@ public class BREAD: ReefscapeRobotBase
 
     private void UpdateAutoAlign()
     {
-        bool isCoralSetpoint = CurrentSetpoint == ReefscapeSetpoints.L1 || CurrentSetpoint == ReefscapeSetpoints.L2 || CurrentSetpoint == ReefscapeSetpoints.L3 || CurrentSetpoint == ReefscapeSetpoints.L4;
-        if ((AtSetpoint() && isCoralSetpoint) || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentSetpoint == ReefscapeSetpoints.Place)
+        if (CurrentIntakeMode == ReefscapeIntakeMode.L1)
         {
-            _align.offset = new Vector3(-0.1f, 0, atSetpointOffset);
+            _align.offset = new Vector3(-0.1f, 0, l1AlignOffset);
+            _align.enableBackwardsAlign = true;
         }
         else
         {
-            _align.offset = new Vector3(-0.1f, 0, preAlignOffset);
+            _align.enableBackwardsAlign = false;
+            bool isCoralSetpoint = CurrentSetpoint == ReefscapeSetpoints.L1 || CurrentSetpoint == ReefscapeSetpoints.L2 || CurrentSetpoint == ReefscapeSetpoints.L3 || CurrentSetpoint == ReefscapeSetpoints.L4;
+            if ((AtSetpoint() && isCoralSetpoint) || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentSetpoint == ReefscapeSetpoints.Place)
+            {
+                _align.offset = new Vector3(-0.1f, 0, atSetpointOffset);
+            }
+            else
+            {
+                _align.offset = new Vector3(-0.1f, 0, preAlignOffset);
+            }
         }
     }
     

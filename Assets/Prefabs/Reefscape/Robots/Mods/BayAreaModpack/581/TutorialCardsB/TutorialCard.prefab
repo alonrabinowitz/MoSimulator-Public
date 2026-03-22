@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1967486601383204409, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_Name
-      value: TutorialCard 1
+      value: TutorialCard
       objectReference: {fileID: 0}
     - target: {fileID: 4956299056046692928, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -21,17 +21,17 @@ PrefabInstance:
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.09
+      value: 1.0512547
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.09
+      value: 1.0512547
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.09
+      value: 1.0512547
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -41,7 +41,12 @@ PrefabInstance:
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: Toggle L1 mode to score coral with the ground intake
+      value: 'After intaking algae,
+
+        press intake again
+
+        to grab
+        a coral'
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -52,12 +57,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 96a60190a34d94881856841e8e512ebd,
+      objectReference: {fileID: 21300000, guid: 7bdc684814b224d62bb45c9093961996,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.399994
+      value: -6.7
       objectReference: {fileID: 0}
     - target: {fileID: 7647712989278884331, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

@@ -27922,7 +27922,7 @@ MonoBehaviour:
   <CurrentSetpoint>k__BackingField: 0
   <CurrentCoralStationMode>k__BackingField:
     <DropType>k__BackingField: 0
-    <DropDistance>k__BackingField: 1.5
+    <DropDistance>k__BackingField: 1.45
     <DropStrength>k__BackingField: 7
     <DropForceVariance>k__BackingField: 1
     <RotationVariance>k__BackingField: 0

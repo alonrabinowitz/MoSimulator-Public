@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1967486601383204409, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_Name
-      value: TutorialCard
+      value: TutorialCard 2
       objectReference: {fileID: 0}
     - target: {fileID: 4956299056046692928, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -21,17 +21,17 @@ PrefabInstance:
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1816
+      value: 1.0550599
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1816
+      value: 1.0550599
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1816
+      value: 1.0550599
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -41,12 +41,7 @@ PrefabInstance:
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: 'After intaking algae,
-
-        press intake again
-
-        to grab
-        a coral'
+      value: Use the robot special button to intake from the coral station
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -57,12 +52,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8cc41126e3df24d52b2fd0606fcefce5,
+      objectReference: {fileID: 21300000, guid: 8182b3f01f1dd416cb761358181723ea,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -6.7
+      value: -8.2
       objectReference: {fileID: 0}
     - target: {fileID: 7647712989278884331, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

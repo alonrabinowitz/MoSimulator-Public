@@ -242,7 +242,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         if (DistanceToReef(GetClosestReef()) < reefAvoidanceDistance)
         {
             // armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 135 : 225;
-            armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 100 : 160;
+            armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 100 : 260;
         }
         else if (DistanceToBarge() < bargeAvoidanceDistance)
         {
@@ -253,10 +253,11 @@ public class BlazingBulldogsB: ReefscapeRobotBase
             armNoWarpAngle = -1;
         }
 
-        bool targetOnRight = _armTargetAngle > 180;
-        bool armOnRight = arm.GetSingleAxisAngle(JointAxis.X) > 180;
+        // bool targetOnRight = _armTargetAngle > 180;
+        // bool armOnRight = arm.GetSingleAxisAngle(JointAxis.X) > 180;
         
-        if (elevator.GetElevatorHeight() < 40 && targetOnRight != armOnRight && !Utils.InAngularRange(_armTargetAngle, 180, 10) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), 180, 20))
+        // if (elevator.GetElevatorHeight() < 40 && targetOnRight != armOnRight && !Utils.InAngularRange(_armTargetAngle, 180, 10) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), 180, 20)) 
+        if (elevator.GetElevatorHeight() < 40 && !Utils.InAngularRange(_armTargetAngle%360, 180, 30) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X)%360, 180, 30))
         {
             armNoWarpAngle = 180;
         }
@@ -310,21 +311,21 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 switch (GetLevelByState())
                 {
                     case 4:
-                        yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l4Front :  l4Back));
+                        // yield return new WaitUntil(() => ArmAtSetpoint(IsFacingReef(GetClosestReef()) ? l4Front :  l4Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l4FrontRelease :  l4BackRelease));
                         if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
                         if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
                         _playedScoreSound = true;
                         break;
                     case 3:
-                        yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l3Front :  l3Back));
+                        // yield return new WaitUntil(() => ArmAtSetpoint(IsFacingReef(GetClosestReef()) ? l3Front :  l3Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l3FrontRelease :  l3BackRelease));
                         if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, IsFacingReef(GetClosestReef()) ? 2.5f : -2.5f));
                         if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
                         _playedScoreSound = true;
                         break;
                     case 2:
-                        yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l2Front :  l2Back));
+                        // yield return new WaitUntil(() => ArmAtSetpoint(IsFacingReef(GetClosestReef()) ? l2Front :  l2Back));
                         yield return new WaitUntil(() => AtSetpoint(IsFacingReef(GetClosestReef()) ? l2FrontRelease :  l2BackRelease));
                         if (CurrentSetpoint == ReefscapeSetpoints.Place) _coralController.ReleaseGamePieceWithForce(new Vector3(0, 1.5f, IsFacingReef(GetClosestReef()) ? 2.5f : -2.5f));
                         if (!_playedScoreSound && !scoreSource.isPlaying) scoreSource.Play();
@@ -481,6 +482,12 @@ public class BlazingBulldogsB: ReefscapeRobotBase
             Utils.InRange(elevator.GetElevatorHeight(), stp.elevatorHeight, 2f) &&
             Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp == transfer ? GetTransferArmAngle() : stp.armAngle, 2f) &&
             Utils.InAngularRange(intakeJoint.GetSingleAxisAngle(JointAxis.Z), stp.intakeAngle, 2f);
+    }
+    
+    private bool ArmAtSetpoint(BlazingBulldogsBSetpoint stp)
+    {
+        return Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X),
+            stp == transfer ? GetTransferArmAngle() : stp.armAngle, 2f);
     }
     
     private bool AtSetpoint()

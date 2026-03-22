@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: processor
   m_EditorClassIdentifier: 
   elevatorHeight: 7
-  armAngle: 85
+  armAngle: 90
   intakeAngle: 45
   climbAngle: 85
