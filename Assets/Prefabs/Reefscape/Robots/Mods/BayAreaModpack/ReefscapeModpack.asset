@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: ReefscapeModpack
   m_EditorClassIdentifier: 
   modpackName: BayAreaModpack
-  modpackVersion: 2.1.0
+  modpackVersion: 3.0.0
   authorName: alonrab
   description: 
   robots:
+  - {fileID: 11400000, guid: 0e4e54e5dfa6643acbe83515e98e9188, type: 2}
   - {fileID: 11400000, guid: b562e6e7cf4914c0e94bd87dd74bd0fa, type: 2}
   - {fileID: 11400000, guid: 7b74694c23137447fbd945421cd5a41b, type: 2}
