@@ -8,7 +8,6 @@ using MoSimCore.BaseClasses.GameManagement;
 using MoSimCore.Enums;
 using MoSimLib;
 using RobotFramework.Components;
-using RobotFramework.Controllers.Drivetrain;
 using RobotFramework.Controllers.GamePieceSystem;
 using RobotFramework.Controllers.PidSystems;
 using RobotFramework.Enums;
@@ -404,7 +403,8 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     
     private void RunIntakeVision()
         {
-            if (!IntakeAction.IsPressed() || _coralController.HasPiece() || _stationMode) return;
+            if (!IntakeAction.IsPressed() || _coralController.HasPiece() || _algaeController.HasPiece() || CurrentRobotMode == ReefscapeRobotMode.Algae ||
+                CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || _stationMode) return;
             for (int i = 0; i < _colliders.Length; i++)
             {
                 _colliders[i] = null;

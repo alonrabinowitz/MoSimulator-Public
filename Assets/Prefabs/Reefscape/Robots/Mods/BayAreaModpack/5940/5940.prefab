@@ -35068,6 +35068,7 @@ MonoBehaviour:
   groundAlgae: {fileID: 11400000, guid: 15d9aa4a17e4343be8bb2de14c2ae380, type: 2}
   bargePrep: {fileID: 11400000, guid: 8c08a1ebb9c2b45b7b5fbe35e682ed75, type: 2}
   bargePlace: {fileID: 11400000, guid: addbb4491c6454f1aa083a2120c7e00d, type: 2}
+  bargeRelease: {fileID: 11400000, guid: b91ea30a6a530408c8d49c9cfc439e13, type: 2}
   processor: {fileID: 11400000, guid: 7758cfd305e9f4c38b4f466de67ec9bd, type: 2}
   climbPrep: {fileID: 11400000, guid: c0c06bad6b06747509da98a4bd46ce93, type: 2}
   climbed: {fileID: 11400000, guid: e8318f190d6ae410caccb86a368e0eb5, type: 2}
@@ -35104,7 +35105,7 @@ MonoBehaviour:
   - {fileID: 3186206930929092224}
   elevatorType: 0
   pidConstants:
-    kP: 6
+    kP: 8
     kI: 0
     kD: 0.1
     Max: 7
@@ -37908,7 +37909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brakeModeMultiplyer: 1
-  ignoreDisabledMode: 0
+  ignoreDisabledMode: 1
   movementAudioClip: {fileID: 0}
   audioErrorThreshold: 3
   audioErrorDeltaThreshold: 25
@@ -47306,7 +47307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brakeModeMultiplyer: 1
-  ignoreDisabledMode: 0
+  ignoreDisabledMode: 1
   movementAudioClip: {fileID: 0}
   audioErrorThreshold: 3
   audioErrorDeltaThreshold: 25

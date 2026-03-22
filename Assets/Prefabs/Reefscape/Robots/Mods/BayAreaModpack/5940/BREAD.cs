@@ -57,6 +57,7 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private BREADSetpoint groundAlgae;
     [SerializeField] private BREADSetpoint bargePrep;
     [SerializeField] private BREADSetpoint bargePlace;
+    [SerializeField] private BREADSetpoint bargeRelease;
     [SerializeField] private BREADSetpoint processor;
     [SerializeField] private BREADSetpoint climbPrep;
     [SerializeField] private BREADSetpoint climbed;
@@ -213,17 +214,23 @@ public class BREAD: ReefscapeRobotBase
             {
                 if (LastSetpoint == ReefscapeSetpoints.Barge)
                 {
-                    yield return new WaitForSeconds(bargeDelay);
-                }
-                if (LastSetpoint == ReefscapeSetpoints.Processor)
-                {
-                    _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -2f));
+                    // yield return new WaitForSeconds(bargeDelay);
+                    yield return new WaitUntil(() => AtSetpoint(bargeRelease));
+                    _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
                 }
                 else
                 {
-                    // _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
-                    _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
+                    _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -2f));
                 }
+                // if (LastSetpoint == ReefscapeSetpoints.Processor)
+                // {
+                //     _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -2f));
+                // }
+                // else
+                // {
+                //     // _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+                //     _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
+                // }
 
                 _playedScoreSound = true;
 
@@ -257,18 +264,24 @@ public class BREAD: ReefscapeRobotBase
         {
             if (LastSetpoint == ReefscapeSetpoints.Barge)
             {
-                yield return new WaitForSeconds(bargeDelay);
-            }
-
-            if (LastSetpoint == ReefscapeSetpoints.Processor)
-            {
-                _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -3f));
+                // yield return new WaitForSeconds(bargeDelay);
+                yield return new WaitUntil(() => AtSetpoint(bargeRelease));
+                _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
             }
             else
             {
-                // _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
-                _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
+                _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -2f));
             }
+
+            // if (LastSetpoint == ReefscapeSetpoints.Processor)
+            // {
+            //     _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -3f));
+            // }
+            // else
+            // {
+            //     // _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, -bargeForce));
+            //     _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
+            // }
 
             _playedScoreSound = true;
             
