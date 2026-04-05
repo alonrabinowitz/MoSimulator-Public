@@ -830,7 +830,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
                 }
                 
                 _algaeController.RequestIntake(algaeIntake, IntakeAction.IsPressed() && !hasAlgae);
-                _coralController.RequestIntake(lollipopCoralIntake, IntakeAction.IsPressed() && !hasCoral);
+                _coralController.RequestIntake(lollipopCoralIntake, IntakeAction.IsPressed() && !hasCoral && CurrentRobotMode == ReefscapeRobotMode.Coral);
                 break;
             case ReefscapeSetpoints.L2:
                 SetSetpoint(IsFacingReef(GetClosestReef()) ? l2Front : l2Back);
