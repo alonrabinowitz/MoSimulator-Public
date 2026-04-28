@@ -18,5 +18,6 @@ MonoBehaviour:
   description: 
   robots:
   - {fileID: 11400000, guid: 0e4e54e5dfa6643acbe83515e98e9188, type: 2}
+  - {fileID: 11400000, guid: 0e795582e8de2459bbda3d28aaf81f7a, type: 2}
   - {fileID: 11400000, guid: b562e6e7cf4914c0e94bd87dd74bd0fa, type: 2}
   - {fileID: 11400000, guid: 7b74694c23137447fbd945421cd5a41b, type: 2}
