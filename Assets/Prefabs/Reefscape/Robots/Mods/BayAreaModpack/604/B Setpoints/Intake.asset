@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Intake
   m_EditorClassIdentifier: 
   shooterAngle: 0
-  intakeAngle: 0
+  intakeAngle: 180

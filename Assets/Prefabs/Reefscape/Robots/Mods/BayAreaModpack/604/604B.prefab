@@ -26595,17 +26595,17 @@ MonoBehaviour:
     Isaturation: 0
   coralIntake: {fileID: 7513107907630890792}
   coralStowState:
-    name: Intaketow State
-    stateNum: 1
-    stateMoveSpeed: 25
-    stateTarget: {fileID: 1855602027505627984}
-    smoothHandoff: 0
-    angularSpeed: 0
-  intakeStowState:
     name: Coral Stow State
     stateNum: 2
     stateMoveSpeed: 25
     stateTarget: {fileID: 3051597749351676545}
+    smoothHandoff: 0
+    angularSpeed: 0
+  intakeStowState:
+    name: Intake Stow State
+    stateNum: 1
+    stateMoveSpeed: 25
+    stateTarget: {fileID: 1855602027505627984}
     smoothHandoff: 0
     angularSpeed: 0
   stow: {fileID: 11400000, guid: 5411f276200ae467e99ec4eef93bd023, type: 2}
@@ -78515,10 +78515,10 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7930581829162808024}
   serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 7461217089770952545}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: 1}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0
@@ -89792,10 +89792,10 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8967149433984801946}
   serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 7461217089770952545}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: 1}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0
@@ -91832,10 +91832,10 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9199612338456044818}
   serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 7461217089770952545}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: 1}
+  m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0

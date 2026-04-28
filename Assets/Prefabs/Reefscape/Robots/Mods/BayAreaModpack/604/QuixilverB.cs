@@ -98,7 +98,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private void UpdateSetpoints()
         {
             elevator.SetTarget(_elevatorTargetHeight);
-            intakePivot.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X);
+            intakePivot.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X).flipDirection().noWrap(-90f);
             shooterPivot.SetTargetAngle(_shooterTargetAngle).withAxis(JointAxis.X);
         }
 
@@ -114,6 +114,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             
             UpdateIntakeAudio();
             
+            Debug.Log(CurrentSetpoint + ":" + LastSetpoint);
+            
             // --- IMPROVED WHEEL LOGIC ---
             // We only run this if we are NOT in the middle of a scoring coroutine
             // if (!_isScoring)
@@ -123,7 +125,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             if (isIntaking)
             {
                 foreach (var wheel in intakeWheels)
-                    wheel.VelocityRoller(wheelIntakeSpeed).useAxis(JointAxis.X);
+                    wheel.VelocityRoller(wheelIntakeSpeed).useAxis(JointAxis.Y);
             }
             else
             {
@@ -134,7 +136,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
                 // Explicitly stop wheel animations
                 foreach (var wheel in intakeWheels)
-                    wheel.VelocityRoller(0).useAxis(JointAxis.X);
+                    wheel.VelocityRoller(0).useAxis(JointAxis.Y);
             }
             // }
 
@@ -282,7 +284,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 
             // _isScoring = false; // Release lock
 
-            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, -5f));
             
             yield return null;
         }
