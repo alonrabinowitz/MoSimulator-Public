@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ab1a91461b547a9ad7172bf59b7529, type: 3}
   m_Name: Transfer
   m_EditorClassIdentifier: 
-  shooterAngle: 0
-  intakeAngle: 0
+  shooterAngle: 24
+  intakeAngle: 23
