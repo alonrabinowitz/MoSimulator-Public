@@ -73,6 +73,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private float _intakeTargetAngle;
         private float _shooterTargetAngle;
         private bool _handoff;
+        private int _levelSelected;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
         
         protected override void Start()
@@ -87,6 +88,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _shooterTargetAngle = 0;
 
             _handoff = true;
+            _levelSelected = 0;
             
             RobotGamePieceController.SetPreload(coralStowState);
             _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -138,6 +140,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                         break;
                 }
                 
+                _levelSelected = 0;
             }
 
             yield return null;
@@ -268,6 +271,42 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             if (!hasCoral)
             {
                 _handoff = false;
+            }
+            
+            // Wait for coral to be in shooter before going to setpoint
+            if (CoralAtStow(intakeStowState) && CurrentRobotMode == ReefscapeRobotMode.Coral && (
+                    CurrentSetpoint == ReefscapeSetpoints.L1 ||
+                    CurrentSetpoint == ReefscapeSetpoints.L2 ||
+                    CurrentSetpoint == ReefscapeSetpoints.L3 ||
+                    CurrentSetpoint == ReefscapeSetpoints.L4))
+            {
+                _levelSelected = CurrentSetpoint switch
+                {
+                    ReefscapeSetpoints.L1 => 1,
+                    ReefscapeSetpoints.L2 => 2,
+                    ReefscapeSetpoints.L3 => 3,
+                    ReefscapeSetpoints.L4 => 4,
+                    ReefscapeSetpoints.Intake => _levelSelected,
+                    _ => 0
+                };
+            }
+
+            if ((_levelSelected != 0 && CurrentSetpoint != ReefscapeSetpoints.Stow) || (_handoff && !CoralAtStow(coralStowState)))
+            {
+                SetState(ReefscapeSetpoints.Stow);
+            }
+
+            if (_levelSelected != 0 && CoralAtStow(coralStowState))
+            {
+                SetState(_levelSelected switch
+                {
+                    1 => ReefscapeSetpoints.L1,
+                    2 => ReefscapeSetpoints.L2,
+                    3 => ReefscapeSetpoints.L3,
+                    4 => ReefscapeSetpoints.L4,
+                    _ => ReefscapeSetpoints.Stow
+                });
+                _levelSelected = 0;
             }
             
             switch (CurrentSetpoint)
