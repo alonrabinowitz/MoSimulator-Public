@@ -26616,10 +26616,13 @@ MonoBehaviour:
   l3: {fileID: 11400000, guid: 9d35fac1f149d4503bda95a180399562, type: 2}
   l4: {fileID: 11400000, guid: f13173a54b65c4691b81e419219f8676, type: 2}
   l1Force: {x: 0, y: 0, z: 0}
+  l1DelayTorque: {x: 0, y: 0}
   l2Force: {x: 0, y: 0.5, z: 6.1}
   l2DelayTorque: {x: 0.05, y: 10.5}
   l3Force: {x: 0, y: 0, z: 0}
-  l4Force: {x: 0, y: 0, z: 11.5}
+  l3DelayTorque: {x: 0, y: 0}
+  l4Force: {x: 0, y: 0, z: 11.3}
+  l4DelayTorque: {x: 0.07, y: -2}
   intakeAudioSource: {fileID: 7830100318388716101}
   intakeClip: {fileID: 0}
   coralStowStateGameObject: {fileID: 4267002357972650526}
@@ -26742,13 +26745,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drivePID:
-    kP: 18
-    kI: 0.1
+    kP: 20
+    kI: 0.3
     kD: 1.8
-    Max: 0.9
-    Isaturation: 1
+    Max: 1
+    Isaturation: 1.5
   rotatePID:
-    kP: 0.07
+    kP: 0.08
     kI: 0
     kD: 0.003
     Max: 0.77

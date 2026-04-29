@@ -54,10 +54,13 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         
         [Header("Shooting Forces")]
         [SerializeField] private Vector3 l1Force;
+        [SerializeField] private Vector2 l1DelayTorque;
         [SerializeField] private Vector3 l2Force;
         [SerializeField] private Vector2 l2DelayTorque;
         [SerializeField] private Vector3 l3Force;
+        [SerializeField] private Vector2 l3DelayTorque;
         [SerializeField] private Vector3 l4Force;
+        [SerializeField] private Vector2 l4DelayTorque;
         
         [Header("Intake Audio")]
         [SerializeField] private AudioSource intakeAudioSource;
@@ -108,24 +111,28 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             }
             else if (_coralController.HasPiece())
             {
+                var coral = FindChildWithPrefix(coralStowStateGameObject.gameObject.transform, "Coral").gameObject;
                 switch (GetLevelByState())
                 {
                     case 1:
                         _coralController.ReleaseGamePieceWithForce(l1Force);
+                        yield return new WaitForSeconds(l1DelayTorque.x);
+                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l1DelayTorque.y, 0, 0));
                         break;
                     case 2:
-                        // Rigidbody coral = _coralController.controller.GamePiece.rigidbody;
-                        // Rigidbody coral = GetComponent<ReefscapeGamePieceController>().GamePiece.
-                        var coral = FindChildWithPrefix(coralStowStateGameObject.gameObject.transform, "Coral").gameObject;
                         _coralController.ReleaseGamePieceWithForce(l2Force);
                         yield return new WaitForSeconds(l2DelayTorque.x);
                         coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l2DelayTorque.y, 0, 0));
                         break;
                     case 3:
                         _coralController.ReleaseGamePieceWithForce(l3Force);
+                        yield return new WaitForSeconds(l3DelayTorque.x);
+                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l3DelayTorque.y, 0, 0));
                         break;
                     case 4:
                         _coralController.ReleaseGamePieceWithForce(l4Force);
+                        yield return new WaitForSeconds(l4DelayTorque.x);
+                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l4DelayTorque.y, 0, 0));
                         break;
                     default:
                         break;
