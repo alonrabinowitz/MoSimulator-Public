@@ -55,19 +55,21 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [Header("Shooting Forces")]
         [SerializeField] private Vector3 l1Force;
         [SerializeField] private Vector3 l2Force;
-        [SerializeField] private Vector2 l2LengthSpeed;
+        [SerializeField] private Vector2 l2DelayTorque;
         [SerializeField] private Vector3 l3Force;
         [SerializeField] private Vector3 l4Force;
         
         [Header("Intake Audio")]
         [SerializeField] private AudioSource intakeAudioSource;
         [SerializeField] private AudioClip intakeClip;
+        
+        [Header("Miscellaneous")]
+        [SerializeField] private GameObject coralStowStateGameObject;
 
         private float _elevatorTargetHeight;
         private float _intakeTargetAngle;
         private float _shooterTargetAngle;
         private bool _handoff;
-        private bool _lockedIntakeSlide;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
         
         protected override void Start()
@@ -82,7 +84,6 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _shooterTargetAngle = 0;
 
             _handoff = true;
-            _lockedIntakeSlide = false;
             
             RobotGamePieceController.SetPreload(coralStowState);
             _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -99,13 +100,13 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             intakeAudioSource.playOnAwake = false;
         }
 
-        private void PlacePiece()
+        private IEnumerator PlacePiece()
         {
             if (_coralController.currentStateNum == intakeStowState.stateNum)
             {
                 _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, -3f));
             }
-            else
+            else if (_coralController.HasPiece())
             {
                 switch (GetLevelByState())
                 {
@@ -113,8 +114,12 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                         _coralController.ReleaseGamePieceWithForce(l1Force);
                         break;
                     case 2:
-                        _coralController.ReleaseGamePieceWithContinuedForce(l2Force, l2LengthSpeed.x, l2LengthSpeed.y);
-                        // _coralController.ReleaseGamePieceWithForce(l2Force);
+                        // Rigidbody coral = _coralController.controller.GamePiece.rigidbody;
+                        // Rigidbody coral = GetComponent<ReefscapeGamePieceController>().GamePiece.
+                        var coral = FindChildWithPrefix(coralStowStateGameObject.gameObject.transform, "Coral").gameObject;
+                        _coralController.ReleaseGamePieceWithForce(l2Force);
+                        yield return new WaitForSeconds(l2DelayTorque.x);
+                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l2DelayTorque.y, 0, 0));
                         break;
                     case 3:
                         _coralController.ReleaseGamePieceWithForce(l3Force);
@@ -127,6 +132,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 }
                 
             }
+
+            yield return null;
         }
 
         private void SetSetpoint(QuixilverBSetpoint setpoint)
@@ -148,6 +155,20 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         {
             shooterPivot.UpdatePid(shooterPivotPid);
             intakePivot.UpdatePid(intakePivotPid);
+        }
+        
+        public Transform FindChildWithPrefix(Transform parent, string prefix)
+        {
+            foreach (Transform child in parent)
+            {
+                if (child.name.StartsWith(prefix))
+                {
+                    return child;
+                }
+            }
+        
+            Debug.LogWarning($"No child found starting with '{prefix}'");
+            return null;
         }
         
         private int GetLevelByState()
@@ -236,25 +257,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             }
             
             _coralController.SetTargetState(_handoff ? coralStowState : intakeStowState);
-            // Debug.Log(hasCoral + ":" + _coralController.currentStateNum);
 
             if (!hasCoral)
             {
                 _handoff = false;
             }
-
-            // if (Utils.InRange(-elevator.GetElevatorHeight(), _elevatorTargetHeight, 0.01))
-            // {
-            //     slideJoint.gameObject.GetComponent<ConfigurableJoint>().zMotion = ConfigurableJointMotion.Locked;
-            //     slideJoint.gameObject.transform.position.Set(0, 0, -0.0889f);
-            //     _lockedIntakeSlide = true;
-            // }
-            // else
-            // {
-            //     // slideJoint.gameObject.GetComponent<ConfigurableJoint>().zMotion = ConfigurableJointMotion.Free;
-            // }
-            // // Debug.Log(-elevator.GetElevatorHeight() + ":" + _elevatorTargetHeight);
-            // Debug.Log(slideJoint.gameObject.transform.position.z);
             
             switch (CurrentSetpoint)
             {
@@ -276,7 +283,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 case ReefscapeSetpoints.Place:
                     // StartCoroutine(PlaceGamePiece());
                     // Debug.Log("In Place Setpoint");
-                    PlacePiece();
+                    StartCoroutine(PlacePiece());
                     break;
                 case ReefscapeSetpoints.L1:
                     SetSetpoint(l1);
