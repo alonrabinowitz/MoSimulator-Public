@@ -476,18 +476,18 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         yield return null;
     }
     
+    private bool ArmAtSetpoint(BlazingBulldogsBSetpoint stp)
+    {
+        return Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X),
+            stp == transfer ? GetTransferArmAngle() : stp.armAngle, 2f);
+    }
+    
     private bool AtSetpoint(BlazingBulldogsBSetpoint stp)
     {
         return
             Utils.InRange(elevator.GetElevatorHeight(), stp.elevatorHeight, 2f) &&
             Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp == transfer ? GetTransferArmAngle() : stp.armAngle, 2f) &&
             Utils.InAngularRange(intakeJoint.GetSingleAxisAngle(JointAxis.Z), stp.intakeAngle, 2f);
-    }
-    
-    private bool ArmAtSetpoint(BlazingBulldogsBSetpoint stp)
-    {
-        return Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X),
-            stp == transfer ? GetTransferArmAngle() : stp.armAngle, 2f);
     }
     
     private bool AtSetpoint()

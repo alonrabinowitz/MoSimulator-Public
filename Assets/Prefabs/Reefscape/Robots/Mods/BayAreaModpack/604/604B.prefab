@@ -21799,10 +21799,10 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 383
+    m_Bits: 319
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -26366,7 +26366,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7829902176731939884}
   - {fileID: 7730971072162410392}
   - {fileID: 1044372493955297419}
   - {fileID: 9082102954725461888}
@@ -26577,6 +26576,7 @@ MonoBehaviour:
   topIntakeRoller: {fileID: 9029749090228086303}
   leftIntakeSensor: {fileID: 8270489195196399918}
   rightIntakeSensor: {fileID: 8653908983631994988}
+  slideJoint: {fileID: 4549059436409091418}
   intakeWheels:
   - {fileID: 6483733248123824345}
   - {fileID: 4342807783195696012}
@@ -26588,16 +26588,16 @@ MonoBehaviour:
     Max: 4
     Isaturation: 0
   intakePivotPid:
-    kP: 0.5
+    kP: 1
     kI: 0
     kD: 0.1
-    Max: 4
+    Max: 8
     Isaturation: 0
   coralIntake: {fileID: 7513107907630890792}
   coralStowState:
     name: Coral Stow State
     stateNum: 2
-    stateMoveSpeed: 25
+    stateMoveSpeed: 100
     stateTarget: {fileID: 3051597749351676545}
     smoothHandoff: 0
     angularSpeed: 0
@@ -26615,6 +26615,10 @@ MonoBehaviour:
   l2: {fileID: 11400000, guid: 070beeec3be274c7586d32c62277358d, type: 2}
   l3: {fileID: 11400000, guid: 9d35fac1f149d4503bda95a180399562, type: 2}
   l4: {fileID: 11400000, guid: f13173a54b65c4691b81e419219f8676, type: 2}
+  l1Force: {x: 0, y: 0, z: 0}
+  l2Force: {x: 0, y: 0, z: 0}
+  l3Force: {x: 0, y: 0, z: 0}
+  l4Force: {x: 0, y: 0, z: 11.5}
   intakeAudioSource: {fileID: 7830100318388716101}
   intakeClip: {fileID: 0}
 --- !u!114 &751618176286749858
@@ -26633,10 +26637,10 @@ MonoBehaviour:
   - {fileID: 4549059436409091418}
   elevatorType: 0
   pidConstants:
-    kP: 15
+    kP: 150
     kI: 0
-    kD: 0.1
-    Max: 3
+    kD: 1
+    Max: 80
     Isaturation: 0
   stagesPidConstants:
     kP: 0
@@ -26747,10 +26751,10 @@ MonoBehaviour:
     kD: 0.003
     Max: 0.77
     Isaturation: 1
-  offset: {x: 0, y: 0, z: 4}
+  offset: {x: 0, y: 0, z: -3.5}
   rotation: 0
   enableForwardAlign: 1
-  enableBackwardsAlign: 1
+  enableBackwardsAlign: 0
   maxAlignDistanceFeet: 15
 --- !u!114 &279762633080191265
 MonoBehaviour:
@@ -26759,7 +26763,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2534371394911199621}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40c9f738d2c54a48ad3e959efd15d13b, type: 3}
   m_Name: 
@@ -38541,7 +38545,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -42676,7 +42680,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.1179, z: 0.083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7829902176731939884}
   m_Father: {fileID: 9082102954725461888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4269804132358541741
@@ -45137,7 +45142,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -45936,7 +45941,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -46075,7 +46080,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -78518,7 +78523,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 7461217089770952545}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 1, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0
@@ -86091,10 +86096,10 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 383
+    m_Bits: 319
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -89795,7 +89800,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 7461217089770952545}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 1, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0
@@ -91835,7 +91840,7 @@ HingeJoint:
   m_ConnectedBody: {fileID: 7461217089770952545}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 0
@@ -92328,7 +92333,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7508108429782771140}
+    m_TransformParent: {fileID: 3051597749351676545}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0807aa8a00df808448966ce9bb02f069,
         type: 3}
@@ -92338,12 +92343,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0807aa8a00df808448966ce9bb02f069,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4984
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0807aa8a00df808448966ce9bb02f069,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.164
+      value: -0.1524
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0807aa8a00df808448966ce9bb02f069,
         type: 3}
