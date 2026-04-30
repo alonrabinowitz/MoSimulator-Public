@@ -35,6 +35,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [Header("Animation Joints (Wheels)")]
         [SerializeField] private GenericAnimationJoint[] intakeWheels;
         [SerializeField] private float wheelIntakeSpeed = 500f;
+        [SerializeField] private GenericAnimationJoint[] shooterWheels;
+        [SerializeField] private float shooterWheelSpeed = 1000f;
 
         [Header("PIDs")]
         [SerializeField] private PidConstants shooterPivotPid;
@@ -75,6 +77,10 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private AudioSource intakeAudioSource;
         [SerializeField] private AudioClip intakeClip;
         
+        [Header("Shooter Audio")]
+        [SerializeField] private AudioSource shooterAudioSource;
+        [SerializeField] private AudioClip shooterClip;
+        
         [Header("Auto Align Offsets")]
         [SerializeField] private Vector3 regularAutoAlignOffset;
         [SerializeField] private Vector3 daleAutoAlignOffsetLeft;
@@ -87,7 +93,10 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private float _intakeTargetAngle;
         private float _shooterTargetAngle;
         private bool _handoff;
-        private int _levelSelected;
+        private bool _intakeWheelsSpinning;
+        private bool _shooterWheelsSpinning;
+        private bool _isShooting;
+        // private int _levelSelected;
         private ReefscapeAutoAlign _align;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
         
@@ -101,9 +110,13 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _elevatorTargetHeight = 0;
             _intakeTargetAngle = 0;
             _shooterTargetAngle = 0;
+            
+            _intakeWheelsSpinning = false;
+            _shooterWheelsSpinning = false;
+            _isShooting = false;
 
             _handoff = true;
-            _levelSelected = 0;
+            // _levelSelected = 0;
             _align = GetComponent<ReefscapeAutoAlign>();
             
             RobotGamePieceController.SetPreload(coralStowState);
@@ -119,11 +132,28 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             intakeAudioSource.clip = intakeClip;
             intakeAudioSource.loop = true;
             intakeAudioSource.playOnAwake = false;
+            
+            shooterAudioSource.clip = shooterClip;
+            shooterAudioSource.loop = true;
+            shooterAudioSource.playOnAwake = false;
         }
 
         private IEnumerator PlacePiece()
         {
+            if (!_coralController.HasPiece()) yield break;
             var coral = FindChildWithPrefix(coralStowStateGameObject.gameObject.transform, "Coral").gameObject;
+            
+            shooterWheels[0].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[1].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[2].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[3].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[4].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[5].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[6].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+            shooterWheels[7].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+            _shooterWheelsSpinning = true;
+            _isShooting = true;
+            
             if (CurrentRobotMode == ReefscapeRobotMode.Coral)
             {
                 switch (GetLevelByState())
@@ -151,8 +181,6 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     default:
                         break;
                 }
-                
-                _levelSelected = 0;
             }
             else
             {
@@ -170,6 +198,13 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 }
             }
 
+            yield return new WaitForSeconds(0.3f);
+            foreach (var wheel in shooterWheels)
+                wheel.VelocityRoller(0).useAxis(JointAxis.X);
+            _shooterWheelsSpinning = false;
+            _isShooting = false;
+            
+            SetRobotMode(ReefscapeRobotMode.Coral);
             yield return null;
         }
 
@@ -194,7 +229,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             intakePivot.UpdatePid(intakePivotPid);
         }
         
-        public Transform FindChildWithPrefix(Transform parent, string prefix)
+        private Transform FindChildWithPrefix(Transform parent, string prefix)
         {
             foreach (Transform child in parent)
             {
@@ -271,7 +306,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             
             // Debug.Log((GetActiveCamera().transform.eulerAngles.y > 180) + ":" + (PlayerPrefs.GetInt("PerspectiveAutoAlign", 1)) + ":" + (Math.Abs(transform.position.x) > 4.489323));
             
-            UpdateIntakeAudio();
+            // UpdateIntakeAudio();
 
             if (CurrentRobotMode == ReefscapeRobotMode.Coral)
             {
@@ -280,14 +315,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             else
             {
                 var flip = false;
-                // (GetActiveCamera().transform.eulerAngles.y > 180)
-                if (PlayerPrefs.GetInt("PerspectiveAutoAlign", 1) != 1) flip = !flip;
+                // if (PlayerPrefs.GetInt("PerspectiveAutoAlign", 1) != 1) flip = !flip;
                 if (GetActiveCamera().transform.eulerAngles.y < 180) flip = !flip;
-                if (Math.Abs(transform.position.x) > 4.489323) flip = !flip;
+                if (Math.Abs(transform.position.x) > 4.489323 && PlayerPrefs.GetInt("PerspectiveAutoAlign", 1) == 1) flip = !flip;
                 if (transform.position.x > 0) flip = !flip;
                 
-                Debug.Log(flip);
-
                 if (AutoAlignLeftAction.inProgress)
                 {
                     _align.offset = flip ? daleAutoAlignOffsetLeft : daleAutoAlignOffsetRight;
@@ -306,8 +338,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             
             if (isIntaking)
             {
-                foreach (var wheel in intakeWheels)
-                    wheel.VelocityRoller(wheelIntakeSpeed).useAxis(JointAxis.Y);
+                intakeWheels[0].VelocityRoller(wheelIntakeSpeed).useAxis(JointAxis.Y);
+                intakeWheels[1].VelocityRoller(-wheelIntakeSpeed).useAxis(JointAxis.Y);
+                intakeWheels[2].VelocityRoller(-wheelIntakeSpeed).useAxis(JointAxis.X);
             }
             else
             {
@@ -317,8 +350,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 topIntakeRoller.ChangeAngularVelocity(0);
             
                 // Explicitly stop wheel animations
-                foreach (var wheel in intakeWheels)
-                    wheel.VelocityRoller(0).useAxis(JointAxis.Y);
+                intakeWheels[0].VelocityRoller(0).useAxis(JointAxis.Y);
+                intakeWheels[1].VelocityRoller(0).useAxis(JointAxis.Y);
+                intakeWheels[2].VelocityRoller(0).useAxis(JointAxis.X);
             }
             // }
             
@@ -332,48 +366,6 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             if (!hasCoral)
             {
                 _handoff = false;
-            }
-            
-            // Wait for coral to be in shooter before going to setpoint
-            if (CoralAtStow(intakeStowState) && (
-                    CurrentSetpoint == ReefscapeSetpoints.L1 ||
-                    CurrentSetpoint == ReefscapeSetpoints.L2 ||
-                    CurrentSetpoint == ReefscapeSetpoints.L3 ||
-                    CurrentSetpoint == ReefscapeSetpoints.L4 ||
-                    CurrentSetpoint == ReefscapeSetpoints.LowAlgae ||
-                    CurrentSetpoint == ReefscapeSetpoints.HighAlgae))
-            {
-                _levelSelected = CurrentSetpoint switch
-                {
-                    ReefscapeSetpoints.L1 => 1,
-                    ReefscapeSetpoints.L2 => 2,
-                    ReefscapeSetpoints.L3 => 3,
-                    ReefscapeSetpoints.L4 => 4,
-                    ReefscapeSetpoints.LowAlgae => 5,
-                    ReefscapeSetpoints.HighAlgae => 6,
-                    ReefscapeSetpoints.Intake => _levelSelected,
-                    _ => 0
-                };
-            }
-
-            if ((_levelSelected != 0 && CurrentSetpoint != ReefscapeSetpoints.Stow) || (_handoff && !CoralAtStow(coralStowState)))
-            {
-                SetState(ReefscapeSetpoints.Stow);
-            }
-
-            if (_levelSelected != 0 && CoralAtStow(coralStowState))
-            {
-                SetState(_levelSelected switch
-                {
-                    1 => ReefscapeSetpoints.L1,
-                    2 => ReefscapeSetpoints.L2,
-                    3 => ReefscapeSetpoints.L3,
-                    4 => ReefscapeSetpoints.L4,
-                    5 => ReefscapeSetpoints.LowAlgae,
-                    6 => ReefscapeSetpoints.HighAlgae,
-                    _ => ReefscapeSetpoints.Stow
-                });
-                _levelSelected = 0;
             }
             
             switch (CurrentSetpoint)
@@ -397,13 +389,13 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     StartCoroutine(PlacePiece());
                     break;
                 case ReefscapeSetpoints.L1:
-                    SetSetpoint(l1);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l1 : transfer);
                     break;
                 case ReefscapeSetpoints.Stack:
                     SetState(ReefscapeSetpoints.Stow);
                     break;
                 case ReefscapeSetpoints.L2:
-                    SetSetpoint(l2);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l2 : transfer);
                     break;
                 case ReefscapeSetpoints.LowAlgae:
                     if (!hasCoral)
@@ -411,10 +403,10 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                         SetState(ReefscapeSetpoints.Stow);
                         break;
                     }
-                    SetSetpoint(lowAlgae);
+                    SetSetpoint(CoralAtStow(coralStowState) ? lowAlgae : transfer);
                     break;
                 case ReefscapeSetpoints.L3:
-                    SetSetpoint(l3);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l3 : transfer);
                     break;
                 case ReefscapeSetpoints.HighAlgae:
                     if (!hasCoral)
@@ -422,10 +414,10 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                         SetState(ReefscapeSetpoints.Stow);
                         break;
                     }
-                    SetSetpoint(highAlgae);
+                    SetSetpoint(CoralAtStow(coralStowState) ? highAlgae : transfer);
                     break;
                 case ReefscapeSetpoints.L4:
-                    SetSetpoint(l4);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l4 : transfer);
                     break;
                 case ReefscapeSetpoints.Processor:
                     SetState(ReefscapeSetpoints.Stow);
@@ -464,11 +456,50 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     rightIntakeRollerJoint.ChangeAngularVelocity(8000);
                 }
             }
-            
+
+            UpdateRollers();
+            UpdateAudio();
             UpdateSetpoints();
         }
-        
-        private void UpdateIntakeAudio()
+
+        private void UpdateRollers()
+        {
+            if (_coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget)
+            {
+                shooterWheels[0].VelocityRoller(-shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[1].VelocityRoller(-shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[2].VelocityRoller(-shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[3].VelocityRoller(-shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[4].VelocityRoller(shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[5].VelocityRoller(shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[6].VelocityRoller(shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                shooterWheels[7].VelocityRoller(shooterWheelSpeed/1.5f).useAxis(JointAxis.X);
+                _shooterWheelsSpinning = true;
+            }
+            else if (!_isShooting)
+            {
+                foreach (var wheel in shooterWheels)
+                    wheel.VelocityRoller(0).useAxis(JointAxis.X);
+                _shooterWheelsSpinning = false;
+            }
+
+            if (_coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget)
+            {
+                intakeWheels[0].VelocityRoller(-wheelIntakeSpeed).useAxis(JointAxis.Y);
+                intakeWheels[1].VelocityRoller(wheelIntakeSpeed).useAxis(JointAxis.Y);
+                intakeWheels[2].VelocityRoller(wheelIntakeSpeed).useAxis(JointAxis.X);
+                _intakeWheelsSpinning = true;
+            }
+            if (_coralController.atTarget)
+            {
+                intakeWheels[0].VelocityRoller(0).useAxis(JointAxis.Y);
+                intakeWheels[1].VelocityRoller(0).useAxis(JointAxis.Y);
+                intakeWheels[2].VelocityRoller(0).useAxis(JointAxis.X);
+                _intakeWheelsSpinning = false;
+            }
+        }
+
+        private void UpdateAudio()
         {
             if (BaseGameManager.Instance.RobotState == RobotState.Disabled)
             {
@@ -477,20 +508,59 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     intakeAudioSource.Stop();
                 }
 
+                if (shooterAudioSource.isPlaying)
+                {
+                    shooterAudioSource.Stop();
+                }
+
                 return;
             }
-
-            if ((IntakeAction.IsPressed() || OuttakeAction.IsPressed() || CurrentSetpoint is ReefscapeSetpoints.Climb) &&
-                !intakeAudioSource.isPlaying)
+            
+            // Intake wheels
+            bool isIntaking = IntakeAction.IsPressed() && _coralController.currentStateNum == intakeStowState.stateNum &&  !_coralController.atTarget;
+            if ((isIntaking || _intakeWheelsSpinning) && !intakeAudioSource.isPlaying)
             {
                 intakeAudioSource.Play();
             }
-            else if (!IntakeAction.IsPressed() && !OuttakeAction.IsPressed() && CurrentSetpoint is not ReefscapeSetpoints.Climb &&
-                     intakeAudioSource.isPlaying)
+            else if (!isIntaking && !_intakeWheelsSpinning && intakeAudioSource.isPlaying)
             {
                 intakeAudioSource.Stop();
             }
-
+            
+            // Shooter wheels
+            if (_shooterWheelsSpinning && !shooterAudioSource.isPlaying)
+            {
+                shooterAudioSource.Play();
+            }
+            else if (!_shooterWheelsSpinning && shooterAudioSource.isPlaying)
+            {
+                shooterAudioSource.Stop();
+            }
         }
+        
+        // private void UpdateIntakeAudio()
+        // {
+        //     if (BaseGameManager.Instance.RobotState == RobotState.Disabled)
+        //     {
+        //         if (intakeAudioSource.isPlaying)
+        //         {
+        //             intakeAudioSource.Stop();
+        //         }
+        //
+        //         return;
+        //     }
+        //
+        //     if ((IntakeAction.IsPressed() || OuttakeAction.IsPressed() || CurrentSetpoint is ReefscapeSetpoints.Climb) &&
+        //         !intakeAudioSource.isPlaying)
+        //     {
+        //         intakeAudioSource.Play();
+        //     }
+        //     else if (!IntakeAction.IsPressed() && !OuttakeAction.IsPressed() && CurrentSetpoint is not ReefscapeSetpoints.Climb &&
+        //              intakeAudioSource.isPlaying)
+        //     {
+        //         intakeAudioSource.Stop();
+        //     }
+        //
+        // }
     }
 }
