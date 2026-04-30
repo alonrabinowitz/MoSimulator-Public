@@ -192,9 +192,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 }
                 else
                 {
-                    _coralController.ReleaseGamePieceWithForce(lowAlgaeForce);
-                    yield return new WaitForSeconds(lowAlgaeDelayTorque.x);
-                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(lowAlgaeDelayTorque.y, 0, 0));
+                    _coralController.ReleaseGamePieceWithForce(highAlgaeForce);
+                    yield return new WaitForSeconds(highAlgaeDelayTorque.x);
+                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(highAlgaeDelayTorque.y, 0, 0));
                 }
             }
 
@@ -403,7 +403,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                         SetState(ReefscapeSetpoints.Stow);
                         break;
                     }
-                    SetSetpoint(CoralAtStow(coralStowState) ? lowAlgae : transfer);
+                    SetSetpoint(CoralAtStow(coralStowState) ? highAlgae : transfer);
                     break;
                 case ReefscapeSetpoints.L3:
                     SetSetpoint(CoralAtStow(coralStowState) ? l3 : transfer);

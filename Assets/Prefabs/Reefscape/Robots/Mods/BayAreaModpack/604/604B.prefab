@@ -6137,7 +6137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7209919002147984555, guid: c7f07d40ac71544e08f4f042fcf14279, type: 3}
+  - {fileID: 2100000, guid: de1c96f013c9a44fcb2ea7a4393dbbf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22181,7 +22181,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7209919002147984555, guid: c7f07d40ac71544e08f4f042fcf14279, type: 3}
+  - {fileID: 2100000, guid: de1c96f013c9a44fcb2ea7a4393dbbf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27001,7 +27001,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alliance: 0
-  bumperMeshes: []
+  bumperMeshes:
+  - {fileID: 4932603581427892679}
   blueBumperMaterial: {fileID: 2100000, guid: 593dd39015683cb438aeedbbde183e47, type: 2}
   redBumperMaterial: {fileID: 2100000, guid: beac88e7f65263148b5008196ff949be, type: 2}
   <CurrentSetpoint>k__BackingField: 0

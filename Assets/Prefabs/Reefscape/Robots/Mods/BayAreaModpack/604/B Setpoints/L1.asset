@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: L1
   m_EditorClassIdentifier: 
   shooterAngle: 30
-  intakeAngle: 0
+  intakeAngle: 70
