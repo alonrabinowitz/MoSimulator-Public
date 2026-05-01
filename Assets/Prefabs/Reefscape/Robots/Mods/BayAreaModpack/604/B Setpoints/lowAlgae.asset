@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: lowAlgae
   m_EditorClassIdentifier: 
   shooterAngle: 20
-  intakeAngle: 0
+  intakeAngle: 70

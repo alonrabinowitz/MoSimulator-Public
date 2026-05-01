@@ -48717,7 +48717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4825398649838730271}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.1305259, y: -0, z: -0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0.19684, z: -0.3302}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48728,7 +48728,7 @@ Transform:
   - {fileID: 2242645492458029366}
   - {fileID: 7552159526765939775}
   m_Father: {fileID: 4724093132582975506}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!54 &7461217089770952545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48774,7 +48774,7 @@ ConfigurableJoint:
   m_XMotion: 0
   m_YMotion: 0
   m_ZMotion: 0
-  m_AngularXMotion: 2
+  m_AngularXMotion: 1
   m_AngularYMotion: 0
   m_AngularZMotion: 0
   m_LinearLimitSpring:
@@ -48788,11 +48788,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: 1
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 170
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
