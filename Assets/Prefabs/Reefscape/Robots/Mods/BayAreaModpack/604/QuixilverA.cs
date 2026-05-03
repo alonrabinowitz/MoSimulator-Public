@@ -28,6 +28,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private GenericJoint climb;
         [SerializeField] private GenericJoint rightFunnelFlap;
         [SerializeField] private GenericJoint leftFunnelFlap;
+        [SerializeField] private BoxCollider[] wristColliders;
+        [SerializeField] private CapsuleCollider[] wristCapsuleColliders;
         
         // [Header("Animation Joints (Wheels)")]
         // [SerializeField] private GenericAnimationJoint[] intakeWheels;
@@ -60,24 +62,20 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private QuixilverASetpoint lowAlgae;
         [SerializeField] private QuixilverASetpoint processor;
         [SerializeField] private QuixilverASetpoint barge;
+        [SerializeField] private QuixilverASetpoint bargePlace;
         [SerializeField] private QuixilverASetpoint groundAlgae;
         [SerializeField] private QuixilverASetpoint lollipopAlgae;
         [SerializeField] private QuixilverASetpoint climbPrep;
         [SerializeField] private QuixilverASetpoint climbed;
         
-        // [Header("Shooting Forces")]
-        // [SerializeField] private Vector3 l1Force;
-        // [SerializeField] private Vector2 l1DelayTorque;
-        // [SerializeField] private Vector3 l2Force;
-        // [SerializeField] private Vector2 l2DelayTorque;
-        // [SerializeField] private Vector3 l3Force;
-        // [SerializeField] private Vector2 l3DelayTorque;
-        // [SerializeField] private Vector3 l4Force;
-        // [SerializeField] private Vector2 l4DelayTorque;
-        // [SerializeField] private Vector3 highAlgaeForce;
-        // [SerializeField] private Vector2 highAlgaeDelayTorque;
-        // [SerializeField] private Vector3 lowAlgaeForce;
-        // [SerializeField] private Vector2 lowAlgaeDelayTorque;
+        [Header("Scoring Forces")]
+        [SerializeField] private Vector3 l1Force;
+        [SerializeField] private Vector3 l2Force;
+        [SerializeField] private Vector3 l3Force;
+        [SerializeField] private Vector3 l4Force;
+        [SerializeField] private Vector3 processorForce;
+        [SerializeField] private Vector3 bargeForce;
+        [SerializeField] private float bargeDelay;
         
         // [Header("Intake Audio")]
         // [SerializeField] private AudioSource intakeAudioSource;
@@ -152,8 +150,24 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         private IEnumerator PlacePiece()
         {
-            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
-            _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
+            Vector3 force = GetLevelByState() switch
+            {
+                1 => l1Force,
+                2 => l2Force,
+                3 => l3Force,
+                4 => l4Force,
+                5 => processorForce,
+                6 => bargeForce,
+                _ => new Vector3(0, 0, 2)
+            };
+
+            if (GetLevelByState() == 6)
+            {
+                yield return new WaitForSeconds(bargeDelay);
+            }
+            
+            _coralController.ReleaseGamePieceWithForce(force);
+            _algaeController.ReleaseGamePieceWithForce(force);
             
             yield return null;
         }
@@ -200,9 +214,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     return 3;
                 case ReefscapeSetpoints.L4:
                     return 4;
-                case ReefscapeSetpoints.LowAlgae:
+                case ReefscapeSetpoints.Processor:
                     return 5;
-                case ReefscapeSetpoints.HighAlgae:
+                case ReefscapeSetpoints.Barge:
                     return 6;
             }
             
@@ -216,9 +230,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     return 3;
                 case ReefscapeSetpoints.L4:
                     return 4;
-                case ReefscapeSetpoints.LowAlgae:
+                case ReefscapeSetpoints.Processor:
                     return 5;
-                case ReefscapeSetpoints.HighAlgae:
+                case ReefscapeSetpoints.Barge:
                     return 6;
             }
 
@@ -244,6 +258,15 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         {
             bool hasCoral = _coralController.HasPiece();
             bool hasAlgae = _algaeController.HasPiece();
+
+            foreach (BoxCollider collider in wristColliders)
+            {
+                collider.enabled = hasAlgae;
+            }
+            foreach (CapsuleCollider collider in wristCapsuleColliders)
+            {
+                collider.enabled = hasAlgae;
+            }
             
             // if (CurrentRobotMode == ReefscapeRobotMode.Coral)
             // {
@@ -276,11 +299,17 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     SetSetpoint(stow);
                     break;
                 case ReefscapeSetpoints.Intake:
-                    SetSetpoint(intake);
+                    SetSetpoint(CurrentRobotMode == ReefscapeRobotMode.Coral ? intake : groundAlgae);
                     
-                    _coralController.RequestIntake(coralIntake, !hasCoral);
+                    _coralController.RequestIntake(coralIntake, !hasCoral && !hasAlgae && CurrentRobotMode == ReefscapeRobotMode.Coral);
+                    _algaeController.RequestIntake(algaeIntake, !hasCoral && !hasAlgae && CurrentRobotMode == ReefscapeRobotMode.Algae);
                     break;
                 case ReefscapeSetpoints.Place:
+                    if (LastSetpoint == ReefscapeSetpoints.Barge)
+                    {
+                        SetSetpoint(bargePlace);
+                    }
+                    
                     StartCoroutine(PlacePiece());
                     break;
                 case ReefscapeSetpoints.L1:

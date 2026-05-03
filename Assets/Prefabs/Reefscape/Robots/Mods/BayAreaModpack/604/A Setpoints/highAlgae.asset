@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5f03c83ec7d496da05c4bdf8656adc, type: 3}
   m_Name: highAlgae
   m_EditorClassIdentifier: 
-  elevatorHeight: 0
-  armAngle: 0
-  wristAngle: 0
+  elevatorHeight: 27
+  armAngle: 68
+  wristAngle: -68
   climbAngle: 0

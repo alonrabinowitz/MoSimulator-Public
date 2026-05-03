@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: climbPrep
   m_EditorClassIdentifier: 
   elevatorHeight: 0
-  armAngle: 0
-  wristAngle: 0
-  climbAngle: 0
+  armAngle: 7.5
+  wristAngle: -7.5
+  climbAngle: 180

@@ -774,12 +774,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29093458928742457}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06540306, y: -0, z: -0, w: 0.99785894}
-  m_LocalPosition: {x: 0, y: -0.55, z: 0.137}
+  m_LocalRotation: {x: -0.00000009685755, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0007594414, z: 0.13309956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7524018317880141866}
+  m_Father: {fileID: 5604670995734816661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5712859823952952213
 MonoBehaviour:
@@ -812,7 +812,7 @@ MonoBehaviour:
   maxRotationSpeed: 0
   useRotaion: 1
   smoothHandoff: 1
-  target: {fileID: 963163531404320967}
+  target: {fileID: 1594170083507351868}
   securedGamePiece: 0
 --- !u!65 &697954758959454925
 BoxCollider:
@@ -6830,7 +6830,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10424,7 +10424,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -17165,7 +17165,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -17589,7 +17589,7 @@ Transform:
   m_GameObject: {fileID: 2001265051096810270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.088, z: -0}
+  m_LocalPosition: {x: 0, y: 0.088, z: -0.048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21711,44 +21711,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alliance: 0
-  bumperMeshes: []
-  blueBumperMaterial: {fileID: 0}
-  redBumperMaterial: {fileID: 0}
+  bumperMeshes:
+  - {fileID: 5738960902731923210}
+  blueBumperMaterial: {fileID: 2100000, guid: 593dd39015683cb438aeedbbde183e47, type: 2}
+  redBumperMaterial: {fileID: 2100000, guid: beac88e7f65263148b5008196ff949be, type: 2}
   <CurrentSetpoint>k__BackingField: 0
   <CurrentCoralStationMode>k__BackingField:
     <DropType>k__BackingField: 1
-    <DropDistance>k__BackingField: 0
+    <DropDistance>k__BackingField: 1.45
     <DropStrength>k__BackingField: 5
-    <DropForceVariance>k__BackingField: 1
-    <RotationVariance>k__BackingField: 0.1
-    <DropOrientation>k__BackingField: 0
-    <RequireIntaking>k__BackingField: 1
+    <DropForceVariance>k__BackingField: 0
+    <RotationVariance>k__BackingField: 0
+    <DropOrientation>k__BackingField: 1
+    <RequireIntaking>k__BackingField: 0
     <TargetTransform>k__BackingField: {fileID: 0}
     <DrawDebugLines>k__BackingField: 0
-  superCycler: 1
+  superCycler: 0
   elevator: {fileID: 5215047427052302791}
   arm: {fileID: 3409987834074031419}
   wrist: {fileID: 7457746132815280174}
   climb: {fileID: 6825537747264824218}
   rightFunnelFlap: {fileID: 7199652943062742857}
   leftFunnelFlap: {fileID: 8544056545320141745}
+  wristColliders:
+  - {fileID: 4036762618546808085}
+  - {fileID: 2459065264654620845}
+  - {fileID: 4717697606117427667}
+  - {fileID: 345402618849542928}
+  - {fileID: 1415980420194646308}
+  - {fileID: 4445439232424518970}
+  - {fileID: 1750787765644006293}
+  - {fileID: 7402742146851697878}
+  - {fileID: 877796724730595536}
+  - {fileID: 7017478824698635450}
+  - {fileID: 1999676851152531273}
+  - {fileID: 176958933989875739}
+  - {fileID: 191400588069052721}
+  - {fileID: 663059712987265668}
+  - {fileID: 8252228197013597022}
+  - {fileID: 838941777665448858}
+  - {fileID: 3032423792262542667}
+  - {fileID: 294153106996261230}
+  - {fileID: 8956179856763685483}
+  - {fileID: 1636339916444025856}
+  - {fileID: 6654700509046212221}
+  - {fileID: 4210675661074033685}
+  - {fileID: 1013884560583840789}
+  - {fileID: 8733002907743911228}
+  wristCapsuleColliders:
+  - {fileID: 4791111045599769712}
+  - {fileID: 5867385098516738596}
+  - {fileID: 4289200730351139785}
+  - {fileID: 1512935575012320961}
   armPid:
-    kP: 2
+    kP: 5
     kI: 0
     kD: 0.2
-    Max: 3
+    Max: 5
     Isaturation: 0
   wristPid:
-    kP: 2
+    kP: 5
     kI: 0
     kD: 0.2
-    Max: 3
+    Max: 8
     Isaturation: 0
   climbPid:
-    kP: 0.5
+    kP: 0.6
     kI: 0
     kD: 0.1
-    Max: 4
+    Max: 3
     Isaturation: 0
   funnelFlapPid:
     kP: 0.2
@@ -21769,7 +21800,7 @@ MonoBehaviour:
     name: Algae Stow State
     stateNum: 1
     stateMoveSpeed: 60
-    stateTarget: {fileID: 963163531404320967}
+    stateTarget: {fileID: 1594170083507351868}
     smoothHandoff: 0
     angularSpeed: 0
   stow: {fileID: 11400000, guid: 7b50b8752127948c2aa0e38782b9b046, type: 2}
@@ -21782,10 +21813,18 @@ MonoBehaviour:
   lowAlgae: {fileID: 11400000, guid: 52518fefbd3a94c148fc1a39673e5b07, type: 2}
   processor: {fileID: 11400000, guid: dad3b06ddf0c14b26aa0021addb4be74, type: 2}
   barge: {fileID: 11400000, guid: ad1d92c47b2f8494cbcf1dbc5c1b2eee, type: 2}
+  bargePlace: {fileID: 11400000, guid: 4d19405e132234af3a0f02b18f40cc78, type: 2}
   groundAlgae: {fileID: 11400000, guid: 7772d0649a9ec4f87bc92a8126eee3cf, type: 2}
   lollipopAlgae: {fileID: 11400000, guid: a5d5628bc66964ad4ab88a7fb018cccf, type: 2}
   climbPrep: {fileID: 11400000, guid: d422de19b62f441a7a0b801afe5b6447, type: 2}
   climbed: {fileID: 11400000, guid: 51d9e3af9eb7d49df871a7b8e8644458, type: 2}
+  l1Force: {x: 0, y: 0, z: 4}
+  l2Force: {x: 0, y: 0, z: 4}
+  l3Force: {x: 0, y: 0, z: 4}
+  l4Force: {x: 0, y: 0, z: 3}
+  processorForce: {x: 0, y: 0, z: 2}
+  bargeForce: {x: 0, y: 2, z: 6}
+  bargeDelay: 0.46
 --- !u!114 &5215047427052302791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21917,7 +21956,7 @@ MonoBehaviour:
     kD: 0.003
     Max: 0.77
     Isaturation: 1
-  offset: {x: 0, y: 0, z: -3.5}
+  offset: {x: 0, y: 0, z: 2}
   rotation: 0
   enableForwardAlign: 1
   enableBackwardsAlign: 0
@@ -23255,6 +23294,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2697880085538341698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594170083507351868}
+  m_Layer: 6
+  m_Name: AlgaeStow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1594170083507351868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697880085538341698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.227}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5604670995734816661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2698111826643298270
 GameObject:
   m_ObjectHideFlags: 0
@@ -29905,7 +29975,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.00034
   m_Height: 0.002
@@ -42939,7 +43009,7 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -43298,7 +43368,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: 91a97ecb2bc4d2f46b9d7b6d3f66552a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -58992,7 +59062,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.00015875
   m_Height: 0.0068
@@ -67876,6 +67946,8 @@ Transform:
   - {fileID: 1308822585408765044}
   - {fileID: 1884646795788987626}
   - {fileID: 4534817881514935159}
+  - {fileID: 963163531404320967}
+  - {fileID: 1594170083507351868}
   m_Father: {fileID: 7524018317880141866}
   m_LocalEulerAnglesHint: {x: 7.5, y: 0, z: 0}
 --- !u!54 &6486964890311178409
@@ -72788,7 +72860,6 @@ Transform:
   m_Children:
   - {fileID: 4115507100537185285}
   - {fileID: 5604670995734816661}
-  - {fileID: 963163531404320967}
   m_Father: {fileID: 4450806895277404085}
   m_LocalEulerAnglesHint: {x: -7.5, y: 0, z: 0}
 --- !u!54 &5640105222129393815
