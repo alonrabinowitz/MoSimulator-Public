@@ -1,0 +1,348 @@
+using System;
+using System.Collections;
+using System.Diagnostics;
+using Games.Reefscape.Enums;
+using Games.Reefscape.GamePieceSystem;
+using Games.Reefscape.Robots;
+using GameSystems.Management;
+using MoSimCore.BaseClasses.GameManagement;
+using MoSimCore.Enums;
+using MoSimLib;
+using RobotFramework;
+using RobotFramework.Components;
+using RobotFramework.Controllers.GamePieceSystem;
+using RobotFramework.Controllers.PidSystems;
+using RobotFramework.Enums;
+using RobotFramework.GamePieceSystem;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
+
+namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
+{
+    public class QuixilverA: ReefscapeRobotBase
+    {
+        [Header("Components")]
+        [SerializeField] private GenericElevator elevator;
+        [SerializeField] private GenericJoint arm;
+        [SerializeField] private GenericJoint wrist;
+        [SerializeField] private GenericJoint climb;
+        [SerializeField] private GenericJoint rightFunnelFlap;
+        [SerializeField] private GenericJoint leftFunnelFlap;
+        
+        // [Header("Animation Joints (Wheels)")]
+        // [SerializeField] private GenericAnimationJoint[] intakeWheels;
+        // [SerializeField] private float wheelIntakeSpeed = 500f;
+        // [SerializeField] private GenericAnimationJoint[] shooterWheels;
+        // [SerializeField] private float shooterWheelSpeed = 1000f;
+
+        [Header("PIDs")]
+        [SerializeField] private PidConstants armPid;
+        [SerializeField] private PidConstants wristPid;
+        [SerializeField] private PidConstants climbPid;
+        [SerializeField] private PidConstants funnelFlapPid;
+
+        [Header("Intakes")]
+        [SerializeField] private ReefscapeGamePieceIntake coralIntake;
+        [SerializeField] private ReefscapeGamePieceIntake algaeIntake;
+        
+        [Header("Game Piece Stow States")]
+        [SerializeField] private GamePieceState coralStowState;
+        [SerializeField] private GamePieceState algaeStowState;
+        
+        [Header("Setpoints")]
+        [SerializeField] private QuixilverASetpoint stow;
+        [SerializeField] private QuixilverASetpoint intake;
+        [SerializeField] private QuixilverASetpoint l1;
+        [SerializeField] private QuixilverASetpoint l2;
+        [SerializeField] private QuixilverASetpoint l3;
+        [SerializeField] private QuixilverASetpoint l4;
+        [SerializeField] private QuixilverASetpoint highAlgae;
+        [SerializeField] private QuixilverASetpoint lowAlgae;
+        [SerializeField] private QuixilverASetpoint processor;
+        [SerializeField] private QuixilverASetpoint barge;
+        [SerializeField] private QuixilverASetpoint groundAlgae;
+        [SerializeField] private QuixilverASetpoint lollipopAlgae;
+        [SerializeField] private QuixilverASetpoint climbPrep;
+        [SerializeField] private QuixilverASetpoint climbed;
+        
+        // [Header("Shooting Forces")]
+        // [SerializeField] private Vector3 l1Force;
+        // [SerializeField] private Vector2 l1DelayTorque;
+        // [SerializeField] private Vector3 l2Force;
+        // [SerializeField] private Vector2 l2DelayTorque;
+        // [SerializeField] private Vector3 l3Force;
+        // [SerializeField] private Vector2 l3DelayTorque;
+        // [SerializeField] private Vector3 l4Force;
+        // [SerializeField] private Vector2 l4DelayTorque;
+        // [SerializeField] private Vector3 highAlgaeForce;
+        // [SerializeField] private Vector2 highAlgaeDelayTorque;
+        // [SerializeField] private Vector3 lowAlgaeForce;
+        // [SerializeField] private Vector2 lowAlgaeDelayTorque;
+        
+        // [Header("Intake Audio")]
+        // [SerializeField] private AudioSource intakeAudioSource;
+        // [SerializeField] private AudioClip intakeClip;
+        //
+        // [Header("Shooter Audio")]
+        // [SerializeField] private AudioSource shooterAudioSource;
+        // [SerializeField] private AudioClip shooterClip;
+        //
+        // [Header("Auto Align Offsets")]
+        // [SerializeField] private Vector3 regularAutoAlignOffset;
+        // [SerializeField] private Vector3 daleAutoAlignOffsetLeft;
+        // [SerializeField] private Vector3 daleAutoAlignOffsetRight;
+        //
+        // [Header("Miscellaneous")]
+        // [SerializeField] private GameObject coralStowStateGameObject;
+
+        private float _elevatorTargetHeight;
+        private float _armTargetAngle;
+        private float _wristTargetAngle;
+        private float _climbTargetAngle;
+        private float _rightFunnelFlapAngle;
+        private float _leftFunnelFlapAngle;
+        // private ReefscapeAutoAlign _align;
+        private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
+        private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
+        
+        protected override void Start()
+        {
+            base.Start();
+            
+            arm.SetPid(armPid);
+            wrist.SetPid(wristPid);
+            climb.SetPid(climbPid);
+            rightFunnelFlap.SetPid(funnelFlapPid);
+            leftFunnelFlap.SetPid(funnelFlapPid);
+            
+            _elevatorTargetHeight = 0;
+            _armTargetAngle = 0;
+            _wristTargetAngle = 0;
+            _climbTargetAngle = 0;
+            _rightFunnelFlapAngle = 0;
+            _leftFunnelFlapAngle = 0;
+
+            // _align = GetComponent<ReefscapeAutoAlign>();
+            
+            RobotGamePieceController.SetPreload(coralStowState);
+            _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
+            
+            _coralController.gamePieceStates = new[]
+            {
+                coralStowState
+            };
+            _coralController.intakes.Add(coralIntake);
+            
+            _algaeController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Algae.ToString());
+            
+            _algaeController.gamePieceStates = new[]
+            {
+                algaeStowState
+            };
+            _algaeController.intakes.Add(algaeIntake);
+            
+            // intakeAudioSource.clip = intakeClip;
+            // intakeAudioSource.loop = true;
+            // intakeAudioSource.playOnAwake = false;
+            //
+            // shooterAudioSource.clip = shooterClip;
+            // shooterAudioSource.loop = true;
+            // shooterAudioSource.playOnAwake = false;
+        }
+
+        private IEnumerator PlacePiece()
+        {
+            _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
+            _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, 0));
+            
+            yield return null;
+        }
+
+        private void SetSetpoint(QuixilverASetpoint setpoint)
+        {
+            _elevatorTargetHeight = setpoint.elevatorHeight;
+            _armTargetAngle = setpoint.armAngle;
+            _wristTargetAngle = setpoint.wristAngle;
+            _climbTargetAngle = setpoint.climbAngle;
+            _rightFunnelFlapAngle = 0f;
+            _leftFunnelFlapAngle = 0f;
+        }
+
+        private void UpdateSetpoints()
+        {
+            // if (!_lockedIntakeSlide) elevator.SetTarget(_elevatorTargetHeight);
+            elevator.SetTarget(_elevatorTargetHeight);
+            arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X).flipDirection();
+            wrist.SetTargetAngle(_wristTargetAngle).withAxis(JointAxis.X).flipDirection();
+            climb.SetTargetAngle(_climbTargetAngle).withAxis(JointAxis.X).flipDirection();
+            rightFunnelFlap.SetTargetAngle(_rightFunnelFlapAngle).withAxis(JointAxis.X);
+            leftFunnelFlap.SetTargetAngle(_leftFunnelFlapAngle).withAxis(JointAxis.X);
+        }
+
+        private void LateUpdate()
+        {
+            arm.UpdatePid(armPid);
+            wrist.UpdatePid(wristPid);
+            climb.UpdatePid(climbPid);
+            rightFunnelFlap.UpdatePid(funnelFlapPid);
+            leftFunnelFlap.UpdatePid(funnelFlapPid);
+        }
+        
+        private int GetLevelByState()
+        {
+            switch (CurrentSetpoint)
+            {
+                case ReefscapeSetpoints.L1:
+                    return 1;
+                case ReefscapeSetpoints.L2:
+                    return 2;
+                case ReefscapeSetpoints.L3:
+                    return 3;
+                case ReefscapeSetpoints.L4:
+                    return 4;
+                case ReefscapeSetpoints.LowAlgae:
+                    return 5;
+                case ReefscapeSetpoints.HighAlgae:
+                    return 6;
+            }
+            
+            switch (LastSetpoint)
+            {
+                case ReefscapeSetpoints.L1:
+                    return 1;
+                case ReefscapeSetpoints.L2:
+                    return 2;
+                case ReefscapeSetpoints.L3:
+                    return 3;
+                case ReefscapeSetpoints.L4:
+                    return 4;
+                case ReefscapeSetpoints.LowAlgae:
+                    return 5;
+                case ReefscapeSetpoints.HighAlgae:
+                    return 6;
+            }
+
+            return 0;
+        }
+        
+        private bool AtSetpoint(QuixilverASetpoint stp)
+        {
+            return
+                Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp.armAngle, 2f) &&
+                Utils.InAngularRange(wrist.GetSingleAxisAngle(JointAxis.X), stp.wristAngle, 2f);
+        }
+    
+        private bool AtSetpoint()
+        {
+            return
+                Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), _armTargetAngle, 2f) &&
+                Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), _wristTargetAngle, 2f);
+        }
+
+
+        private void FixedUpdate()
+        {
+            bool hasCoral = _coralController.HasPiece();
+            bool hasAlgae = _algaeController.HasPiece();
+            
+            // if (CurrentRobotMode == ReefscapeRobotMode.Coral)
+            // {
+            //     _align.offset = regularAutoAlignOffset;
+            // }
+            // else
+            // {
+            //     var flip = false;
+            //     // if (PlayerPrefs.GetInt("PerspectiveAutoAlign", 1) != 1) flip = !flip;
+            //     if (GetActiveCamera().transform.eulerAngles.y < 180) flip = !flip;
+            //     if (Math.Abs(transform.position.x) > 4.489323 && PlayerPrefs.GetInt("PerspectiveAutoAlign", 1) == 1) flip = !flip;
+            //     if (transform.position.x > 0) flip = !flip;
+            //     
+            //     if (AutoAlignLeftAction.inProgress)
+            //     {
+            //         _align.offset = flip ? daleAutoAlignOffsetLeft : daleAutoAlignOffsetRight;
+            //     }
+            //     else
+            //     {
+            //         _align.offset = flip ? daleAutoAlignOffsetRight : daleAutoAlignOffsetLeft;
+            //     }
+            // }
+            
+            _coralController.SetTargetState(coralStowState);
+            _algaeController.SetTargetState(algaeStowState);
+
+            switch (CurrentSetpoint)
+            {
+                case ReefscapeSetpoints.Stow:
+                    SetSetpoint(stow);
+                    break;
+                case ReefscapeSetpoints.Intake:
+                    SetSetpoint(intake);
+                    
+                    _coralController.RequestIntake(coralIntake, !hasCoral);
+                    break;
+                case ReefscapeSetpoints.Place:
+                    StartCoroutine(PlacePiece());
+                    break;
+                case ReefscapeSetpoints.L1:
+                    SetSetpoint(_coralController.atTarget ? l1 : intake);
+                    break;
+                case ReefscapeSetpoints.Stack:
+                    SetSetpoint(lollipopAlgae);
+                    
+                    _algaeController.RequestIntake(algaeIntake, IntakeAction.IsPressed() && !hasAlgae && !hasCoral);
+                    _coralController.RequestIntake(coralIntake, false);
+                    break;
+                case ReefscapeSetpoints.L2:
+                    SetSetpoint(_coralController.atTarget ? l2 : intake);
+                    break;
+                case ReefscapeSetpoints.LowAlgae:
+                    SetSetpoint(lowAlgae);
+                    
+                    _algaeController.RequestIntake(algaeIntake, IntakeAction.IsPressed() && !hasAlgae && !hasCoral);
+                    _coralController.RequestIntake(coralIntake, false);
+                    break;
+                case ReefscapeSetpoints.L3:
+                    SetSetpoint(_coralController.atTarget ? l3 : intake);
+                    break;
+                case ReefscapeSetpoints.HighAlgae:
+                    SetSetpoint(highAlgae);
+                    
+                    _algaeController.RequestIntake(algaeIntake, IntakeAction.IsPressed() && !hasAlgae && !hasCoral);
+                    _coralController.RequestIntake(coralIntake, false);
+                    break;
+                case ReefscapeSetpoints.L4:
+                    SetSetpoint(_coralController.atTarget ? l4 : intake);
+                    break;
+                case ReefscapeSetpoints.Processor:
+                    SetSetpoint(processor);
+                    break;
+                case ReefscapeSetpoints.Barge:
+                    SetSetpoint(barge);
+                    break;
+                case ReefscapeSetpoints.RobotSpecial:
+                    SetState(ReefscapeSetpoints.Stow);
+                    break;
+                case ReefscapeSetpoints.Climb:
+                    SetSetpoint(climbPrep);
+                    break;
+                case ReefscapeSetpoints.Climbed:
+                    SetSetpoint(climbed);
+                    break;
+            }
+            
+            UpdateRollers();
+            UpdateAudio();
+            UpdateSetpoints();
+        }
+
+        private void UpdateRollers()
+        {
+            
+        }
+
+        private void UpdateAudio()
+        {
+            
+        }
+    }
+}
