@@ -30,6 +30,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private GenericJoint leftFunnelFlap;
         [SerializeField] private BoxCollider[] wristColliders;
         [SerializeField] private CapsuleCollider[] wristCapsuleColliders;
+        [SerializeField] private GenericRoller[] funnelRollers;
+        [SerializeField] private GenericRoller[] endEffectorRollers;
+        [SerializeField] private BoxCollider coralBlocker;
         
         // [Header("Animation Joints (Wheels)")]
         // [SerializeField] private GenericAnimationJoint[] intakeWheels;
@@ -49,6 +52,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         
         [Header("Game Piece Stow States")]
         [SerializeField] private GamePieceState coralStowState;
+        [SerializeField] private GamePieceState funnelStowState;
         [SerializeField] private GamePieceState algaeStowState;
         
         [Header("Setpoints")]
@@ -99,6 +103,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private float _climbTargetAngle;
         private float _rightFunnelFlapAngle;
         private float _leftFunnelFlapAngle;
+        private bool _handoff;
         // private ReefscapeAutoAlign _align;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -119,6 +124,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _climbTargetAngle = 0;
             _rightFunnelFlapAngle = 0;
             _leftFunnelFlapAngle = 0;
+            _handoff = true;
 
             // _align = GetComponent<ReefscapeAutoAlign>();
             
@@ -127,6 +133,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             
             _coralController.gamePieceStates = new[]
             {
+                funnelStowState,
                 coralStowState
             };
             _coralController.intakes.Add(coralIntake);
@@ -239,11 +246,16 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             return 0;
         }
         
+        private bool CoralAtStow(GamePieceState stowState)
+        {
+            return _coralController.currentStateNum == stowState.stateNum && _coralController.atTarget;
+        }
+        
         private bool AtSetpoint(QuixilverASetpoint stp)
         {
             return
-                Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), stp.armAngle, 2f) &&
-                Utils.InAngularRange(wrist.GetSingleAxisAngle(JointAxis.X), stp.wristAngle, 2f);
+                Utils.InAngularRange(Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.armAngle, 360f), 2f) &&
+                                     Utils.InAngularRange(Mathf.Repeat(-wrist.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.wristAngle, 360f), 2f);
         }
     
         private bool AtSetpoint()
@@ -268,6 +280,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 collider.enabled = hasAlgae;
             }
             
+            coralBlocker.enabled = hasCoral;
+            
             // if (CurrentRobotMode == ReefscapeRobotMode.Coral)
             // {
             //     _align.offset = regularAutoAlignOffset;
@@ -289,8 +303,15 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             //         _align.offset = flip ? daleAutoAlignOffsetRight : daleAutoAlignOffsetLeft;
             //     }
             // }
+
+            if (!hasCoral) _handoff = false;
             
-            _coralController.SetTargetState(coralStowState);
+            if (CoralAtStow(funnelStowState) && CurrentRobotMode == ReefscapeRobotMode.Coral && AtSetpoint(intake))
+            {
+                _handoff = true;
+            }
+            
+            _coralController.SetTargetState(_handoff ? coralStowState : funnelStowState);
             _algaeController.SetTargetState(algaeStowState);
 
             switch (CurrentSetpoint)
@@ -313,7 +334,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     StartCoroutine(PlacePiece());
                     break;
                 case ReefscapeSetpoints.L1:
-                    SetSetpoint(_coralController.atTarget ? l1 : intake);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l1 : intake);
                     break;
                 case ReefscapeSetpoints.Stack:
                     SetSetpoint(lollipopAlgae);
@@ -322,7 +343,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     _coralController.RequestIntake(coralIntake, false);
                     break;
                 case ReefscapeSetpoints.L2:
-                    SetSetpoint(_coralController.atTarget ? l2 : intake);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l2 : intake);
                     break;
                 case ReefscapeSetpoints.LowAlgae:
                     SetSetpoint(lowAlgae);
@@ -331,7 +352,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     _coralController.RequestIntake(coralIntake, false);
                     break;
                 case ReefscapeSetpoints.L3:
-                    SetSetpoint(_coralController.atTarget ? l3 : intake);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l3 : intake);
                     break;
                 case ReefscapeSetpoints.HighAlgae:
                     SetSetpoint(highAlgae);
@@ -340,7 +361,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     _coralController.RequestIntake(coralIntake, false);
                     break;
                 case ReefscapeSetpoints.L4:
-                    SetSetpoint(_coralController.atTarget ? l4 : intake);
+                    SetSetpoint(CoralAtStow(coralStowState) ? l4 : intake);
                     break;
                 case ReefscapeSetpoints.Processor:
                     SetSetpoint(processor);
@@ -366,7 +387,21 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         private void UpdateRollers()
         {
-            
+            if (CurrentRobotMode == ReefscapeRobotMode.Coral && !_coralController.atTarget && IntakeAction.IsPressed())
+            {
+                foreach (var roller in funnelRollers)
+                {
+                    roller.ChangeAngularVelocity(800f);
+                }
+            }
+
+            if (_coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget && _coralController.HasPiece())
+            {
+                foreach (var roller in endEffectorRollers)
+                {
+                    roller.ChangeAngularVelocity(500f);
+                }
+            }
         }
 
         private void UpdateAudio()

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elevatorHeight: 12
   armAngle: 50
-  wristAngle: -65
+  wristAngle: -80
   climbAngle: 0
