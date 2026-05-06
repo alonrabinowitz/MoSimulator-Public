@@ -10,6 +10,7 @@ using MoSimCore.Enums;
 using MoSimLib;
 using RobotFramework;
 using RobotFramework.Components;
+using RobotFramework.Controllers.Drivetrain;
 using RobotFramework.Controllers.GamePieceSystem;
 using RobotFramework.Controllers.PidSystems;
 using RobotFramework.Enums;
@@ -96,6 +97,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private bool _intakeWheelsSpinning;
         private bool _shooterWheelsSpinning;
         private bool _isShooting;
+        private bool _lockDriving;
+
         // private int _levelSelected;
         private ReefscapeAutoAlign _align;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
@@ -114,6 +117,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _intakeWheelsSpinning = false;
             _shooterWheelsSpinning = false;
             _isShooting = false;
+            _lockDriving = false;
 
             _handoff = true;
             // _levelSelected = 0;
@@ -143,6 +147,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             if (!_coralController.HasPiece()) yield break;
             var coral = FindChildWithPrefix(coralStowStateGameObject.gameObject.transform, "Coral").gameObject;
             
+            DriveController.overideInput(new Vector2(0, 0), 0, DriveController.DriveMode.FieldOriented);
+            
             shooterWheels[0].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
             shooterWheels[1].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
             shooterWheels[2].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
@@ -153,52 +159,54 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             shooterWheels[7].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
             _shooterWheelsSpinning = true;
             _isShooting = true;
+            _lockDriving = true;
             
-            if (CurrentRobotMode == ReefscapeRobotMode.Coral)
+            switch (GetLevelByState())
             {
-                switch (GetLevelByState())
-                {
-                    case 1:
-                        _coralController.ReleaseGamePieceWithForce(l1Force);
-                        yield return new WaitForSeconds(l1DelayTorque.x);
-                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l1DelayTorque.y, 0, 0));
-                        break;
-                    case 2:
-                        _coralController.ReleaseGamePieceWithForce(l2Force);
-                        yield return new WaitForSeconds(l2DelayTorque.x);
-                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l2DelayTorque.y, 0, 0));
-                        break;
-                    case 3:
-                        _coralController.ReleaseGamePieceWithForce(l3Force);
-                        yield return new WaitForSeconds(l3DelayTorque.x);
-                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l3DelayTorque.y, 0, 0));
-                        break;
-                    case 4:
-                        _coralController.ReleaseGamePieceWithForce(l4Force);
-                        yield return new WaitForSeconds(l4DelayTorque.x);
-                        coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l4DelayTorque.y, 0, 0));
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                if (LastSetpoint == ReefscapeSetpoints.HighAlgae)
-                {
+                case 1:
+                    Debug.Log("1");
+                    _coralController.ReleaseGamePieceWithForce(l1Force);
+                    yield return new WaitForSeconds(l1DelayTorque.x);
+                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l1DelayTorque.y, 0, 0));
+                    break;
+                case 2:
+                    Debug.Log("2");
+                    _coralController.ReleaseGamePieceWithForce(l2Force);
+                    yield return new WaitForSeconds(l2DelayTorque.x);
+                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l2DelayTorque.y, 0, 0));
+                    break;
+                case 3:
+                    Debug.Log("3");
+                    _coralController.ReleaseGamePieceWithForce(l3Force);
+                    yield return new WaitForSeconds(l3DelayTorque.x);
+                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l3DelayTorque.y, 0, 0));
+                    break;
+                case 4:
+                    Debug.Log("4");
+                    _coralController.ReleaseGamePieceWithForce(l4Force);
+                    yield return new WaitForSeconds(l4DelayTorque.x);
+                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(l4DelayTorque.y, 0, 0));
+                    break;
+                case 5:
+                    Debug.Log("5");
+                    _coralController.ReleaseGamePieceWithForce(lowAlgaeForce);
+                    yield return new WaitForSeconds(lowAlgaeDelayTorque.x);
+                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(lowAlgaeDelayTorque.y, 0, 0));
+                    break;
+                case 6:
+                    Debug.Log("6");
                     _coralController.ReleaseGamePieceWithForce(highAlgaeForce);
                     yield return new WaitForSeconds(highAlgaeDelayTorque.x);
                     coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(highAlgaeDelayTorque.y, 0, 0));
-                }
-                else
-                {
-                    _coralController.ReleaseGamePieceWithForce(highAlgaeForce);
-                    yield return new WaitForSeconds(highAlgaeDelayTorque.x);
-                    coral.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(highAlgaeDelayTorque.y, 0, 0));
-                }
+                    break;
+                default:
+                    break;
             }
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
+            _lockDriving = false;
+
+            yield return new WaitForSeconds(0.2f);
             foreach (var wheel in shooterWheels)
                 wheel.VelocityRoller(0).useAxis(JointAxis.X);
             _shooterWheelsSpinning = false;
@@ -367,6 +375,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             {
                 _handoff = false;
             }
+
+            if (_lockDriving)
+            {
+                DriveController.overideInput(new Vector2(0, 0), 0, DriveController.DriveMode.FieldOriented);
+            }
             
             switch (CurrentSetpoint)
             {
@@ -403,7 +416,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                         SetState(ReefscapeSetpoints.Stow);
                         break;
                     }
-                    SetSetpoint(CoralAtStow(coralStowState) ? highAlgae : transfer);
+                    SetSetpoint(CoralAtStow(coralStowState) ? lowAlgae : transfer);
                     break;
                 case ReefscapeSetpoints.L3:
                     SetSetpoint(CoralAtStow(coralStowState) ? l3 : transfer);

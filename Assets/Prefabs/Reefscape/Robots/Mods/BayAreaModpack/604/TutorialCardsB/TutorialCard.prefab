@@ -35,18 +35,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: 'After intaking algae,
+      value: 'Shoot coral to
 
-        press intake again
-
-        to grab
-        a coral'
+        any level'
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -57,7 +59,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7bdc684814b224d62bb45c9093961996,
+      objectReference: {fileID: 21300000, guid: 3a75a59e7902446ba927978f43298c57,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

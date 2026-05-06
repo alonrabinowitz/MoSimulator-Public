@@ -279,7 +279,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         if (CurrentSetpoint == ReefscapeSetpoints.Place && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
         {
             yield return new WaitForSeconds(0.08f);
-            scoreSource.Play();
+            // scoreSource.Play();
             _playedScoreSound = true;
         }
         

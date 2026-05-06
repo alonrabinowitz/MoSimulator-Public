@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5f03c83ec7d496da05c4bdf8656adc, type: 3}
   m_Name: l2
   m_EditorClassIdentifier: 
-  elevatorHeight: 12
-  armAngle: 50
-  wristAngle: -80
+  elevatorHeight: 15.5
+  armAngle: 45
+  wristAngle: -82
   climbAngle: 0

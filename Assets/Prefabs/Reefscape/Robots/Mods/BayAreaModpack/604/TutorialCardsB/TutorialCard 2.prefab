@@ -21,17 +21,17 @@ PrefabInstance:
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0253519
+      value: 1.5892954
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0253519
+      value: 1.5892954
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0253519
+      value: 1.5892954
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: Go to processor position while in coral mode to grab a lollipop coral
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -72,7 +72,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c682ce41bc0744ad59fe14c6566e2343,
+      objectReference: {fileID: 21300000, guid: ec89179028f704e9faee9bfc6be98042,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

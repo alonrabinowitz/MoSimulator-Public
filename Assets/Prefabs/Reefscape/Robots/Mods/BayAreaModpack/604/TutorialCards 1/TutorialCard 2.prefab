@@ -35,13 +35,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: Use the robot special button to intake from the coral station
+      value: 'Yeet algae into
+
+        the barge'
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -52,12 +59,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8182b3f01f1dd416cb761358181723ea,
+      objectReference: {fileID: 21300000, guid: eb93f825e67744e0a8e98ff1b2164db2,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.2
+      value: -7.600006
       objectReference: {fileID: 0}
     - target: {fileID: 7647712989278884331, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

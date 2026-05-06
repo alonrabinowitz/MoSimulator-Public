@@ -41,11 +41,7 @@ PrefabInstance:
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: 'Vision Assist helps
-
-        you ground intake
-
-        coral!'
+      value: Hold a coral in the funnel while you have an algae
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -56,7 +52,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4057929c56ade4d1782e46d7563de2ea,
+      objectReference: {fileID: 21300000, guid: f60ed062bf02a4904a3d453b3148c586,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

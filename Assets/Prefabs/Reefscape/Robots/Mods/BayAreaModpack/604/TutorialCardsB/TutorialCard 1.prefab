@@ -35,13 +35,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735307774050568190, guid: 4f6390b7332e92b43aee0cf7f4734f72,
+        type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
       propertyPath: m_text
-      value: Toggle L1 mode to score coral with the ground intake
+      value: Use coral to remove algae from the reef
       objectReference: {fileID: 0}
     - target: {fileID: 6000603204863370303, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}
@@ -52,7 +57,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 95366925ecaf4428a81b65f0ec08c474,
+      objectReference: {fileID: 21300000, guid: 0f0a6e915418e433da2ff9d6a9573d3b,
         type: 3}
     - target: {fileID: 6942756068108250078, guid: 4f6390b7332e92b43aee0cf7f4734f72,
         type: 3}

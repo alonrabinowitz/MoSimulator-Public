@@ -374,7 +374,7 @@ public class BREAD: ReefscapeRobotBase
         if (CurrentSetpoint == ReefscapeSetpoints.Place && CurrentIntakeMode != ReefscapeIntakeMode.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
         {
             yield return new WaitForSeconds(0.08f);
-            scoreSource.Play();
+            // scoreSource.Play();
             _playedScoreSound = true;
         }
         
