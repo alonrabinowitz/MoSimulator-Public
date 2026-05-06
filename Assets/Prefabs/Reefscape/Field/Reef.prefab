@@ -6018,9 +6018,6 @@ MonoBehaviour:
   - {fileID: 8053798566567414587}
   - {fileID: 1031233452690220152}
   - {fileID: 7718017508004775382}
-  troughBounds: []
-  troughCenters: []
-  troughNormals: []
   troughObjects: []
   scoredInAuto: []
   stillScored: []
@@ -9947,6 +9944,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Algae (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 751394475562132655, guid: 95c0c178911c73144954c3c97ece3191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206692165714182447, guid: 95c0c178911c73144954c3c97ece3191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10020,6 +10022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Algae (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 751394475562132655, guid: 95c0c178911c73144954c3c97ece3191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8206692165714182447, guid: 95c0c178911c73144954c3c97ece3191,
         type: 3}
@@ -10791,6 +10798,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Algae (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 751394475562132655, guid: 95c0c178911c73144954c3c97ece3191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206692165714182447, guid: 95c0c178911c73144954c3c97ece3191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10864,6 +10876,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Algae (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 751394475562132655, guid: 95c0c178911c73144954c3c97ece3191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8206692165714182447, guid: 95c0c178911c73144954c3c97ece3191,
         type: 3}
@@ -11018,6 +11035,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Algae (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 751394475562132655, guid: 95c0c178911c73144954c3c97ece3191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206692165714182447, guid: 95c0c178911c73144954c3c97ece3191,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11091,6 +11113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Algae
+      objectReference: {fileID: 0}
+    - target: {fileID: 751394475562132655, guid: 95c0c178911c73144954c3c97ece3191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8206692165714182447, guid: 95c0c178911c73144954c3c97ece3191,
         type: 3}
