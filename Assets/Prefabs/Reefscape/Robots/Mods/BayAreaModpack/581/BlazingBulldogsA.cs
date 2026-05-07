@@ -8,6 +8,7 @@ using MoSimCore.BaseClasses.GameManagement;
 using MoSimCore.Enums;
 using MoSimLib;
 using RobotFramework.Components;
+using RobotFramework.Controllers.Drivetrain;
 using RobotFramework.Controllers.GamePieceSystem;
 using RobotFramework.Controllers.PidSystems;
 using RobotFramework.Enums;
@@ -100,6 +101,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private LayerMask _mask;
     private BlazingBulldogsASetpoint _currSetpoint;
     private bool _playedScoreSound;
+    private bool _blockDriving;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
@@ -127,6 +129,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         _mask = LayerMask.GetMask("Coral");
         _currSetpoint = stow;
         _playedScoreSound = false;
+        _blockDriving = false;
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -224,6 +227,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         }
         if (LastSetpoint == ReefscapeSetpoints.L2 || LastSetpoint == ReefscapeSetpoints.L3 ||  LastSetpoint == ReefscapeSetpoints.L4)
         {
+            if (_coralController.HasPiece()) _blockDriving = true;
             yield return new WaitForSeconds(LastSetpoint switch {
                 ReefscapeSetpoints.L2 => l2ScoreDelay,
                 ReefscapeSetpoints.L3 => l3ScoreDelay,
@@ -236,6 +240,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
                 ReefscapeSetpoints.L4 => 0f,
                 _ => 0f
             }, 0));
+            _blockDriving = false;
         }
         else
         {
@@ -440,6 +445,9 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         
         AlgaeSlider();
         CoralSlider();
+        
+        // if (_blockDriving) DriveController.overideInput(new Vector2(0, 0), 0, DriveController.DriveMode.FieldOriented);
+        if (CurrentSetpoint == ReefscapeSetpoints.Place && hasCoral) DriveController.overideInput(new Vector2(0, 0), 0, DriveController.DriveMode.FieldOriented);
 
         climbCollider.enabled = _cageDetector.OverlapBox().Length > 3;
 

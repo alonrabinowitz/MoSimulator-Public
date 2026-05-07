@@ -27080,11 +27080,11 @@ MonoBehaviour:
   l1Force: {x: 0, y: 0, z: 4.5}
   l1DelayTorque: {x: 0, y: 0}
   l2Force: {x: 0, y: 0.5, z: 6.1}
-  l2DelayTorque: {x: 0.06, y: 10.5}
+  l2DelayTorque: {x: 0.06, y: 11}
   l3Force: {x: 0, y: 0, z: 8}
-  l3DelayTorque: {x: 0.06, y: -14}
-  l4Force: {x: 0, y: 0, z: 11.3}
-  l4DelayTorque: {x: 0.07, y: -2}
+  l3DelayTorque: {x: 0.06, y: -13}
+  l4Force: {x: 0, y: 0, z: 11.15}
+  l4DelayTorque: {x: 0.07, y: -2.2}
   highAlgaeForce: {x: 0, y: 1, z: 10}
   highAlgaeDelayTorque: {x: 0.06, y: -5}
   lowAlgaeForce: {x: 0, y: 1, z: 12}
@@ -27093,7 +27093,7 @@ MonoBehaviour:
   intakeClip: {fileID: 8300000, guid: 602fb269d44b4964d8d4881108b75f19, type: 3}
   shooterAudioSource: {fileID: 5189584501462407728}
   shooterClip: {fileID: 8300000, guid: 9378423fe1c50f0419b9380e03b4ef96, type: 3}
-  regularAutoAlignOffset: {x: 0, y: 0, z: -3.5}
+  regularAutoAlignOffset: {x: -0.25, y: 0, z: -3.5}
   daleAutoAlignOffsetLeft: {x: -6.47, y: 0, z: 9}
   daleAutoAlignOffsetRight: {x: 6.47, y: 0, z: 9}
   coralStowStateGameObject: {fileID: 4267002357972650526}
@@ -27217,15 +27217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drivePID:
-    kP: 20
-    kI: 0.3
-    kD: 1.8
-    Max: 1.1
+    kP: 28
+    kI: 0.6
+    kD: 2.5
+    Max: 1.2
     Isaturation: 1.5
   rotatePID:
-    kP: 0.08
+    kP: 0.1
     kI: 0
-    kD: 0.003
+    kD: 0.0032
     Max: 0.8
     Isaturation: 1
   offset: {x: 0, y: 0, z: -3.5}

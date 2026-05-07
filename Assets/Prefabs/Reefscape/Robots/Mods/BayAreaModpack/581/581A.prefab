@@ -28091,10 +28091,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drivePID:
-    kP: 18
+    kP: 20
     kI: 0.1
     kD: 1.8
-    Max: 0.9
+    Max: 1.1
     Isaturation: 1
   rotatePID:
     kP: 0.07

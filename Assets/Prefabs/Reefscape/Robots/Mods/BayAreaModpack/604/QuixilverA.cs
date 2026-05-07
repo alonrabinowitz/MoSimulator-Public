@@ -207,11 +207,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         private void UpdateSetpoints()
         {
-            // if (!_lockedIntakeSlide) elevator.SetTarget(_elevatorTargetHeight);
+            climb.SetTargetAngle(_climbTargetAngle).withAxis(JointAxis.X).flipDirection().noWrap(270f);
+            // if (BaseGameManager.Instance.RobotState == RobotState.Disabled) elevator.SetTarget(elevator.GetElevatorHeight());
             elevator.SetTarget(_elevatorTargetHeight);
             arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X).flipDirection();
             wrist.SetTargetAngle(_wristTargetAngle).withAxis(JointAxis.X).flipDirection();
-            climb.SetTargetAngle(_climbTargetAngle).withAxis(JointAxis.X).flipDirection().noWrap(270f);
             rightFunnelFlap.SetTargetAngle(_rightFunnelFlapAngle).withAxis(JointAxis.X);
             leftFunnelFlap.SetTargetAngle(_leftFunnelFlapAngle).withAxis(JointAxis.X);
         }
@@ -295,7 +295,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             bool hasCoral = _coralController.HasPiece();
             bool hasAlgae = _algaeController.HasPiece();
 
-            coralBlocker.enabled = (!hasCoral || CoralAtStow(coralStowState)) && !(IntakeAction.IsPressed());
+            coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed());
+            // coralBlocker.enabled = (!hasCoral || CoralAtStow(coralStowState)) && !(IntakeAction.IsPressed());
 
             if (!hasCoral) _handoff = false;
             

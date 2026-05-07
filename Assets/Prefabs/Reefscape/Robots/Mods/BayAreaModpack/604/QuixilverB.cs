@@ -146,20 +146,22 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         {
             if (!_coralController.HasPiece()) yield break;
             var coral = FindChildWithPrefix(coralStowStateGameObject.gameObject.transform, "Coral").gameObject;
-            
-            DriveController.overideInput(new Vector2(0, 0), 0, DriveController.DriveMode.FieldOriented);
-            
-            shooterWheels[0].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[1].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[2].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[3].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[4].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[5].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[6].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
-            shooterWheels[7].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
-            _shooterWheelsSpinning = true;
-            _isShooting = true;
-            _lockDriving = true;
+
+            if (GetLevelByState() > 0)
+            {
+                DriveController.overideInput(new Vector2(0, 0), 0, DriveController.DriveMode.FieldOriented);
+                shooterWheels[0].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[1].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[2].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[3].VelocityRoller(-shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[4].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[5].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[6].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+                shooterWheels[7].VelocityRoller(shooterWheelSpeed).useAxis(JointAxis.X);
+                _shooterWheelsSpinning = true;
+                _isShooting = true;
+                _lockDriving = true;
+            }
             
             switch (GetLevelByState())
             {
