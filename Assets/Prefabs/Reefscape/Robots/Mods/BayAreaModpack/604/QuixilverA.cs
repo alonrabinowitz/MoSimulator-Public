@@ -104,6 +104,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private bool _handoff;
         private bool _isScoring;
         private ReefscapeAutoAlign _align;
+        private Vector3 _blueReef;
+        private Vector3 _redReef;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
         
@@ -125,6 +127,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _leftFunnelFlapAngle = 0;
             _handoff = true;
             _isScoring = false;
+            
+            _blueReef = GameObject.Find("BlueReef").transform.position;
+            _redReef = GameObject.Find("RedReef").transform.position;
 
             _align = GetComponent<ReefscapeAutoAlign>();
             
@@ -191,7 +196,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 //     roller.SetAngularVelocity(0);
                 // }
                 _isScoring = false;
-                if (CurrentSetpoint == ReefscapeSetpoints.Place) SetState(LastSetpoint);
+                if (CurrentSetpoint == ReefscapeSetpoints.Place)
+                {
+                    yield return new WaitUntil(() => DistanceToReef(GetClosestReef()) > 1.5f);
+                    if (CurrentSetpoint == ReefscapeSetpoints.Place) SetState(LastSetpoint);
+                }
             }
         }
 
@@ -223,6 +232,16 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             climb.UpdatePid(climbPid);
             rightFunnelFlap.UpdatePid(funnelFlapPid);
             leftFunnelFlap.UpdatePid(funnelFlapPid);
+        }
+        
+        private float DistanceToReef(Vector3 reefPos)
+        {
+            return Mathf.Sqrt(Mathf.Pow(transform.position.x - reefPos.x, 2) + Mathf.Pow(transform.position.z - reefPos.z, 2));
+        }
+        
+        private Vector3 GetClosestReef()
+        {
+            return DistanceToReef(_blueReef) < DistanceToReef(_redReef) ? _blueReef : _redReef;
         }
         
         private int GetLevelByState()
@@ -295,6 +314,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             bool hasCoral = _coralController.HasPiece();
             bool hasAlgae = _algaeController.HasPiece();
 
+            Debug.Log(DistanceToReef(GetClosestReef()));
+            
             coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed());
             // coralBlocker.enabled = (!hasCoral || CoralAtStow(coralStowState)) && !(IntakeAction.IsPressed());
 

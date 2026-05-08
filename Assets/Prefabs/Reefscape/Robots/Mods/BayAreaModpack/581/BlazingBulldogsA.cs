@@ -73,9 +73,9 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     [SerializeField] private AudioSource endEffectorRollerSource;
     [SerializeField] private AudioClip endEffectorRollerClip;
     
-    [Header("Score Audio")]
-    [SerializeField] private AudioSource scoreSource;
-    [SerializeField] private AudioClip scoreClip;
+    // [Header("Score Audio")]
+    // [SerializeField] private AudioSource scoreSource;
+    // [SerializeField] private AudioClip scoreClip;
     
     [Header("Climb Roller Audio")]
     [SerializeField] private AudioSource climbRollerSource;
@@ -100,7 +100,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private OverlapBoxBounds _visionDetect;
     private LayerMask _mask;
     private BlazingBulldogsASetpoint _currSetpoint;
-    private bool _playedScoreSound;
+    // private bool _playedScoreSound;
     private bool _blockDriving;
     
     private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
@@ -128,7 +128,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         _visionDetect = new OverlapBoxBounds(intakeVision);
         _mask = LayerMask.GetMask("Coral");
         _currSetpoint = stow;
-        _playedScoreSound = false;
+        // _playedScoreSound = false;
         _blockDriving = false;
         
         RobotGamePieceController.SetPreload(coralStowState);
@@ -143,9 +143,9 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         climbRollerSource.loop = true;
         climbRollerSource.Stop();
         
-        scoreSource.clip = scoreClip;
-        scoreSource.loop = false;
-        scoreSource.Stop();
+        // scoreSource.clip = scoreClip;
+        // scoreSource.loop = false;
+        // scoreSource.Stop();
         
         climbClickSource.clip = climbClickClip;
         climbClickSource.loop = false;
@@ -250,7 +250,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         if (hasAlgae)
         {
             _algaeController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3f));
-            _playedScoreSound = true;
+            // _playedScoreSound = true;
         }
         yield return new WaitForSeconds(0.2f);
         foreach (var roller in endEffectorRollers)
@@ -281,12 +281,12 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     private IEnumerator UpdateAudio()
     {
         // // Score Sound
-        if (CurrentSetpoint == ReefscapeSetpoints.Place && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
-        {
-            yield return new WaitForSeconds(0.08f);
-            // scoreSource.Play();
-            _playedScoreSound = true;
-        }
+        // if (CurrentSetpoint == ReefscapeSetpoints.Place && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
+        // {
+        //     yield return new WaitForSeconds(0.08f);
+        //     // scoreSource.Play();
+        //     _playedScoreSound = true;
+        // }
         
         // EE Rollers
         float endEffectorRollerSpeed = Mathf.Max(new float[]
@@ -319,6 +319,8 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         {
             climbRollerSource.Stop();
         }
+
+        yield return null;
     }
     
     private void CheckStationMode()
@@ -465,10 +467,10 @@ public class BlazingBulldogsA: ReefscapeRobotBase
             _coralController.RequestIntake(coralIntake, false);
         }
         
-        if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
-        {
-            _playedScoreSound = false;
-        }
+        // if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
+        // {
+        //     _playedScoreSound = false;
+        // }
 
         switch (CurrentSetpoint)
         {

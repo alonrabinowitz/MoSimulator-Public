@@ -74,9 +74,9 @@ public class BREAD: ReefscapeRobotBase
     [SerializeField] private AudioSource endEffectorRollerSource;
     [SerializeField] private AudioClip endEffectorRollerClip;
     
-    [Header("Score Audio")]
-    [SerializeField] private AudioSource scoreSource;
-    [SerializeField] private AudioClip scoreClip;
+    // [Header("Score Audio")]
+    // [SerializeField] private AudioSource scoreSource;
+    // [SerializeField] private AudioClip scoreClip;
     
     [Header("Auto Align Offsets")]
     [SerializeField] private float atSetpointOffset;
@@ -93,7 +93,7 @@ public class BREAD: ReefscapeRobotBase
     private float _l1BarTargetAngle;
     private bool _handoff;
     private int _levelSelected;
-    private bool _playedScoreSound;
+    // private bool _playedScoreSound;
     [SerializeField] private float l1IntakeAngle;
     [SerializeField] private float bargeDelay;
     [SerializeField] private float bargeForce;
@@ -117,7 +117,7 @@ public class BREAD: ReefscapeRobotBase
         _l1BarTargetAngle = 40;
         _handoff = true;
         _levelSelected = 0;
-        _playedScoreSound = false;
+        // _playedScoreSound = false;
         
         RobotGamePieceController.SetPreload(coralStowState);
         _coralController = RobotGamePieceController.GetPieceByName(ReefscapeGamePieceType.Coral.ToString());
@@ -150,9 +150,9 @@ public class BREAD: ReefscapeRobotBase
         endEffectorRollerSource.loop = true;
         endEffectorRollerSource.Stop();
         
-        scoreSource.clip = scoreClip;
-        scoreSource.loop = false;
-        scoreSource.Stop();
+        // scoreSource.clip = scoreClip;
+        // scoreSource.loop = false;
+        // scoreSource.Stop();
         
         _align = gameObject.GetComponent<ReefscapeAutoAlign>();
     }
@@ -232,7 +232,7 @@ public class BREAD: ReefscapeRobotBase
                 //     _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
                 // }
 
-                _playedScoreSound = true;
+                // _playedScoreSound = true;
 
                 foreach (var roller in endEffectorRollers)
                 {
@@ -283,7 +283,7 @@ public class BREAD: ReefscapeRobotBase
             //     _algaeController.ReleaseGamePieceWithForce(bargeAlgaeForce);
             // }
 
-            _playedScoreSound = true;
+            // _playedScoreSound = true;
             
             foreach (var roller in endEffectorRollers)
             {
@@ -371,12 +371,12 @@ public class BREAD: ReefscapeRobotBase
     private IEnumerator UpdateAudio()
     {
         // Score Sound
-        if (CurrentSetpoint == ReefscapeSetpoints.Place && CurrentIntakeMode != ReefscapeIntakeMode.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
-        {
-            yield return new WaitForSeconds(0.08f);
-            // scoreSource.Play();
-            _playedScoreSound = true;
-        }
+        // if (CurrentSetpoint == ReefscapeSetpoints.Place && CurrentIntakeMode != ReefscapeIntakeMode.L1 && !scoreSource.isPlaying && CurrentRobotMode == ReefscapeRobotMode.Coral && !_playedScoreSound)
+        // {
+        //     yield return new WaitForSeconds(0.08f);
+        //     // scoreSource.Play();
+        //     _playedScoreSound = true;
+        // }
         
         // Intake Rollers
         float intakeRollerSpeed = Mathf.Max(new float[]
@@ -425,6 +425,8 @@ public class BREAD: ReefscapeRobotBase
         {
             endEffectorRollerSource.Stop();
         }
+
+        yield return null;
     }
 
     private void UpdateAutoAlign()
@@ -493,10 +495,10 @@ public class BREAD: ReefscapeRobotBase
         _algaeController.SetTargetState(algaeStowState);
         // _coralController.SetTargetState(coralStowState);
 
-        if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
-        {
-            _playedScoreSound = false;
-        }
+        // if (hasCoral && CurrentSetpoint != ReefscapeSetpoints.Place)
+        // {
+        //     _playedScoreSound = false;
+        // }
         
         // Coral Stow Management
 
