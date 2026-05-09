@@ -563,7 +563,7 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         StartCoroutine(UpdateAudio());
         UpdateRollers(hasCoral, hasAlgae);
         CheckStationMode();
-        RunIntakeVision();
+        // RunIntakeVision();
     }
 }
 }

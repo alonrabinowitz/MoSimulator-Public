@@ -189,7 +189,7 @@ public class BREAD: ReefscapeRobotBase
 
         if (CurrentIntakeMode == ReefscapeIntakeMode.L1)
         {
-            _l1BarTargetAngle = 100;
+            _l1BarTargetAngle = 80;
         }
         else
         {

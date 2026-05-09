@@ -172,7 +172,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     4 => l4Force,
                     5 => processorForce,
                     6 => bargeForce,
-                    _ => new Vector3(0, 0, 2)
+                    _ => new Vector3(0, 0, 6)
                 };
 
                 if (GetLevelByState() == 6)
@@ -338,7 +338,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             switch (CurrentSetpoint)
             {
                 case ReefscapeSetpoints.Stow:
-                    SetSetpoint(stow);
+                    SetSetpoint(CoralAtStow(funnelStowState) || (hasCoral && _coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget) ? intake : stow);
                     break;
                 case ReefscapeSetpoints.Intake:
                     if (CurrentRobotMode == ReefscapeRobotMode.Coral)

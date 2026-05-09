@@ -6532,11 +6532,12 @@ AudioSource:
   m_GameObject: {fileID: 592749848034059299}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5573412175412287236, guid: ed4b10d8b69fb1240aaf15a3cba9d0bd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -21801,7 +21802,7 @@ MonoBehaviour:
   audioErrorThreshold: 3
   audioErrorDeltaThreshold: 25
   movementAudioPitchRange: {x: 0.95, y: 1.1}
-  movementAudioVolumeRange: {x: 0.1, y: 0.25}
+  movementAudioVolumeRange: {x: 0.1, y: 0.2}
   audioPitchSmoothSpeed: 8
   audioVolumeSmoothSpeed: 8
   audioResponseExponent: 0.75
@@ -28010,8 +28011,6 @@ MonoBehaviour:
   endEffectorRollerSource: {fileID: 3604628510124567922}
   endEffectorRollerClip: {fileID: 8300000, guid: 9378423fe1c50f0419b9380e03b4ef96,
     type: 3}
-  scoreSource: {fileID: 1888800487858774943}
-  scoreClip: {fileID: 8300000, guid: dee82b1bfecf40247ab259a0f4ddeb06, type: 3}
   climbRollerSource: {fileID: 3807295656828292008}
   climbRollerClip: {fileID: 8300000, guid: 602fb269d44b4964d8d4881108b75f19, type: 3}
   climbClickSource: {fileID: 6548249714125267958}
@@ -28058,7 +28057,7 @@ MonoBehaviour:
   minSpeed: 1
   maxSpeed: 60
   soundPitchRange: {x: 0.8, y: 1.2}
-  soundVolumeRange: {x: 0.3, y: 1}
+  soundVolumeRange: {x: 0.2, y: 0.4}
   stageClickClip: {fileID: 0}
   clickVolume: 0.1
   clickSoundCooldown: 0.2
@@ -40167,11 +40166,12 @@ AudioSource:
   m_GameObject: {fileID: 3691793062583037790}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5573412175412287236, guid: ed4b10d8b69fb1240aaf15a3cba9d0bd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.358
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -45995,11 +45995,12 @@ AudioSource:
   m_GameObject: {fileID: 4209281881564984720}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5573412175412287236, guid: ed4b10d8b69fb1240aaf15a3cba9d0bd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.307
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -46834,7 +46835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7235781046824041358
 Transform:
   m_ObjectHideFlags: 0
@@ -46859,7 +46860,8 @@ AudioSource:
   m_GameObject: {fileID: 4272558720029010104}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5573412175412287236, guid: ed4b10d8b69fb1240aaf15a3cba9d0bd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -72186,11 +72188,12 @@ AudioSource:
   m_GameObject: {fileID: 6772247680758837742}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5573412175412287236, guid: ed4b10d8b69fb1240aaf15a3cba9d0bd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.256
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -86812,7 +86815,7 @@ MonoBehaviour:
   audioErrorThreshold: 10
   audioErrorDeltaThreshold: 25
   movementAudioPitchRange: {x: 0.95, y: 1.1}
-  movementAudioVolumeRange: {x: 0.05, y: 0.15}
+  movementAudioVolumeRange: {x: 0.05, y: 0.1}
   audioPitchSmoothSpeed: 8
   audioVolumeSmoothSpeed: 8
   audioResponseExponent: 0.75

@@ -449,7 +449,7 @@ public class Firebots: ReefscapeRobotBase
         if (CurrentSetpoint == ReefscapeSetpoints.Place && LastSetpoint != ReefscapeSetpoints.L1 && !tootsieSource.isPlaying && !_justPlayedScoreSound && CurrentRobotMode == ReefscapeRobotMode.Coral)
         {
             yield return new WaitForSeconds(0.08f);
-            tootsieSource.Play();
+            // tootsieSource.Play();
             _justPlayedScoreSound = true;
             yield return new WaitForSeconds(2f);
             _justPlayedScoreSound = false;
