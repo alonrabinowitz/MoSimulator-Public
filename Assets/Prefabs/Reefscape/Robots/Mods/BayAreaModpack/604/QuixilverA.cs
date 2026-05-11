@@ -316,7 +316,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
             Debug.Log(DistanceToReef(GetClosestReef()));
             
-            coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed());
+            coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed() || hasAlgae);
             // coralBlocker.enabled = (!hasCoral || CoralAtStow(coralStowState)) && !(IntakeAction.IsPressed());
 
             if (!hasCoral) _handoff = false;
@@ -440,7 +440,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         private void UpdateRollers()
         {
-            if (CurrentRobotMode == ReefscapeRobotMode.Coral && !_coralController.atTarget && IntakeAction.IsPressed())
+            if (CurrentRobotMode == ReefscapeRobotMode.Coral && !_coralController.atTarget && IntakeAction.IsPressed() && !_algaeController.HasPiece())
             {
                 foreach (var roller in funnelRollers)
                 {

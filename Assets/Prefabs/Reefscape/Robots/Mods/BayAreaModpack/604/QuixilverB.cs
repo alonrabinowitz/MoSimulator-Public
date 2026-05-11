@@ -396,9 +396,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     }
                     break;
                 case ReefscapeSetpoints.Intake:
-                    SetSetpoint(intake);
+                    SetSetpoint((_coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget) ? transfer : intake);
                     
-                    _coralController.RequestIntake(coralIntake, !hasCoral);
+                    _coralController.RequestIntake(coralIntake, !hasCoral && AtSetpoint(intake));
                     break;
                 case ReefscapeSetpoints.Place:
                     StartCoroutine(PlacePiece());
