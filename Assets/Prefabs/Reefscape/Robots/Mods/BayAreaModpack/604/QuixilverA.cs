@@ -37,6 +37,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [Header("PIDs")]
         [SerializeField] private PidConstants armPid;
         [SerializeField] private PidConstants wristPid;
+        [SerializeField] private PidConstants wristL4AvoidancePid;
         [SerializeField] private PidConstants climbPid;
         [SerializeField] private PidConstants funnelFlapPid;
 
@@ -87,6 +88,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private Vector3 regularAutoAlignOffset;
         [SerializeField] private Vector3 autoAlignOffsetLeft;
         [SerializeField] private Vector3 autoAlignOffsetRight;
+        [SerializeField] private Vector3 autoAlignOffsetLeftL4Prep;
+        [SerializeField] private Vector3 autoAlignOffsetRightL4Prep;
         [SerializeField] private Vector3 algaeLeftFarAlign;
         [SerializeField] private Vector3 algaeRightFarAlign;
         [SerializeField] private Vector3 algaeLeftCloseAlign;
@@ -199,7 +202,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                 if (CurrentSetpoint == ReefscapeSetpoints.Place)
                 {
                     yield return new WaitUntil(() => DistanceToReef(GetClosestReef()) > 1.5f);
-                    if (CurrentSetpoint == ReefscapeSetpoints.Place) SetState(LastSetpoint);
+                    if (CurrentSetpoint == ReefscapeSetpoints.Place) SetState(ReefscapeSetpoints.Stow);
                 }
             }
         }
@@ -208,7 +211,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         {
             _elevatorTargetHeight = setpoint.elevatorHeight;
             _armTargetAngle = setpoint.armAngle;
-            _wristTargetAngle = setpoint.wristAngle;
+            _wristTargetAngle = (CurrentSetpoint == ReefscapeSetpoints.L4 && !ArmAtSetpoint(l4)) ? (-90f - Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f)) : setpoint.wristAngle;
             _climbTargetAngle = setpoint.climbAngle;
             _rightFunnelFlapAngle = 0f;
             _leftFunnelFlapAngle = 0f;
@@ -228,10 +231,12 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private void LateUpdate()
         {
             arm.UpdatePid(armPid);
-            wrist.UpdatePid(wristPid);
+            wrist.UpdatePid((CurrentSetpoint == ReefscapeSetpoints.L4 && !ArmAtSetpoint(l4)) ? wristL4AvoidancePid : wristPid);
             climb.UpdatePid(climbPid);
             rightFunnelFlap.UpdatePid(funnelFlapPid);
             leftFunnelFlap.UpdatePid(funnelFlapPid);
+            
+            Debug.Log((CurrentSetpoint == ReefscapeSetpoints.L4 && !ArmAtSetpoint(l4)));
         }
         
         private float DistanceToReef(Vector3 reefPos)
@@ -299,6 +304,12 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             return
                 Utils.InAngularRange(Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.armAngle, 360f), 2f) &&
                                      Utils.InAngularRange(Mathf.Repeat(-wrist.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.wristAngle, 360f), 2f);
+        }
+        
+        private bool ArmAtSetpoint(QuixilverASetpoint stp)
+        {
+            return
+                Utils.InAngularRange(Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.armAngle, 360f), 2f);
         }
     
         private bool AtSetpoint()
@@ -435,6 +446,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     else _align.offset = flip ? algaeRightFarAlign : algaeLeftFarAlign;
                 }
             }
+            else if ((GetLevelByState() == 4 && !AtSetpoint(l4)) || CurrentSetpoint == ReefscapeSetpoints.Stow) _align.offset = flip ? autoAlignOffsetLeftL4Prep : autoAlignOffsetRightL4Prep;
             else _align.offset = flip ? autoAlignOffsetLeft : autoAlignOffsetRight;
         }
 

@@ -22273,10 +22273,16 @@ MonoBehaviour:
     Max: 4.7
     Isaturation: 0
   wristPid:
-    kP: 5
+    kP: 4.5
     kI: 0
-    kD: 0.2
+    kD: 0.25
     Max: 7
+    Isaturation: 0
+  wristL4AvoidancePid:
+    kP: 15
+    kI: 0
+    kD: 0.4
+    Max: 17
     Isaturation: 0
   climbPid:
     kP: 0.6
@@ -22342,6 +22348,8 @@ MonoBehaviour:
   regularAutoAlignOffset: {x: 0, y: 0, z: 2}
   autoAlignOffsetLeft: {x: 0.2, y: 0, z: 2}
   autoAlignOffsetRight: {x: -0.5, y: 0, z: 2}
+  autoAlignOffsetLeftL4Prep: {x: 0.2, y: 0, z: -3.5}
+  autoAlignOffsetRightL4Prep: {x: -0.5, y: 0, z: -3.5}
   algaeLeftFarAlign: {x: -7, y: 0, z: -4}
   algaeRightFarAlign: {x: 7, y: 0, z: -4}
   algaeLeftCloseAlign: {x: -7, y: 0, z: -2}
