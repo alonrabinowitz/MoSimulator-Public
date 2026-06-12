@@ -235,8 +235,6 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             climb.UpdatePid(climbPid);
             rightFunnelFlap.UpdatePid(funnelFlapPid);
             leftFunnelFlap.UpdatePid(funnelFlapPid);
-            
-            Debug.Log((CurrentSetpoint == ReefscapeSetpoints.L4 && !ArmAtSetpoint(l4)));
         }
         
         private float DistanceToReef(Vector3 reefPos)

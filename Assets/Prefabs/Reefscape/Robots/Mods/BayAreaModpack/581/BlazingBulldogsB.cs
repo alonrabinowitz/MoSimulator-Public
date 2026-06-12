@@ -115,6 +115,10 @@ public class BlazingBulldogsB: ReefscapeRobotBase
     [SerializeField] private AudioSource climbClickSource;
     [SerializeField] private AudioClip climbClickClip;
     
+    [Header("Algae Stall Audio")]
+    [SerializeField] private AudioSource algaeStallSource;
+    [SerializeField] private AudioClip algaeStallClip;
+    
     [Header("Auto Align")]
     [SerializeField] private float zOffset;
     [SerializeField] private float xOffset;
@@ -200,6 +204,10 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         climbClickSource.clip = climbClickClip;
         climbClickSource.loop = false;
         climbClickSource.Stop();
+        
+        algaeStallSource.clip = algaeStallClip;
+        algaeStallSource.loop = true;
+        algaeStallSource.Stop();
 
         _coralController.gamePieceStates = new[]
         {
@@ -246,7 +254,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         if (DistanceToReef(GetClosestReef()) < reefAvoidanceDistance)
         {
             // armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 135 : 225;
-            armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 100 : 260;
+            armNoWarpAngle = IsFacingReef(GetClosestReef()) ? 105 : 255;
         }
         else if (DistanceToBarge() < bargeAvoidanceDistance)
         {
@@ -266,7 +274,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         }
         
         // if (elevator.GetElevatorHeight() < 40 && targetOnRight != armOnRight && !Utils.InAngularRange(_armTargetAngle, 180, 10) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X), 180, 20)) 
-        if (elevator.GetElevatorHeight() < 40 && !Utils.InAngularRange(_armTargetAngle%360, 110, 100) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X)%360, 110, 100))
+        if (elevator.GetElevatorHeight() < 40 && !Utils.InAngularRange(_armTargetAngle%360, 180, 60) && !Utils.InAngularRange(arm.GetSingleAxisAngle(JointAxis.X)%360, 180, 60))
         {
             armNoWarpAngle = 180;
         }
@@ -483,6 +491,16 @@ public class BlazingBulldogsB: ReefscapeRobotBase
         else if (climbRollerSpeed <= 5 && climbRollerSource.isPlaying)
         {
             climbRollerSource.Stop();
+        }
+        
+        // Algae Stall Sound
+        if (_algaeController.HasPiece() && _algaeController.atTarget && !algaeStallSource.isPlaying)
+        {
+            algaeStallSource.Play();
+        }
+        else if (!_algaeController.HasPiece() && !_algaeController.atTarget && algaeStallSource.isPlaying)
+        {
+            algaeStallSource.Stop();
         }
 
         yield return null;

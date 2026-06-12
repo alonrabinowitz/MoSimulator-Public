@@ -84,6 +84,10 @@ public class BlazingBulldogsA: ReefscapeRobotBase
     [Header("Climb Click Audio")]
     [SerializeField] private AudioSource climbClickSource;
     [SerializeField] private AudioClip climbClickClip;
+    
+    [Header("Algae Stall Audio")]
+    [SerializeField] private AudioSource algaeStallSource;
+    [SerializeField] private AudioClip algaeStallClip;
 
     [Header("Miscellaneous")]
     [SerializeField] private float l4ScoreDelay;
@@ -150,6 +154,10 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         climbClickSource.clip = climbClickClip;
         climbClickSource.loop = false;
         climbClickSource.Stop();
+        
+        algaeStallSource.clip = algaeStallClip;
+        algaeStallSource.loop = true;
+        algaeStallSource.Stop();
 
         _coralController.gamePieceStates = new[]
         {
@@ -318,6 +326,16 @@ public class BlazingBulldogsA: ReefscapeRobotBase
         else if (climbRollerSpeed <= 5 && climbRollerSource.isPlaying)
         {
             climbRollerSource.Stop();
+        }
+        
+        // Algae Stall Sound
+        if (_algaeController.HasPiece() && _algaeController.atTarget && !algaeStallSource.isPlaying)
+        {
+            algaeStallSource.Play();
+        }
+        else if (!_algaeController.HasPiece() && !_algaeController.atTarget && algaeStallSource.isPlaying)
+        {
+            algaeStallSource.Stop();
         }
 
         yield return null;
