@@ -36,6 +36,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         [Header("PIDs")]
         [SerializeField] private PidConstants armPid;
+        [SerializeField] private PidConstants armL4Pid;
         [SerializeField] private PidConstants wristPid;
         [SerializeField] private PidConstants wristL4AvoidancePid;
         [SerializeField] private PidConstants climbPid;
@@ -95,7 +96,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private Vector3 algaeLeftCloseAlign;
         [SerializeField] private Vector3 algaeRightCloseAlign;
         //
-        // [Header("Miscellaneous")]
+        [Header("Miscellaneous")]
+        [SerializeField] private float l4SequenceElevDelay;
+        [SerializeField] private float l4SequenceWristDelay;
         // [SerializeField] private GameObject coralStowStateGameObject;
 
         private float _elevatorTargetHeight;
@@ -111,6 +114,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private Vector3 _redReef;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _coralController;
         private RobotGamePieceController<ReefscapeGamePiece, ReefscapeGamePieceData>.GamePieceControllerNode _algaeController;
+        private float _l4DelayTimer;
         
         protected override void Start()
         {
@@ -130,6 +134,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _leftFunnelFlapAngle = 0;
             _handoff = true;
             _isScoring = false;
+            _l4DelayTimer = 0f;
             
             _blueReef = GameObject.Find("BlueReef").transform.position;
             _redReef = GameObject.Find("RedReef").transform.position;
@@ -209,9 +214,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         private void SetSetpoint(QuixilverASetpoint setpoint)
         {
-            _elevatorTargetHeight = setpoint.elevatorHeight;
+            if (BaseGameManager.Instance.RobotState == RobotState.Disabled) return;
+            
+            _elevatorTargetHeight = (CurrentSetpoint == ReefscapeSetpoints.L4 && (!ArmAtSetpoint(l4, 10f) || _l4DelayTimer < l4SequenceElevDelay)) ? stow.elevatorHeight : setpoint.elevatorHeight;
             _armTargetAngle = setpoint.armAngle;
-            _wristTargetAngle = (CurrentSetpoint == ReefscapeSetpoints.L4 && !ArmAtSetpoint(l4)) ? (-90f - Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f)) : setpoint.wristAngle;
+            _wristTargetAngle = (CurrentSetpoint == ReefscapeSetpoints.L4 && (!ArmAtSetpoint(l4) || _l4DelayTimer < l4SequenceWristDelay)) ? (ArmAtSetpoint(l4, 10f) ? -40f : 90f - Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f)) : setpoint.wristAngle;
             _climbTargetAngle = setpoint.climbAngle;
             _rightFunnelFlapAngle = 0f;
             _leftFunnelFlapAngle = 0f;
@@ -220,7 +227,6 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private void UpdateSetpoints()
         {
             climb.SetTargetAngle(_climbTargetAngle).withAxis(JointAxis.X).flipDirection().noWrap(270f);
-            // if (BaseGameManager.Instance.RobotState == RobotState.Disabled) elevator.SetTarget(elevator.GetElevatorHeight());
             elevator.SetTarget(_elevatorTargetHeight);
             arm.SetTargetAngle(_armTargetAngle).withAxis(JointAxis.X).flipDirection();
             wrist.SetTargetAngle(_wristTargetAngle).withAxis(JointAxis.X).flipDirection();
@@ -230,8 +236,9 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
 
         private void LateUpdate()
         {
-            arm.UpdatePid(armPid);
-            wrist.UpdatePid((CurrentSetpoint == ReefscapeSetpoints.L4 && !ArmAtSetpoint(l4)) ? wristL4AvoidancePid : wristPid);
+            arm.UpdatePid((CurrentSetpoint == ReefscapeSetpoints.L4) ? armL4Pid : armPid);
+            wrist.UpdatePid((CurrentSetpoint == ReefscapeSetpoints.L4 && ArmAtSetpoint(l4, 8f)) ? wristL4AvoidancePid : wristPid);
+            // wrist.UpdatePid(wristPid);
             climb.UpdatePid(climbPid);
             rightFunnelFlap.UpdatePid(funnelFlapPid);
             leftFunnelFlap.UpdatePid(funnelFlapPid);
@@ -304,10 +311,10 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                                      Utils.InAngularRange(Mathf.Repeat(-wrist.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.wristAngle, 360f), 2f);
         }
         
-        private bool ArmAtSetpoint(QuixilverASetpoint stp)
+        private bool ArmAtSetpoint(QuixilverASetpoint stp, float tolerance = 4f)
         {
             return
-                Utils.InAngularRange(Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.armAngle, 360f), 2f);
+                Utils.InAngularRange(Mathf.Repeat(-arm.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.armAngle, 360f), tolerance);
         }
     
         private bool AtSetpoint()
@@ -322,8 +329,6 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         {
             bool hasCoral = _coralController.HasPiece();
             bool hasAlgae = _algaeController.HasPiece();
-
-            Debug.Log(DistanceToReef(GetClosestReef()));
             
             coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed() || hasAlgae);
             // coralBlocker.enabled = (!hasCoral || CoralAtStow(coralStowState)) && !(IntakeAction.IsPressed());
@@ -334,6 +339,14 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             {
                 _handoff = true;
             }
+
+            if (ArmAtSetpoint(l4, 10f)) _l4DelayTimer += Time.fixedDeltaTime;
+            else _l4DelayTimer = 0f;
+            
+            UpdateAudio();
+            UpdateSetpoints();
+            
+            if (BaseGameManager.Instance.RobotState == RobotState.Disabled) return;
             
             _coralController.SetTargetState(_handoff ? coralStowState : funnelStowState);
             _algaeController.SetTargetState(algaeStowState);
@@ -419,9 +432,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             }
             
             UpdateRollers();
-            UpdateAudio();
             UpdateAutoAlign();
-            UpdateSetpoints();
         }
 
         private void UpdateAutoAlign()
