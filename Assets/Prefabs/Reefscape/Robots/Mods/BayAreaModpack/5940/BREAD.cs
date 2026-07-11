@@ -310,6 +310,10 @@ public class BREAD: ReefscapeRobotBase
                 // _coralController.ReleaseGamePieceWithForce(new Vector3(0, -3f, 2f));
                 _coralController.ReleaseGamePieceWithContinuedForce(new Vector3(0, 0, 3f), 1f, 0.5f);
             }
+            else if (LastSetpoint == ReefscapeSetpoints.L1)
+            {
+                _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 3.5f));
+            }
             else
             {
                 _coralController.ReleaseGamePieceWithForce(new Vector3(0, 0, 5f));
