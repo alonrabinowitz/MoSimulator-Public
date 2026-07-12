@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamNumber: 604
   teamName: Quixilver
-  robotPrefab: {fileID: 2534371394911199621, guid: 1305fc97d7b6b402c93b87dee8993146,
+  robotPrefab: {fileID: 2534371394911199621, guid: 86ad52386dfb14f1390831eee6d542ad,
     type: 3}
   robotPreloadGamePiece: {fileID: 2185987706872048638, guid: 970bdf84a203d9a4b8dc602974341a07,
     type: 3}
