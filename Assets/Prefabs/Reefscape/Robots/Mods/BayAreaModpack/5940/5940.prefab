@@ -3373,7 +3373,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -6457,6 +6457,7 @@ GameObject:
   - component: {fileID: 5995834044826376311}
   - component: {fileID: 2098908241608467210}
   - component: {fileID: 1716256660566705226}
+  - component: {fileID: 1516763906758302541}
   m_Layer: 6
   m_Name: P-0215
   m_TagString: Untagged
@@ -6531,6 +6532,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1516763906758302541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481963079338967351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0011230282, y: 0.000063500025, z: 0.0010159716}
+  m_Center: {x: 0.0016092639, y: 0.00009525002, z: 0.009652017}
 --- !u!1 &492535055656635312
 GameObject:
   m_ObjectHideFlags: 0

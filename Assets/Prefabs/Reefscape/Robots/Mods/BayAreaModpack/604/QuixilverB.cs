@@ -23,7 +23,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
     public class QuixilverB: ReefscapeRobotBase
     {
         [Header("Components")]
-        [SerializeField] private GenericElevator elevator;
+        // [SerializeField] private GenericElevator elevator;
         [SerializeField] private GenericJoint shooterPivot;
         [SerializeField] private GenericJoint intakePivot;
         [SerializeField] private GenericRoller leftIntakeRollerJoint;
@@ -31,7 +31,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private GenericRoller topIntakeRoller;
         [SerializeField] private Transform leftIntakeSensor;
         [SerializeField] private Transform rightIntakeSensor;
-        [SerializeField] private GenericJoint slideJoint;
+        // [SerializeField] private GenericJoint slideJoint;
         
         [Header("Animation Joints (Wheels)")]
         [SerializeField] private GenericAnimationJoint[] intakeWheels;
@@ -228,7 +228,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         private void UpdateSetpoints()
         {
             // if (!_lockedIntakeSlide) elevator.SetTarget(_elevatorTargetHeight);
-            elevator.SetTarget(_elevatorTargetHeight);
+            // elevator.SetTarget(_elevatorTargetHeight);
             intakePivot.SetTargetAngle(_intakeTargetAngle).withAxis(JointAxis.X).flipDirection().noWrap(-90f);
             shooterPivot.SetTargetAngle(_shooterTargetAngle).withAxis(JointAxis.X).flipDirection();
         }

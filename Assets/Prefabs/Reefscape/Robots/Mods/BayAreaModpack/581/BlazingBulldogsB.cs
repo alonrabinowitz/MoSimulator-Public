@@ -418,7 +418,7 @@ public class BlazingBulldogsB: ReefscapeRobotBase
             }
         }
         
-        if (IntakeAction.IsPressed() && (CurrentSetpoint == ReefscapeSetpoints.Stack || CurrentSetpoint == ReefscapeSetpoints.RobotSpecial || CurrentRobotMode == ReefscapeRobotMode.Algae) && !(hasAlgae || CoralAtStow(coralStowState)))
+        if (IntakeAction.IsPressed() && (CurrentSetpoint == ReefscapeSetpoints.Stack || CurrentSetpoint == ReefscapeSetpoints.RobotSpecial || CurrentSetpoint == ReefscapeSetpoints.LowAlgae || CurrentSetpoint == ReefscapeSetpoints.HighAlgae || CurrentRobotMode == ReefscapeRobotMode.Algae) && !(hasAlgae || CoralAtStow(coralStowState)))
         {
             foreach (var roller in endEffectorRollers)
             {
