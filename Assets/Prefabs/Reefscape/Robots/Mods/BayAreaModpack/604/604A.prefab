@@ -62406,7 +62406,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00015875
+  m_Radius: 0.0002
   m_Height: 0.000979134
   m_Direction: 0
   m_Center: {x: -0.0002684421, y: 4.656612e-10, z: -0.001524}
