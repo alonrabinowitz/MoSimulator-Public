@@ -46,10 +46,18 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
         [SerializeField] private ReefscapeGamePieceIntake coralIntake;
         [SerializeField] private ReefscapeGamePieceIntake algaeIntake;
         
+        // [Header("Intake Targets")]
+        // [SerializeField] private Transform rightIntakeTarget;
+        // [SerializeField] private Transform leftIntakeTarget;
+        // [SerializeField] private Transform middleIntakeTarget;
+        
         [Header("Game Piece Stow States")]
         [SerializeField] private GamePieceState coralStowState;
         [SerializeField] private GamePieceState funnelStowState;
         [SerializeField] private GamePieceState algaeStowState;
+        [SerializeField] private GamePieceState[] middleCoralTrack;
+        [SerializeField] private GamePieceState[] rightCoralTrack;
+        [SerializeField] private GamePieceState[] leftCoralTrack;
         
         [Header("Setpoints")]
         [SerializeField] private QuixilverASetpoint stow;
@@ -147,7 +155,19 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             _coralController.gamePieceStates = new[]
             {
                 funnelStowState,
-                coralStowState
+                coralStowState,
+                middleCoralTrack[0],
+                middleCoralTrack[1],
+                middleCoralTrack[2],
+                rightCoralTrack[0],
+                rightCoralTrack[1],
+                rightCoralTrack[2],
+                rightCoralTrack[3],
+                rightCoralTrack[4],
+                leftCoralTrack[0],
+                leftCoralTrack[1],
+                leftCoralTrack[2],
+                leftCoralTrack[3]
             };
             _coralController.intakes.Add(coralIntake);
             
@@ -347,8 +367,31 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             UpdateSetpoints();
             
             if (BaseGameManager.Instance.RobotState == RobotState.Disabled) return;
-            
-            _coralController.SetTargetState(_handoff ? coralStowState : funnelStowState);
+
+            if (_coralController.atTarget)
+            {
+                _coralController.SetTargetState(_coralController.currentStateNum switch
+                {
+                    2 => coralStowState,
+                    3 => middleCoralTrack[1],
+                    4 => middleCoralTrack[2],
+                    5 => AtSetpoint(intake) ? coralStowState : middleCoralTrack[2],
+                    6 => rightCoralTrack[1],
+                    7 => rightCoralTrack[2],
+                    8 => rightCoralTrack[3],
+                    9 => rightCoralTrack[4],
+                    10 => AtSetpoint(intake) ? coralStowState : rightCoralTrack[4],
+                    11 => leftCoralTrack[1],
+                    12 => leftCoralTrack[2],
+                    13 => leftCoralTrack[3],
+                    14 => AtSetpoint(intake) ? coralStowState : leftCoralTrack[3],
+                    _ => coralStowState
+                });
+            }
+            else
+            {
+                _coralController.SetTargetState(_coralController.GetCurrentState());
+            }
             _algaeController.SetTargetState(algaeStowState);
             
             if (!IntakeAction.IsPressed() && !hasAlgae && !hasCoral)
@@ -360,12 +403,12 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             switch (CurrentSetpoint)
             {
                 case ReefscapeSetpoints.Stow:
-                    SetSetpoint(CoralAtStow(funnelStowState) || (hasCoral && _coralController.currentStateNum == coralStowState.stateNum && !_coralController.atTarget) ? intake : stow);
+                    SetSetpoint(hasCoral && !CoralAtStow(coralStowState) ? intake : stow);
                     break;
                 case ReefscapeSetpoints.Intake:
                     if (CurrentRobotMode == ReefscapeRobotMode.Coral)
                     {
-                        SetSetpoint((CoralAtStow(funnelStowState) || _coralController.currentStateNum == coralStowState.stateNum) ? intake : stow);
+                        SetSetpoint(!CoralAtStow(coralStowState) ? intake : stow);
                     }
                     else
                     {
@@ -433,6 +476,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             
             UpdateRollers();
             UpdateAutoAlign();
+            UpdateIntakeTarget();
         }
 
         private void UpdateAutoAlign()
@@ -465,7 +509,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             {
                 foreach (var roller in funnelRollers)
                 {
-                    roller.ChangeAngularVelocity(800f);
+                    roller.ChangeAngularVelocity(3000f);
                 }
             }
 
@@ -524,6 +568,34 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             else if (funnelRollerSpeed <= 5 && funnelAudioSource.isPlaying)
             {
                 funnelAudioSource.Stop();
+            }
+        }
+
+        private void UpdateIntakeTarget()
+        {
+            if (!coralIntake.hasGamePiece) return;
+
+            var midDistance = Vector3.Distance(middleCoralTrack[0].stateTarget.position, coralIntake.GamePiece.transform.position);
+            var leftDistance = Vector3.Distance(leftCoralTrack[0].stateTarget.position, coralIntake.GamePiece.transform.position);
+            var rightDistance = Vector3.Distance(rightCoralTrack[0].stateTarget.position, coralIntake.GamePiece.transform.position);
+
+            if (midDistance <= leftDistance && midDistance <= rightDistance)
+            {
+                coralIntake.ChangeTarget(middleCoralTrack[0].stateTarget);
+                _coralController.SetTargetState(middleCoralTrack[0]);
+                Debug.Log("setting state number " + _coralController.currentStateNum);
+            }
+            else if (leftDistance <= rightDistance)
+            {
+                coralIntake.ChangeTarget(leftCoralTrack[0].stateTarget);
+                _coralController.SetTargetState(leftCoralTrack[0]);
+                Debug.Log("setting state number " + _coralController.currentStateNum);
+            }
+            else
+            {
+                coralIntake.ChangeTarget(rightCoralTrack[0].stateTarget);
+                _coralController.SetTargetState(rightCoralTrack[0]);
+                Debug.Log("setting state number " + _coralController.currentStateNum);
             }
         }
     }
