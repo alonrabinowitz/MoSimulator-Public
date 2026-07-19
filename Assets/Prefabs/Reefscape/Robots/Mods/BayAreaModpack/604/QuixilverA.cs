@@ -331,6 +331,11 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                                      Utils.InAngularRange(Mathf.Repeat(-wrist.GetSingleAxisAngle(JointAxis.X), 360f), Mathf.Repeat(stp.wristAngle, 360f), 2f);
         }
         
+        private bool ElevatorAtSetpoint(QuixilverASetpoint stp)
+        {
+            return Utils.InRange(elevator.GetElevatorHeight(), stp.elevatorHeight, 2f);
+        }
+        
         private bool ArmAtSetpoint(QuixilverASetpoint stp, float tolerance = 4f)
         {
             return
@@ -350,8 +355,8 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
             bool hasCoral = _coralController.HasPiece();
             bool hasAlgae = _algaeController.HasPiece();
             
-            coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed() || hasAlgae);
-            // coralBlocker.enabled = (!hasCoral || CoralAtStow(coralStowState)) && !(IntakeAction.IsPressed());
+            coralBlocker.enabled = (!hasCoral || _coralController.atTarget) && (CurrentRobotMode != ReefscapeRobotMode.Coral || !IntakeAction.IsPressed() || hasAlgae || !ElevatorAtSetpoint(intake));
+            // coralBlocker.enabled = (hasCoral && !_coralController.atTarget) || (CurrentRobotMode == ReefscapeRobotMode.Coral && IntakeAction.IsPressed() && !hasAlgae);
 
             if (!hasCoral) _handoff = false;
             
@@ -416,7 +421,7 @@ namespace Prefabs.Reefscape.Robots.Mods.BayAreaModpack._604
                     }
                     
                     
-                    _coralController.RequestIntake(coralIntake, !hasCoral && !hasAlgae && CurrentRobotMode == ReefscapeRobotMode.Coral);
+                    _coralController.RequestIntake(coralIntake, !hasCoral && !hasAlgae && CurrentRobotMode == ReefscapeRobotMode.Coral && ElevatorAtSetpoint(intake));
                     _algaeController.RequestIntake(algaeIntake, !hasCoral && !hasAlgae && CurrentRobotMode == ReefscapeRobotMode.Algae);
                     break;
                 case ReefscapeSetpoints.Place:
