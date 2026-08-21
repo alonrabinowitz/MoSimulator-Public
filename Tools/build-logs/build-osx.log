@@ -1,0 +1,2024 @@
+Unity Editor version:    2023.2.22f1 (6b19bf4f8115)
+Branch:                  2023.2/release
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 26.5.1 (Build 25F80)
+Darwin version:          25.5.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to the License Client on channel: "LicenseClient-alonrab" at "2026-08-21T01:12:44.726814Z"
+[Licensing::Client] Error: Code 10 while verifying Licensing Client signature (process Id: 47277, path: "/Applications/Unity Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client")
+[Licensing::Module] Error: LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              7fee2b7873374fad84c10dd059a60f82
+  Correlation Id:          82b470eac3775e4efb32b38b899ab9a3
+  External correlation Id: 1045758629399228032
+  Machine Id:              Xx9BHgfhjT0mrmIl5IMWt6Qrg+0=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-alonrab" (connect: 0.00s, validation: 0.03s, handshake: 0.29s)
+[Licensing::IpcConnector] Successfully connected to the License Notification on channel: "LicenseClient-alonrab-notifications" at "2026-08-21T01:12:45.045173Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully updated license
+[Licensing::Client] Successfully resolved entitlements
+[Licensing::Module] Serial number assigned to: "F4-8GK2-8MNJ-WZUJ-EMU8-XXXX"
+Pro License: NO
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Resources/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-quit
+-nographics
+-projectPath
+/Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+-buildTarget
+osx
+-executeMethod
+Editor.AddressablesModExporter.BuildFromCommandLine
+-groups
+CitrusCircuitsMod
+-logFile
+/Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Tools/build-logs/build-osx.log
+-versions
+v1.0.0
+-zipNames
+CitrusCircuitsMod
+Successfully changed project path to: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+/Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8468979328] Host "[IP] 192.168.86.50 [Port] 55504 [Flags] 2 [Guid] 3071960686 [EditorId] 3071960686 [Version] 1048832 [Id] OSXEditor(0,macbookpro.lan) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [8468979328] Host "[IP] 192.168.86.50 [Port] 55504 [Flags] 2 [Guid] 3071960686 [EditorId] 3071960686 [Version] 1048832 [Id] OSXEditor(0,macbookpro.lan) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+[Physics::Module] Initialized MultithreadedJobDispatcher with 9 workers.
+[Package Manager] Connected to IPC stream "Upm-13119" after 1.3 seconds.
+Library Redirect Path: Library/
+[Licensing::Client] Successfully resolved entitlements
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 67 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.addressables@2.7.6 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.addressables@2.7.6)
+    com.unity.ai.navigation@2.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.ai.navigation@2.0.0)
+    com.unity.cinemachine@3.0.1 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.cinemachine@3.0.1)
+    com.unity.collab-proxy@2.3.1 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.collab-proxy@2.3.1)
+    com.unity.ide.rider@3.0.38 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.ide.rider@3.0.38)
+    com.unity.ide.visualstudio@2.0.23 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.ide.visualstudio@2.0.23)
+    com.unity.inputsystem@1.7.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.inputsystem@1.7.0)
+    com.unity.recorder@5.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.recorder@5.0.0)
+    com.unity.timeline@1.8.8 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.timeline@1.8.8)
+    com.unity.toolchain.linux-x86_64@2.0.10 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.toolchain.linux-x86_64@2.0.10)
+    com.unity.toolchain.macos-arm64-linux-x86_64@2.0.5 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.toolchain.macos-arm64-linux-x86_64@2.0.5)
+    com.unity.toolchain.win-x86_64-linux-x86_64@2.0.11 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.11)
+    com.unity.visualscripting@1.8.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.visualscripting@1.8.0)
+    com.unity.sysroot@2.0.10 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.sysroot@2.0.10)
+    com.unity.sysroot.linux-x86_64@2.0.9 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.sysroot.linux-x86_64@2.0.9)
+    com.unity.ext.nunit@2.0.5 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.ext.nunit@2.0.5)
+    com.unity.mathematics@1.2.6 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.mathematics@1.2.6)
+    com.unity.burst@1.8.13 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.burst@1.8.13)
+    com.unity.splines@2.5.2 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.splines@2.5.2)
+    com.unity.profiling.core@1.0.2 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.profiling.core@1.0.2)
+    com.unity.test-framework@1.4.5 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.test-framework@1.4.5)
+    com.unity.scriptablebuildpipeline@2.5.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.scriptablebuildpipeline@2.5.0)
+    com.unity.searcher@4.9.2 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.searcher@4.9.2)
+    com.unity.settings-manager@2.0.1 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.settings-manager@2.0.1)
+    com.unity.collections@1.4.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.collections@1.4.0)
+    com.unity.nuget.mono-cecil@1.11.4 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.nuget.mono-cecil@1.11.4)
+  Built-in packages:
+    com.unity.2d.sprite@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.2d.sprite@1.0.0)
+    com.unity.render-pipelines.universal@16.0.6 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.render-pipelines.universal@16.0.6)
+    com.unity.ugui@2.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.ugui@2.0.0)
+    com.unity.modules.accessibility@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.accessibility@1.0.0)
+    com.unity.modules.ai@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.ai@1.0.0)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.androidjni@1.0.0)
+    com.unity.modules.animation@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.animation@1.0.0)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.assetbundle@1.0.0)
+    com.unity.modules.audio@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.audio@1.0.0)
+    com.unity.modules.cloth@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.cloth@1.0.0)
+    com.unity.modules.director@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.director@1.0.0)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.imageconversion@1.0.0)
+    com.unity.modules.imgui@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.imgui@1.0.0)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.jsonserialize@1.0.0)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.particlesystem@1.0.0)
+    com.unity.modules.physics@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.physics@1.0.0)
+    com.unity.modules.physics2d@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.physics2d@1.0.0)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.screencapture@1.0.0)
+    com.unity.modules.terrain@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.terrain@1.0.0)
+    com.unity.modules.terrainphysics@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.terrainphysics@1.0.0)
+    com.unity.modules.tilemap@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.tilemap@1.0.0)
+    com.unity.modules.ui@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.ui@1.0.0)
+    com.unity.modules.uielements@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.uielements@1.0.0)
+    com.unity.modules.umbra@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.umbra@1.0.0)
+    com.unity.modules.unityanalytics@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.unityanalytics@1.0.0)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.unitywebrequest@1.0.0)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle@1.0.0)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.unitywebrequestaudio@1.0.0)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.unitywebrequesttexture@1.0.0)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.unitywebrequestwww@1.0.0)
+    com.unity.modules.vehicles@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.vehicles@1.0.0)
+    com.unity.modules.video@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.video@1.0.0)
+    com.unity.modules.vr@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.vr@1.0.0)
+    com.unity.modules.wind@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.wind@1.0.0)
+    com.unity.modules.xr@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.xr@1.0.0)
+    com.unity.modules.subsystems@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.subsystems@1.0.0)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.modules.hierarchycore@1.0.0)
+    com.unity.render-pipelines.core@16.0.6 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.render-pipelines.core@16.0.6)
+    com.unity.shadergraph@16.0.6 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.shadergraph@16.0.6)
+    com.unity.rendering.light-transport@1.0.2 (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.rendering.light-transport@1.0.2)
+  Git packages:
+    com.nobi.roundedcorners@https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git (location: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.nobi.roundedcorners@33135342e8)
+[Subsystems] No new subsystems found in resolved package list.
+Package Manager log level set to [2]
+[Package Manager] Done registering packages in 0.23 seconds
+Targeting platform: osx
+Refreshing native plugins compatible for Editor in 1.89 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2023.2.22f1 (6b19bf4f8115)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+[Licensing::Client] Successfully resolved entitlements
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56119
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2023.2.22f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2023.2.22f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2023.2.22f1/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.004168 seconds.
+- Loaded All Assemblies, in  0.258 seconds
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.232 seconds
+Domain Reload Profiling: 491ms
+	BeginReloadAssembly (82ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (110ms)
+		LoadAssemblies (82ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (107ms)
+			TypeCache.Refresh (106ms)
+				TypeCache.ScanAssembly (95ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (233ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (201ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (40ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (115ms)
+			ProcessInitializeOnLoadMethodAttributes (40ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlements
+Application.AssetDatabase Initial Refresh Start
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: InitialRefresh: Force Refresh Recompile flag enabled
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-e906b3532ff1627229a17188d6bd4707
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 38.6903ms
+Starting: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/bee_backend --dont-print-to-structured-log --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+DisplayProgressbar: Compiling Scripts
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@1.8.13/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@1.11.4/Mono.Cecil.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 19.7763ms
+ExitCode: 0 Duration: 0s379ms
+[ 497/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEngine.TestRunner.pdb
+[ 498/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEngine.TestRunner.dll
+[ 502/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEditor.TestRunner.dll
+[ 503/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEditor.TestRunner.pdb
+[ 717/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
+[ 719/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualStudio.Editor.pdb
+[ 723/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Rider.Editor.pdb
+[ 724/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Rider.Editor.dll
+[ 726/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.CodeGen.pdb
+[ 727/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.CodeGen.dll
+[ 728/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Burst.CodeGen.pdb
+[ 729/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Burst.CodeGen.dll
+[ 750/1003  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[ 828/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Recorder.dll
+[ 829/1003  0s] CopyFiles Library/ScriptAssemblies/Firebots.dll
+[ 831/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll
+[ 832/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.State.dll
+[ 834/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.dll
+[ 835/1003  0s] CopyFiles Library/ScriptAssemblies/Quixilver.dll
+[ 836/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.TextMeshPro.dll
+[ 837/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Recorder.Base.dll
+[ 838/1003  0s] CopyFiles Library/ScriptAssemblies/MoSimLib.dll
+[ 839/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Burst.dll
+[ 840/1003  0s] CopyFiles Library/ScriptAssemblies/Blazing Bulldogs.dll
+[ 841/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Timeline.dll
+[ 843/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.dll
+[ 844/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll
+[ 845/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Profiling.Core.dll
+[ 846/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll
+[ 847/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll
+[ 848/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+[ 849/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll
+[ 850/1003  0s] CopyFiles Library/ScriptAssemblies/Nobi.UiRoundedCorners.dll
+[ 851/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.TestFramework.dll
+[ 852/1003  0s] CopyFiles Library/ScriptAssemblies/BREAD.dll
+[ 853/1003  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+[ 854/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Addressables.dll
+[ 856/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ResourceManager.dll
+[ 857/1003  0s] CopyFiles Library/ScriptAssemblies/Reefscape.dll
+[ 858/1003  0s] CopyFiles Library/ScriptAssemblies/CitrusCircuits.dll
+[ 859/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.dll
+[ 861/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.dll
+[ 862/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Mathematics.dll
+[ 863/1003  0s] CopyFiles Library/ScriptAssemblies/GameSystems.dll
+[ 864/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll
+[ 865/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Rendering.LightTransport.Runtime.dll
+[ 866/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Cinemachine.dll
+[ 867/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll
+[ 868/1003  0s] CopyFiles Library/ScriptAssemblies/Lynk.dll
+[ 869/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Splines.dll
+[ 870/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Core.dll
+[ 871/1003  0s] CopyFiles Library/ScriptAssemblies/MoSimCore.dll
+[ 872/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEngine.UI.dll
+[ 875/1003  0s] CopyFiles Library/ScriptAssemblies/RobotFramework.dll
+[ 876/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Settings.Editor.dll
+[ 877/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll
+[ 878/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Toolchain.Linux-x86_64.pdb
+[ 879/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.pdb
+[ 880/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.dll
+[ 881/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll
+[ 882/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Settings.Editor.pdb
+[ 883/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll
+[ 884/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.SysrootPackage.Editor.pdb
+[ 885/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll
+[ 886/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Toolchain.Linux-x86_64.dll
+[ 887/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.2D.Sprite.Editor.pdb
+[ 888/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.Editor.ConversionSystem.pdb
+[ 889/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Addressables.DocExampleCode.Editor.Tests.dll
+[ 890/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEditor.UI.dll
+[ 891/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Addressables.DocExampleCode.Editor.Tests.pdb
+[ 892/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.Editor.ConversionSystem.dll
+[ 893/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEditor.UI.pdb
+[ 894/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Timeline.Editor.pdb
+[ 895/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Timeline.Editor.dll
+[ 896/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Burst.Editor.dll
+[ 897/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Burst.Editor.pdb
+[ 898/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Recorder.Editor.dll
+[ 899/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Recorder.Editor.pdb
+[ 900/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Cinemachine.Editor.pdb
+[ 901/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.pdb
+[ 902/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Cinemachine.Editor.dll
+[ 903/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Mathematics.Editor.dll
+[ 904/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Mathematics.Editor.pdb
+[ 905/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Toolchain.Macos-arm64-Linux-x86_64.dll
+[ 906/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll
+[ 907/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Toolchain.Macos-arm64-Linux-x86_64.pdb
+[ 908/1003  0s] CopyFiles Library/ScriptAssemblies/PPv2URPConverters.dll
+[ 909/1003  0s] CopyFiles Library/ScriptAssemblies/PPv2URPConverters.pdb
+[ 910/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Rendering.LightTransport.Editor.pdb
+[ 911/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll
+[ 912/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.pdb
+[ 913/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.pdb
+[ 914/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Rendering.LightTransport.Editor.dll
+[ 915/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll
+[ 916/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.pdb
+[ 917/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ShaderGraph.Utilities.dll
+[ 918/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll
+[ 919/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ShaderGraph.Utilities.pdb
+[ 920/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.pdb
+[ 921/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.Updater.dll
+[ 922/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll
+[ 923/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.Updater.pdb
+[ 924/1003  0s] CopyFiles Library/ScriptAssemblies/Nobi.UiRoundedCorners.Editor.dll
+[ 925/1003  0s] CopyFiles Library/ScriptAssemblies/Nobi.UiRoundedCorners.Editor.pdb
+[ 926/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Addressables.Editor.dll
+[ 927/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll
+[ 928/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.pdb
+[ 929/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Addressables.Editor.pdb
+[ 930/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.Editor.dll
+[ 931/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.Editor.pdb
+[ 932/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll
+[ 933/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.Editor.pdb
+[ 934/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.Editor.dll
+[ 935/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Shared.pdb
+[ 936/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.pdb
+[ 937/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.pdb
+[ 938/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Shared.dll
+[ 939/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll
+[ 940/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.pdb
+[ 941/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll
+[ 942/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ShaderGraph.Editor.pdb
+[ 943/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll
+[ 944/1003  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[ 945/1003  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+[ 946/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
+[ 947/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
+[ 948/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.CollabProxy.Editor.pdb
+[ 949/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.TextMeshPro.Editor.pdb
+[ 950/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll
+[ 951/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.PlasticSCM.Editor.pdb
+[ 952/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.pdb
+[ 953/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll
+[ 954/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Searcher.Editor.dll
+[ 955/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.pdb
+[ 956/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll
+[ 957/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.pdb
+[ 958/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Splines.Editor.dll
+[ 959/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Splines.Editor.pdb
+[ 960/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.AI.Navigation.pdb
+[ 961/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Searcher.Editor.pdb
+[ 962/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.pdb
+[ 963/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.pdb
+[ 964/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Recorder.Base.pdb
+[ 965/1003  0s] CopyFiles Library/ScriptAssemblies/Lynk.pdb
+[ 966/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.pdb
+[ 967/1003  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[ 968/1003  0s] CopyFiles Library/ScriptAssemblies/Quixilver.pdb
+[ 969/1003  0s] CopyFiles Library/ScriptAssemblies/BREAD.pdb
+[ 970/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.pdb
+[ 971/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.TestFramework.pdb
+[ 972/1003  0s] CopyFiles Library/ScriptAssemblies/Reefscape.pdb
+[ 973/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Collections.pdb
+[ 974/1003  0s] CopyFiles Library/ScriptAssemblies/GameSystems.pdb
+[ 975/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.pdb
+[ 976/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ResourceManager.pdb
+[ 977/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Burst.pdb
+[ 978/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.pdb
+[ 979/1003  0s] CopyFiles Library/ScriptAssemblies/Blazing Bulldogs.pdb
+[ 980/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Flow.pdb
+[ 981/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Addressables.pdb
+[ 982/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Splines.pdb
+[ 983/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.Core.pdb
+[ 984/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Rendering.LightTransport.Runtime.pdb
+[ 985/1003  0s] CopyFiles Library/ScriptAssemblies/MoSimCore.pdb
+[ 986/1003  0s] CopyFiles Library/ScriptAssemblies/Nobi.UiRoundedCorners.pdb
+[ 987/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Mathematics.pdb
+[ 988/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.pdb
+[ 989/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Timeline.pdb
+[ 990/1003  0s] CopyFiles Library/ScriptAssemblies/RobotFramework.pdb
+[ 991/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.VisualScripting.State.pdb
+[ 992/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.TextMeshPro.pdb
+[ 993/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.pdb
+[ 994/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Cinemachine.pdb
+[ 995/1003  0s] CopyFiles Library/ScriptAssemblies/Firebots.pdb
+[ 996/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.pdb
+[ 997/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Recorder.pdb
+[ 998/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.pdb
+[ 999/1003  0s] CopyFiles Library/ScriptAssemblies/MoSimLib.pdb
+[1000/1003  0s] CopyFiles Library/ScriptAssemblies/Unity.Profiling.Core.pdb
+[1001/1003  0s] CopyFiles Library/ScriptAssemblies/UnityEngine.UI.pdb
+[1002/1003  0s] CopyFiles Library/ScriptAssemblies/CitrusCircuits.pdb
+*** Tundra build success (0.36 seconds), 181 items updated, 1003 evaluated
+AssetDatabase: script compilation time: 0.900161s
+Total cache size 266693388
+Total cache size after purge 266693388
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  1.458 seconds
+Refreshing native plugins compatible for Editor in 0.84 ms, found 4 plugins.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.205 seconds
+Domain Reload Profiling: 3663ms
+	BeginReloadAssembly (1050ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (15ms)
+	LoadAllAssembliesAndSetupDomain (357ms)
+		LoadAssemblies (229ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (164ms)
+			TypeCache.Refresh (132ms)
+				TypeCache.ScanAssembly (119ms)
+			BuildScriptInfoCaches (22ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (2206ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2009ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (66ms)
+			ProcessInitializeOnLoadAttributes (1889ms)
+			ProcessInitializeOnLoadMethodAttributes (25ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Black.ttf using Guid(1062c701058745940ae5dca6219c64c8) (TrueTypeFontImporter) -> (artifact id: '821f321a28146147efec3339bac4badb') in 0.022785083 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Regular.ttf using Guid(30dc370b164eefc43b95744fc796dad0) (TrueTypeFontImporter) -> (artifact id: 'd99c632f4de133723aad2304001246a4') in 0.001698625 seconds
+Start importing Assets/TextMesh Pro/Fonts/Orbitron-VariableFont_wght.ttf using Guid(606c965193a874e42b1ed752f5b648ea) (TrueTypeFontImporter) -> (artifact id: '65c611487da8852bc76431b04b294352') in 0.001807334 seconds
+Start importing Assets/TextMesh Pro/Fonts/MADE TOMMY Medium.otf using Guid(f04f09c89f189a046a196e76033dde65) (TrueTypeFontImporter) -> (artifact id: '6a701761c70137dfe456d711d4246ad2') in 0.010190667 seconds
+Start importing Assets/TextMesh Pro/Fonts/GlacialIndifference-Bold.otf using Guid(1157ecbe5de7f68419d351959a850a5b) (TrueTypeFontImporter) -> (artifact id: '7802667db51ba305bbd48a6b8f36f381') in 0.001082291 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-ThinItalic.ttf using Guid(b2ea3b3f1765e544b9eb5bd1a93a91ce) (TrueTypeFontImporter) -> (artifact id: 'd49cef7a9549ff67e71dc0f03eeb13bb') in 0.00122175 seconds
+Start importing Assets/Imports/Fonts/Kardust TS Condensed Bold Italic.ttf using Guid(43190aae55d132343974c076aeff98de) (TrueTypeFontImporter) -> (artifact id: '5cbb67010676c825189142c91026b659') in 0.001324042 seconds
+Start importing Assets/Imports/Menus/kenney_ui-pack/Font/Kenney Future Narrow.ttf using Guid(c3c544cd2761c3b4ca4b5cd1aff38206) (TrueTypeFontImporter) -> (artifact id: '3d64ad3e92d52e27473d3d0b18074232') in 0.00162775 seconds
+Start importing Assets/TextMesh Pro/Fonts/LiberationSans.ttf using Guid(e3265ab4bf004d28a9537516768c1c75) (TrueTypeFontImporter) -> (artifact id: '5bc43dbf5697b5b1a85a95574c379b61') in 0.246471667 seconds
+Start importing Assets/Imports/Fonts/hyperspacerace-italic.otf using Guid(24c5845cf0f3b4969b440daadc4663fd) (TrueTypeFontImporter) -> (artifact id: '7fc4ee872550517516222afe0bcc47a0') in 0.001482709 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/GlacialIndifference-Bold.otf using Guid(6478bd1ec152ef448b65cafe3192956b) (TrueTypeFontImporter) -> (artifact id: '1b7cded799a9460366932671895b2e75') in 0.001458417 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Fonts/PerfectDOSVGA437.ttf using Guid(74a5091d8707f334b9a5c31ef71a64ba) (TrueTypeFontImporter) -> (artifact id: '00d3fefbfe3fd9e5d99b937cd6000559') in 0.001505917 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Unity.ttf using Guid(f4eec857a4fdf2f43be0e9f3d1a984e7) (TrueTypeFontImporter) -> (artifact id: 'd96517ce43fdd402984d9608d87c7bdf') in 0.001250375 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Medium.ttf using Guid(a51a3aebb43ac044989270407476b208) (TrueTypeFontImporter) -> (artifact id: '021e2b648ee67d657d6bf31772bbfffa') in 0.001521458 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Bold.ttf using Guid(3750c318f40cab44a97d3a81beaefeb3) (TrueTypeFontImporter) -> (artifact id: 'd2ab9443b68777cf8f46f812841a2a74') in 0.001146584 seconds
+Start importing Assets/Imports/Fonts/Capsmall_clean.ttf using Guid(8705da8bb5dc74ce9b1398dd58b61de2) (TrueTypeFontImporter) -> (artifact id: 'a813a4381a5f0cfc24e2820c46c66ea3') in 0.001115833 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Italic.ttf using Guid(c839255fc8f6b4b4d90bf8c1af9f9bd1) (TrueTypeFontImporter) -> (artifact id: 'f63b0e91acd3f84089be62952a68a922') in 0.001815 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Thin.ttf using Guid(19a9abb883540be48b75b951a927ae03) (TrueTypeFontImporter) -> (artifact id: '07e05afd28644c70a298cc8dfcfe3b5d') in 0.001431958 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Anton.ttf using Guid(997a43b767814dd0a7642ec9b78cba41) (TrueTypeFontImporter) -> (artifact id: '6e20b3905df56359b0e0491d960e4587') in 0.001697875 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/GlacialIndifference-Bold 1.otf using Guid(b906f68fa63f50a41944876f3568691c) (TrueTypeFontImporter) -> (artifact id: '69d89f61e70e823fb525f66c69faea20') in 0.001790292 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Oswald-Bold.ttf using Guid(c9f6d0e7bc8541498c9a4799ba184ede) (TrueTypeFontImporter) -> (artifact id: 'f9e1b813e47d19831db6bba0ab0b05ce') in 0.004610417 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-MediumItalic.ttf using Guid(d93c1bc57fdf1ac4dad1bf04fac05464) (TrueTypeFontImporter) -> (artifact id: '6b65441f3397605967e81c3ea81e542a') in 0.004556875 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-BlackItalic.ttf using Guid(f95147a9bab9fe649b8070170fa7ebd2) (TrueTypeFontImporter) -> (artifact id: '8234d1684e46e9c42623bb4f930cf8a9') in 0.020901083 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-Light.ttf using Guid(2a29e27936eb547458f646f71125b264) (TrueTypeFontImporter) -> (artifact id: '4e4fa90e7389d7a48284bfed55bc3254') in 0.001516333 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Electronic Highway Sign.TTF using Guid(8a2b9e2a607dd2143b58c44bc32410b4) (TrueTypeFontImporter) -> (artifact id: '6d4a50b0144029c97a83e3568334aa8d') in 0.000895708 seconds
+Start importing Assets/Imports/Fonts/Khand-Regular.ttf using Guid(fa4301c3eddc44313bb05f39ce88561f) (TrueTypeFontImporter) -> (artifact id: 'e7516313ba397112f13d27deb2fdd72d') in 0.001374833 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf using Guid(4beb055f07aaff244873dec698d0363e) (TrueTypeFontImporter) -> (artifact id: '86df24d3c953d71a3e58942056e256c7') in 0.000951375 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Bangers.ttf using Guid(5dd49b3eacc540408c98eee0de38e0f1) (TrueTypeFontImporter) -> (artifact id: '8d85a3c4ba666c8aeecf87e88687747d') in 0.000848 seconds
+Start importing Assets/Imports/Fonts/AsapCondensed-Black.ttf using Guid(5e5093c5e03e04abd99191eb1978165b) (TrueTypeFontImporter) -> (artifact id: '1f704d81310c8efb7bddde6bba20f409') in 0.001071959 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-LightItalic.ttf using Guid(5e63515167650a541b309ba3bfd4db3d) (TrueTypeFontImporter) -> (artifact id: '0cedd5fc4216197253ffd7e83a289ba5') in 0.004170417 seconds
+Start importing Assets/Imports/Fonts/nasalization rg(1).ttf using Guid(be8eb7a284b9c7b4cb57d3eb414301df) (TrueTypeFontImporter) -> (artifact id: '944e99e72effae82d95d499f1e001b3f') in 0.008304625 seconds
+Start importing Assets/Imports/Menus/kenney_ui-pack/Font/Kenney Future.ttf using Guid(1f7fc2387af676e418f738190cb7237d) (TrueTypeFontImporter) -> (artifact id: 'fb3e3a1b057d702318320e6528423bf5') in 0.001335792 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/GlacialIndifference-Regular.otf using Guid(4f9070e303b679a469280af4f67034a6) (TrueTypeFontImporter) -> (artifact id: 'd6c5ccb314df6c5aa24473c638e70036') in 0.001129916 seconds
+Start importing Assets/Imports/Fonts/Megahertz In Regular.otf using Guid(bf6c159310b22c54c9e47b00958759e7) (TrueTypeFontImporter) -> (artifact id: 'b3f8a6d9c7ed6a408b9aac13b02cb287') in 0.001073459 seconds
+Start importing Packages/com.unity.searcher/Editor/Resources/FlatSkin/Font/Roboto-BoldItalic.ttf using Guid(dfb97a9307a577a41bcacba34b9a7e32) (TrueTypeFontImporter) -> (artifact id: 'ac22c1c906effb4aeb48e3c8312811eb') in 0.001181416 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/ArnoldStandardSurface/ArnoldStandardSurfaceTransparent.shadergraph using Guid(30fa68ce467463643a86b839ca0eb195) (ScriptedImporter)Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.08 seconds
+ -> (artifact id: '28ca36c76aa415c98ad9b0dc92881827') in 0.446812667 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/AutodeskInteractive/AutodeskInteractiveMasked.shadergraph using Guid(80aa867ac363ac043847b06ad71604cd) (ScriptedImporter) -> (artifact id: '3fb650d2e352550351e7eccba38a2d88') in 0.111069666 seconds
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-URP Unlit.shadergraph using Guid(124c112a6e8f1a54e8b0870e881b56d8) (ScriptedImporter) -> (artifact id: '4fd92ce96af31cfce94ec572f1c305db') in 0.181945208 seconds
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-URP Lit.shadergraph using Guid(a3d800b099a06e0478fb790c5e79057a) (ScriptedImporter) -> (artifact id: '6df03b3c96dad521cb5eb81b59b83f48') in 0.131953791 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/2D/VFXSpriteLit.shadergraph using Guid(24a73dccd7b6fad4798be282f96a21f4) (ScriptedImporter) -> (artifact id: '6d3bff936c04ebe8fd607186f600bbaa') in 0.09987325 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/PhysicalMaterial3DsMax/PhysicalMaterial3DsMax.shadergraph using Guid(44245ab89240f51459a5077d7145c452) (ScriptedImporter) -> (artifact id: 'e40252001d2521f2e89127f476cd2276') in 0.148888167 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/ArnoldStandardSurface/ArnoldStandardSurface.shadergraph using Guid(3739e562a03fc0b4982d8aa66cc50865) (ScriptedImporter) -> (artifact id: '9cd93f98ff20ffe8bf6a55d2afd96d38') in 0.130881292 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/2D/VFXSpriteUnlit.shadergraph using Guid(d7288f66e4fb0634c9afef98c31b722a) (ScriptedImporter) -> (artifact id: '43bc482484ffb8beac55b40b82ac00bb') in 0.12484075 seconds
+Start importing Assets/Materials/LEds/LEDs.shadergraph using Guid(88d82d76b25302e4f81533f3cee81aab) (ScriptedImporter) -> (artifact id: '506fa510501da2dec7dea6d295b670e5') in 0.111859625 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/Nature/SpeedTree8_PBRLit.shadergraph using Guid(9920c1f1781549a46ba081a2a15a16ec) (ScriptedImporter) -> (artifact id: '27b5c15c2b3ba4891ffa8422269301b0') in 1.599387959 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/PhysicalMaterial3DsMax/PhysicalMaterial3DsMaxTransparent.shadergraph using Guid(1a207e3bee00db44b940e6f362a8e148) (ScriptedImporter) -> (artifact id: 'dfdb4deb3de802f97528acf6f414ed20') in 0.301273709 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/Decal.shadergraph using Guid(9b4e681081e2b4c469111bb649e2f7ee) (ScriptedImporter) -> (artifact id: '7e10c3ff69b07e61917f3324b84b281c') in 0.176849083 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/FullscreenInvertColors.shadergraph using Guid(fb6390f650ca44a5ba3246d8dda47927) (ScriptedImporter) -> (artifact id: 'f010c2611ed1bae7880c5d1046071f1d') in 0.046011959 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/AutodeskInteractive/AutodeskInteractiveTransparent.shadergraph using Guid(5c81372d981403744adbdda4433c9c11) (ScriptedImporter) -> (artifact id: '9c4670fa237d85482adf2558cd7a54e3') in 0.143529584 seconds
+Start importing Assets/Materials/Algae/AlgaeLogoShader.shadergraph using Guid(9c0141191560aaa4aac382b333870033) (ScriptedImporter) -> (artifact id: '6a6b432baeafbd0baaf6746f07ae123e') in 0.234853333 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/AutodeskInteractive/AutodeskInteractive.shadergraph using Guid(0e9d5a909a1f7e84882a534d0d11e49f) (ScriptedImporter) -> (artifact id: 'b381dd04817939fedee89a0025922ded') in 0.285487959 seconds
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 0.90 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a4ed18bc020004e6d8c685c6f4853a5a): Total: 10.937 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=110 (actual=16, local cache=94, cache server=0)
+		Asset DB Process Time: managed=5 ms, native=8108 ms
+		Asset DB Callback time: managed=323 ms, native=51 ms
+		Scripting: domain reloads=1, domain reload time=1500 ms, compile time=902 ms, other=45 ms
+		Project Asset Count: scripts=1571, non-scripts=4177
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 0.907ms
+	ApplyChangesToAssetFolders: 0.290ms
+	Scan: 529.120ms
+	OnSourceAssetsModified: 0.001ms
+	CategorizeAssetsWithTransientArtifact: 90.130ms
+	ProcessAssetsWithTransientArtifactChanges: 55.563ms
+	CategorizeAssets: 77.937ms
+	ImportOutOfDateAssets: 7223.011ms (1296.510ms without children)
+		ImportManagerImport: 4954.647ms (293.046ms without children)
+			ImportInProcess: 4658.517ms
+			UpdateCategorizedAssets: 3.085ms
+		CompileScripts: 901.687ms
+		ReloadNativeAssets: 0.141ms
+		UnloadImportedAssets: 5.609ms
+		ReloadImportedAssets: 62.174ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.516ms
+		InitializingProgressBar: 0.013ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.712ms
+	PostProcessAllAssets: 370.865ms
+	Hotreload: 3.617ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.000ms
+	UnloadStreamsBegin: 1.832ms
+	PersistCurrentRevisions: 0.522ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 22.276ms
+	Untracked: 2582.716ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.395ms
+Initializing Unity extensions:
+[Licensing::Client] Successfully resolved entitlements
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-MoSimulator
+Unloading 41 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7035 unused Assets / (7.1 MB). Loaded Objects now: 7789.
+Memory consumption went from 359.0 MB to 351.9 MB.
+Total: 17.278333 ms (FindLiveObjects: 0.326292 ms CreateObjectMapping: 0.199083 ms MarkObjects: 13.346167 ms  DeleteObjects: 3.406042 ms)
+
+Building addressables for: CitrusCircuitsMod (target: StandaloneOSX, prefix: osx)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Editor.AddressablesModExporter:BuildOneGroup (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,Editor.AddressablesModExporter/ModBuildSpec) (at Assets/Editor/AddressablesModExporter.cs:111)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:90)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: Assets/Editor/AddressablesModExporter.cs Line: 111)
+
+Start importing Assets/AddressableAssetsData/AssetGroups/BayAreaModpack.asset using Guid(50a8af40925b14ac5b1c753a5199cd83) (NativeFormatImporter) -> (artifact id: '96b45d9056971046e5597e68d78d1da8') in 0.001525125 seconds
+Start importing Assets/AddressableAssetsData/AddressableAssetSettings.asset using Guid(75be54ec8452b4f43b0aa1a3b6238e73) (NativeFormatImporter) -> (artifact id: '5bd2868ca4b32cd2994575e97e830530') in 0.000952833 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset using Guid(f5b71b85a798d6f40bb1c3812901e71f) (NativeFormatImporter) -> (artifact id: '3fb6131f0adc14282e8bf3a78a854a52') in 0.000816959 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/LynkMod.asset using Guid(aac5dc43f207f464cbe5c74a47d73199) (NativeFormatImporter) -> (artifact id: '322e5886b2a272def9f1db216c7bdd93') in 0.000826375 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/FirebotsModpack.asset using Guid(4c877c9eb38bd4d61a1d6891f75d025a) (NativeFormatImporter) -> (artifact id: '0a3d542dcfdd23adb985930affa31056') in 0.000781125 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/MechTechMod.asset using Guid(9cd31e1fc2fdeb84fbde0fabd689577f) (NativeFormatImporter) -> (artifact id: '0ee1ecd84382d752ca495c1d60a2d793') in 0.0005545 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/CitrusCircuitsMod.asset using Guid(bd8f3d30d281e4cafb8c7ec5c3127569) (NativeFormatImporter) -> (artifact id: '4973f540f0dd1b10650c58747c0d2a0f') in 0.000730833 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/Schemas/CitrusCircuitsMod_BundledAssetGroupSchema.asset using Guid(8e5790651b2b34e5d8101296702acab2) (NativeFormatImporter) -> (artifact id: '58cb5e16899d1029c9b8bef83fc83055') in 0.000746334 seconds
+Refreshing native plugins compatible for Editor in 0.79 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=badf6fdd1114846ebbad684de87c26ea): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+DisplayProgressbar: Processing Addressable Group
+Found installed macOS SDK 26.5.
+DisplayProgressbar: Switch To Build Platform
+DisplayProgressbar: Rebuild Sprite Atlas Cache
+DisplayProgressbar: Build Player Scripts
+[ScriptCompilation] Requested script compilation because: Recompiling all scripts before compiling player scripts because Auto Refresh is disabled.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 0.5453ms
+Starting: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/bee_backend --dont-print-to-structured-log --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+DisplayProgressbar: Compiling Scripts
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Current configuration matches the requested one, skipping
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 4.5464ms
+ExitCode: 0 Duration: 0s407ms
+[ 750/1003  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.38 seconds), 1 items updated, 1003 evaluated
+[ScriptCompilation] Requested script compilation because: Compiling scripts for player
+Total cache size 266693388
+Total cache size after purge 266693388
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 0.2067ms
+Starting: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/bee_backend --dont-print-to-structured-log --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aP.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssembliesAndTypeDB
+WorkingDir: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@1.8.13/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@1.11.4/Mono.Cecil.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 7.4982ms
+ExitCode: 0 Duration: 1s47ms
+[546/675    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[580/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll
+[581/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Profiling.Core.dll
+[583/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Collections.dll
+[584/675    0s] CopyFiles Library/PlayerScriptAssemblies/BREAD.dll
+[586/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.TextMeshPro.dll
+[587/675    0s] CopyFiles Library/PlayerScriptAssemblies/Nobi.UiRoundedCorners.dll
+[588/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Timeline.dll
+[590/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll
+[591/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.ResourceManager.dll
+[592/675    0s] CopyFiles Library/PlayerScriptAssemblies/MoSimCore.dll
+[593/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll
+[594/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Mathematics.dll
+[596/675    0s] CopyFiles Library/PlayerScriptAssemblies/UnityEngine.UI.dll
+[597/675    0s] CopyFiles Library/PlayerScriptAssemblies/Reefscape.dll
+[598/675    0s] CopyFiles Library/PlayerScriptAssemblies/Assembly-CSharp.dll
+[599/675    0s] CopyFiles Library/PlayerScriptAssemblies/Lynk.dll
+[600/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Burst.dll
+[601/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Splines.dll
+[602/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.VisualScripting.State.dll
+[603/675    0s] CopyFiles Library/PlayerScriptAssemblies/RobotFramework.dll
+[604/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Addressables.dll
+[605/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Recorder.Base.dll
+[606/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.dll
+[607/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll
+[608/675    0s] CopyFiles Library/PlayerScriptAssemblies/CitrusCircuits.dll
+[609/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Cinemachine.dll
+[610/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll
+[611/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.InputSystem.ForUI.dll
+[612/675    0s] CopyFiles Library/PlayerScriptAssemblies/Firebots.dll
+[613/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+[614/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.AI.Navigation.dll
+[615/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll
+[616/675    0s] CopyFiles Library/PlayerScriptAssemblies/Blazing Bulldogs.dll
+[617/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Recorder.dll
+[618/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.ScriptableBuildPipeline.dll
+[619/675    0s] CopyFiles Library/PlayerScriptAssemblies/MoSimLib.dll
+[620/675    0s] CopyFiles Library/PlayerScriptAssemblies/GameSystems.dll
+[621/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Burst.pdb
+[622/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.pdb
+[624/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.TextMeshPro.pdb
+[625/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.VisualScripting.Flow.pdb
+[626/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Collections.pdb
+[627/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.pdb
+[628/675    0s] CopyFiles Library/PlayerScriptAssemblies/MoSimCore.pdb
+[629/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll
+[631/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.VisualScripting.Core.pdb
+[632/675    0s] CopyFiles Library/PlayerScriptAssemblies/Reefscape.pdb
+[633/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Addressables.pdb
+[634/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.VisualScripting.State.pdb
+[635/675    0s] CopyFiles Library/PlayerScriptAssemblies/Lynk.pdb
+[637/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.InputSystem.pdb
+[638/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.pdb
+[639/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.InputSystem.dll
+[640/675    0s] CopyFiles Library/PlayerScriptAssemblies/CitrusCircuits.pdb
+[641/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.pdb
+[642/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.pdb
+[643/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Core.Runtime.pdb
+[644/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.dll
+[645/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.pdb
+[646/675    0s] CopyFiles Library/PlayerScriptAssemblies/Blazing Bulldogs.pdb
+[647/675    0s] CopyFiles Library/PlayerScriptAssemblies/GameSystems.pdb
+[648/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.ScriptableBuildPipeline.pdb
+[649/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Mathematics.pdb
+[650/675    0s] CopyFiles Library/PlayerScriptAssemblies/Nobi.UiRoundedCorners.pdb
+[651/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Profiling.Core.pdb
+[652/675    0s] CopyFiles Library/PlayerScriptAssemblies/Firebots.pdb
+[653/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Splines.pdb
+[654/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Cinemachine.pdb
+[655/675    0s] CopyFiles Library/PlayerScriptAssemblies/Assembly-CSharp.pdb
+[656/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.ResourceManager.pdb
+[657/675    0s] CopyFiles Library/PlayerScriptAssemblies/RobotFramework.pdb
+[658/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.pdb
+[659/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.InputSystem.ForUI.pdb
+[660/675    0s] CopyFiles Library/PlayerScriptAssemblies/UnityEngine.UI.pdb
+[661/675    0s] CopyFiles Library/PlayerScriptAssemblies/BREAD.pdb
+[662/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Timeline.pdb
+[663/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Recorder.pdb
+[664/675    0s] CopyFiles Library/PlayerScriptAssemblies/MoSimLib.pdb
+[666/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.AI.Navigation.pdb
+[667/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Recorder.Base.pdb
+[668/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Rendering.LightTransport.Runtime.dll
+[669/675    0s] CopyFiles Library/PlayerScriptAssemblies/Unity.Rendering.LightTransport.Runtime.pdb
+[671/675    0s] CopyFiles Library/PlayerScriptAssemblies/Quixilver.dll
+[672/675    0s] CopyFiles Library/PlayerScriptAssemblies/Quixilver.pdb
+[674/675    0s] BuildPlayerDataGenerator Library/BuildPlayerData/Player/RuntimeInitializeOnLoads.json (+1 other)
+*** Tundra build success (1.01 seconds), 86 items updated, 675 evaluated
+Total cache size 266693388
+Total cache size after purge 266693388
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 0.1920ms
+Starting: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/bee_backend --dont-print-to-structured-log --ipc --defer-dag-verification --dagfile="Library/Bee/200b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssembliesAndTypeDB
+WorkingDir: /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 2 is unloading
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@1.8.13/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@1.11.4/Mono.Cecil.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 7.1567ms
+ExitCode: 0 Duration: 1s63ms
+[ 750/1005  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1004/1005  0s] BuildPlayerDataGenerator Library/BuildPlayerData/Editor/TypeDb-All.json
+*** Tundra build success (1.03 seconds), 2 items updated, 1005 evaluated
+Total cache size 266693388
+Total cache size after purge 266693388
+DisplayProgressbar: Post Scripts Callback
+DisplayProgressbar: Calculate Scene Dependency Data
+DisplayProgressbar: Calculate Asset Dependency Data
+Refreshing native plugins compatible for Editor in 0.79 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+DisplayProgressbar: Add Hash To Bundle Name Task
+DisplayProgressbar: Strip Unused Sprite Sources
+DisplayProgressbar: Create Built In Bundle
+DisplayProgressbar: Post Dependency Callback
+DisplayProgressbar: Generate Bundle Packing
+DisplayProgressbar: Update Bundle Object Layout
+DisplayProgressbar: Generate Bundle Commands
+DisplayProgressbar: Generate Sub Asset Path Maps
+DisplayProgressbar: Generate Bundle Maps
+DisplayProgressbar: Post Packing Callback
+DisplayProgressbar: Write Serialized Files
+Compiling shader "Shader Graphs/LEDs" pass "Universal Forward" (vp)
+    Full variant space:         221184
+    After settings filtering:   12288
+    After built-in stripping:   24
+    After scriptable stripping: 6
+    Processed in 0.22 seconds
+    starting compilation...
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+    finished in 0.33 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 6 variants (1.33s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "Universal Forward" (fp)
+    Full variant space:         1132462080
+    After settings filtering:   61440
+    After built-in stripping:   120
+    After scriptable stripping: 36
+    Processed in 0.00 seconds
+    starting compilation...
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.06 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.08 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.08 seconds
+Launching external process: /Applications/Unity/Hub/Editor/2023.2.22f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.17 seconds
+    finished in 6.37 seconds. Local cache hits 7 (0.01s CPU time), remote cache hits 0 (0.00s CPU time), compiled 29 variants (55.92s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "GBuffer" (vp)
+    Full variant space:         24576
+    After settings filtering:   8192
+    After built-in stripping:   16
+    After scriptable stripping: 0
+    Processed in 0.00 seconds
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "ShadowCaster" (vp)
+    Full variant space:         16
+    After settings filtering:   16
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.09 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 4 variants (0.35s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "ShadowCaster" (fp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.06 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.11s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "MotionVectors" (vp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.07 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.15s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "MotionVectors" (fp)
+    Full variant space:         16
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.07 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.13s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "DepthOnly" (vp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.06 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.13s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "DepthOnly" (fp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.05 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.10s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "DepthNormals" (vp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.07 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.13s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "DepthNormals" (fp)
+    Full variant space:         16
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.06 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.11s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "Universal 2D" (vp)
+    Full variant space:         2
+    After settings filtering:   2
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.10 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.19s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Shader Graphs/LEDs" pass "Universal 2D" (fp)
+    Full variant space:         2
+    After settings filtering:   2
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.09 seconds. Local cache hits 0 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 2 variants (0.19s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader Shader Graphs/LEDs in 0.00s
+    metal (total internal programs: 64, unique: 32)
+Compiling shader "Hidden/Core/FallbackError" pass "" (vp)
+    Full variant space:         3
+    After settings filtering:   3
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Hidden/Core/FallbackError" pass "" (fp)
+    Full variant space:         3
+    After settings filtering:   3
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader Hidden/Core/FallbackError in 0.00s
+    metal (total internal programs: 2, unique: 2)
+Compiling shader "Universal Render Pipeline/Lit" pass "ForwardLit" (vp)
+    Full variant space:         884736
+    After settings filtering:   24576
+    After built-in stripping:   48
+    After scriptable stripping: 12
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 12 (0.01s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "ForwardLit" (fp)
+    Full variant space:         9059696640
+    After settings filtering:   491520
+    After built-in stripping:   960
+    After scriptable stripping: 288
+    Processed in 0.02 seconds
+    starting compilation...
+    finished in 0.01 seconds. Local cache hits 288 (0.08s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.01s
+Compiling shader "Universal Render Pipeline/Lit" pass "ShadowCaster" (vp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 2 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "ShadowCaster" (fp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 2 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "GBuffer" (vp)
+    Full variant space:         3072
+    After settings filtering:   1024
+    After built-in stripping:   8
+    After scriptable stripping: 0
+    Processed in 0.00 seconds
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "DepthOnly" (vp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "DepthOnly" (fp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 2 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "DepthNormals" (vp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 2 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "DepthNormals" (fp)
+    Full variant space:         32
+    After settings filtering:   16
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 4 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "Universal2D" (vp)
+    Full variant space:         2
+    After settings filtering:   2
+    After built-in stripping:   1
+    After scriptable stripping: 0
+    Processed in 0.00 seconds
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "MotionVectors" (vp)
+    Full variant space:         8
+    After settings filtering:   8
+    After built-in stripping:   2
+    After scriptable stripping: 2
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 2 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Universal Render Pipeline/Lit" pass "MotionVectors" (fp)
+    Full variant space:         16
+    After settings filtering:   16
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 4 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader Universal Render Pipeline/Lit in 0.00s
+    metal (total internal programs: 319, unique: 166)
+Compressed shader 'Universal Render Pipeline/Lit' on metal from 4.76MB to 0.31MB
+Compressed shader 'Universal Render Pipeline/Lit' in 0.07s
+Compiling shader "TextMeshPro/Distance Field" pass "" (vp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 4 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "TextMeshPro/Distance Field" pass "" (fp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 4 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader TextMeshPro/Distance Field in 0.00s
+    metal (total internal programs: 8, unique: 8)
+Compiling shader "Hidden/Universal Render Pipeline/FallbackError" pass "" (vp)
+    Full variant space:         6
+    After settings filtering:   6
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Hidden/Universal Render Pipeline/FallbackError" pass "" (fp)
+    Full variant space:         6
+    After settings filtering:   6
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader Hidden/Universal Render Pipeline/FallbackError in 0.00s
+    metal (total internal programs: 2, unique: 2)
+Compiling shader "Hidden/Shader Graph/FallbackError" pass "" (vp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "Hidden/Shader Graph/FallbackError" pass "" (fp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   1
+    After scriptable stripping: 1
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 1 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader Hidden/Shader Graph/FallbackError in 0.00s
+    metal (total internal programs: 2, unique: 2)
+Compiling shader "TextMeshPro/Mobile/Distance Field" pass "" (vp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 4 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Compiling shader "TextMeshPro/Mobile/Distance Field" pass "" (fp)
+    Full variant space:         4
+    After settings filtering:   4
+    After built-in stripping:   4
+    After scriptable stripping: 4
+    Processed in 0.00 seconds
+    starting compilation...
+    finished in 0.00 seconds. Local cache hits 4 (0.00s CPU time), remote cache hits 0 (0.00s CPU time), compiled 0 variants (0.00s CPU time), skipped 0 variants
+    Prepared data for serialisation in 0.00s
+Serialized binary data for shader TextMeshPro/Mobile/Distance Field in 0.00s
+    metal (total internal programs: 8, unique: 8)
+DisplayProgressbar: Archive And Compress Bundles
+DisplayProgressbar: Generate Location Lists Task
+DisplayProgressbar: Post Writing Callback
+DisplayProgressbar: Extract Data Task
+Unloading 117 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 42585 unused Assets / (129.0 MB). Loaded Objects now: 7969.
+Memory consumption went from 0.50 GB to 385.8 MB.
+Total: 98.199875 ms (FindLiveObjects: 1.469750 ms CreateObjectMapping: 1.674542 ms MarkObjects: 66.648625 ms  DeleteObjects: 28.405791 ms)
+
+DisplayProgressbar: Post Processing AssetBundles
+DisplayProgressbar: Post Processing Catalog Entries
+DisplayProgressbar: Generating Build Layout
+DisplayProgressbar: Build Layout Generation Task
+ProfileValueReference: GetValue called with empty id.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+UnityEditor.AddressableAssets.Settings.ProfileValueReference:GetValue (UnityEditor.AddressableAssets.Settings.AddressableAssetProfileSettings,string,bool) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/ProfileValueReference.cs:96)
+UnityEditor.AddressableAssets.Settings.ProfileValueReference:GetValue (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,bool) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/ProfileValueReference.cs:55)
+UnityEditor.AddressableAssets.Settings.ProfileValueReference:GetValue (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/ProfileValueReference.cs:38)
+UnityEditor.AddressableAssets.Build.BuildPipelineTasks.BuildLayoutGenerationTask:GenerateBuildLayout (UnityEditor.AddressableAssets.Build.DataBuilders.AddressableAssetsBuildContext,UnityEditor.AddressableAssets.Build.Layout.LayoutLookupTables) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/BuildPipelineTasks/BuildLayoutGenerationTask.cs:767)
+UnityEditor.AddressableAssets.Build.BuildPipelineTasks.BuildLayoutGenerationTask:CreateBuildLayout () (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/BuildPipelineTasks/BuildLayoutGenerationTask.cs:214)
+UnityEditor.AddressableAssets.Build.BuildPipelineTasks.BuildLayoutGenerationTask:Run () (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/BuildPipelineTasks/BuildLayoutGenerationTask.cs:1267)
+UnityEditor.Build.Pipeline.BuildTasksRunner:Run (System.Collections.Generic.IList`1<UnityEditor.Build.Pipeline.Interfaces.IBuildTask>,UnityEditor.Build.Pipeline.Interfaces.IBuildContext) (at ./Library/PackageCache/com.unity.scriptablebuildpipeline@2.5.0/Editor/Shared/BuildTasksRunner.cs:56)
+UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptPackedMode:DoBuild<UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult> (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput,UnityEditor.AddressableAssets.Build.DataBuilders.AddressableAssetsBuildContext) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/DataBuilders/BuildScriptPackedMode.cs:555)
+UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptPackedMode:BuildDataImplementation<UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult> (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/DataBuilders/BuildScriptPackedMode.cs:133)
+UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptBase:BuildData<UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult> (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/DataBuilders/BuildScriptBase.cs:103)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContentImpl (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput,bool) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:3085)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContent (UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult&,UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:2994)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContent (UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult&) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:2971)
+Editor.AddressablesModExporter:BuildOneGroup (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,Editor.AddressablesModExporter/ModBuildSpec) (at Assets/Editor/AddressablesModExporter.cs:163)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:90)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/ProfileValueReference.cs Line: 96)
+
+Json build layout written to Library/com.unity.addressables/buildlayout.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.AddressableAssets.Build.BuildPipelineTasks.BuildLayoutGenerationTask:Run () (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/BuildPipelineTasks/BuildLayoutGenerationTask.cs:1293)
+UnityEditor.Build.Pipeline.BuildTasksRunner:Run (System.Collections.Generic.IList`1<UnityEditor.Build.Pipeline.Interfaces.IBuildTask>,UnityEditor.Build.Pipeline.Interfaces.IBuildContext) (at ./Library/PackageCache/com.unity.scriptablebuildpipeline@2.5.0/Editor/Shared/BuildTasksRunner.cs:56)
+UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptPackedMode:DoBuild<UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult> (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput,UnityEditor.AddressableAssets.Build.DataBuilders.AddressableAssetsBuildContext) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/DataBuilders/BuildScriptPackedMode.cs:555)
+UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptPackedMode:BuildDataImplementation<UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult> (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/DataBuilders/BuildScriptPackedMode.cs:133)
+UnityEditor.AddressableAssets.Build.DataBuilders.BuildScriptBase:BuildData<UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult> (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/DataBuilders/BuildScriptBase.cs:103)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContentImpl (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput,bool) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:3085)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContent (UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult&,UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:2994)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContent (UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult&) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:2971)
+Editor.AddressablesModExporter:BuildOneGroup (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,Editor.AddressablesModExporter/ModBuildSpec) (at Assets/Editor/AddressablesModExporter.cs:163)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:90)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Build/BuildPipelineTasks/BuildLayoutGenerationTask.cs Line: 1293)
+
+Addressable content successfully built (duration : 0:00:38.076)
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContentImpl (UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput,bool) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:3092)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContent (UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult&,UnityEditor.AddressableAssets.Build.AddressablesDataBuilderInput) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:2994)
+UnityEditor.AddressableAssets.Settings.AddressableAssetSettings:BuildPlayerContent (UnityEditor.AddressableAssets.Build.AddressablesPlayerBuildResult&) (at ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs:2971)
+Editor.AddressablesModExporter:BuildOneGroup (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,Editor.AddressablesModExporter/ModBuildSpec) (at Assets/Editor/AddressablesModExporter.cs:163)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:90)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.addressables@2.7.6/Editor/Settings/AddressableAssetSettings.cs Line: 3092)
+
+Start importing Assets/AddressableAssetsData/OSX/addressables_content_state.bin using Guid(48031877f0b4c4fee97ca6661b48d211) (DefaultImporter) -> (artifact id: '58cc34ea2d1cb6682004e09b927c5845') in 0.237240584 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=3fd3873748dda4527980683ceef94732): Total: 0.521 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=516 ms
+		Asset DB Callback time: managed=0 ms, native=3 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1571, non-scripts=4177
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 0.000ms
+	ApplyChangesToAssetFolders: 0.133ms
+	Scan: 242.013ms
+	OnSourceAssetsModified: 0.079ms
+	CategorizeAssetsWithTransientArtifact: 0.010ms
+	ProcessAssetsWithTransientArtifactChanges: 0.273ms
+	CategorizeAssets: 13.760ms
+	ImportOutOfDateAssets: 240.637ms (0.218ms without children)
+		ImportManagerImport: 239.482ms (0.354ms without children)
+			ImportInProcess: 239.113ms
+			UpdateCategorizedAssets: 0.015ms
+		ReloadNativeAssets: 0.081ms
+		UnloadImportedAssets: 0.086ms
+		ReloadImportedAssets: 0.000ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.527ms
+		InitializingProgressBar: 0.004ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.239ms
+	PostProcessAllAssets: 3.561ms
+	Hotreload: 0.848ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.581ms
+	UnloadStreamsBegin: 0.020ms
+	PersistCurrentRevisions: 0.176ms
+	UnloadStreamsEnd: 0.000ms
+	Untracked: 18.675ms
+
+Start importing Assets/AddressableAssetsData/AssetGroups/BayAreaModpack.asset using Guid(50a8af40925b14ac5b1c753a5199cd83) (NativeFormatImporter) -> (artifact id: '96b45d9056971046e5597e68d78d1da8') in 0.001120333 seconds
+Start importing Assets/Settings/URP-Performant.asset using Guid(d0e2fc18fe036412f8223b3b3d9ad574) (NativeFormatImporter) -> (artifact id: '668d287b1016557e1c34aa6a38ecd493') in 0.000621708 seconds
+Start importing Assets/Settings/URP-Balanced.asset using Guid(e1260c1148f6143b28bae5ace5e9c5d1) (NativeFormatImporter) -> (artifact id: 'd8b09bf52dbda29a183af1643f2ea5e1') in 0.000712375 seconds
+Start importing Assets/AddressableAssetsData/AddressableAssetSettings.asset using Guid(75be54ec8452b4f43b0aa1a3b6238e73) (NativeFormatImporter) -> (artifact id: '1e91f2a2c190ba40f03b76ba0a5dbd19') in 0.000773709 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset using Guid(f5b71b85a798d6f40bb1c3812901e71f) (NativeFormatImporter) -> (artifact id: '3fb6131f0adc14282e8bf3a78a854a52') in 0.000614542 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/LynkMod.asset using Guid(aac5dc43f207f464cbe5c74a47d73199) (NativeFormatImporter) -> (artifact id: '322e5886b2a272def9f1db216c7bdd93') in 0.00058275 seconds
+Start importing Assets/Settings/URP-HighFidelity.asset using Guid(7b7fd9122c28c4d15b667c7040e3b3fd) (NativeFormatImporter) -> (artifact id: 'd26505e215e95d2dd505bba4dd9fed8b') in 0.000628875 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/FirebotsModpack.asset using Guid(4c877c9eb38bd4d61a1d6891f75d025a) (NativeFormatImporter) -> (artifact id: '0a3d542dcfdd23adb985930affa31056') in 0.000590541 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/MechTechMod.asset using Guid(9cd31e1fc2fdeb84fbde0fabd689577f) (NativeFormatImporter) -> (artifact id: '0ee1ecd84382d752ca495c1d60a2d793') in 0.000467709 seconds
+Start importing Assets/AddressableAssetsData/AssetGroups/CitrusCircuitsMod.asset using Guid(bd8f3d30d281e4cafb8c7ec5c3127569) (NativeFormatImporter) -> (artifact id: '4973f540f0dd1b10650c58747c0d2a0f') in 0.000584917 seconds
+Refreshing native plugins compatible for Editor in 0.76 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=1b43aa56cba384567bfbe5d7bafaeb85): Total: 0.039 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Copied mod assembly: CitrusCircuits.dll -> /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Mods/CitrusCircuitsMod
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Editor.AddressablesModExporter:CopyCatalogsAndAssemblies (UnityEditor.AddressableAssets.Settings.AddressableAssetGroup,string) (at Assets/Editor/AddressablesModExporter.cs:346)
+Editor.AddressablesModExporter:ExportGroup (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,string,string,string) (at Assets/Editor/AddressablesModExporter.cs:201)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:91)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: Assets/Editor/AddressablesModExporter.cs Line: 346)
+
+Zipped mod folder to /Users/alonrab/dev/workspaces/Mosim/2025/MoSimulator-Public/Mods/CitrusCircuitsMod v1.0.0 MacOS.zip
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Editor.AddressablesModExporter:ZipAndCleanup (string,string,string,string,string) (at Assets/Editor/AddressablesModExporter.cs:408)
+Editor.AddressablesModExporter:ExportGroup (UnityEditor.AddressableAssets.Settings.AddressableAssetSettings,string,string,string) (at Assets/Editor/AddressablesModExporter.cs:204)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:91)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: Assets/Editor/AddressablesModExporter.cs Line: 408)
+
+Build and export complete.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:94)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: Assets/Editor/AddressablesModExporter.cs Line: 94)
+
+Clearing [Capsmall_clean SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Kardust TS Condensed Bold Italic SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Megahertz In Regular SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Anton SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Bangers SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Electronic Highway Sign SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Oswald Bold SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Roboto-Bold SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Orbitron-VariableFont_wght SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [Orbitron_Main_Menu] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Clearing [LiberationSans SDF - Fallback] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit () (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorApplication.cs:120)
+Editor.AddressablesModExporter:BuildAndExport (System.Collections.Generic.List`1<Editor.AddressablesModExporter/ModBuildSpec>) (at Assets/Editor/AddressablesModExporter.cs:97)
+Editor.AddressablesModExporter:BuildFromCommandLine () (at Assets/Editor/AddressablesModExporter.cs:74)
+
+(Filename: ./Library/PackageCache/com.unity.ugui@2.0.0/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Oswald Bold SDF.asset using Guid(0161d805a3764c089bef00bfe00793f5) (NativeFormatImporter) -> (artifact id: '348de689bcc745ba676697713fb58295') in 0.001995292 seconds
+Start importing Assets/Imports/Fonts/Capsmall_clean SDF.asset using Guid(c141e5e7e416b4457b94bb3cc200fe87) (NativeFormatImporter) -> (artifact id: 'afb3ac057cda17b14a616d1f33548e53') in 0.000716458 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Bangers SDF.asset using Guid(125cb55b44b24c4393181402bc6200e6) (NativeFormatImporter) -> (artifact id: '0c96d555ed6cb965cb7d9420f2040e0a') in 0.002493208 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) (NativeFormatImporter) -> (artifact id: '608ef5949342170012daec043acec1d0') in 0.001930292 seconds
+Start importing Assets/Imports/Fonts/Kardust TS Condensed Bold Italic SDF.asset using Guid(44e19a5c696205449a28e60897197379) (NativeFormatImporter) -> (artifact id: '42c0d2eca4f1c5e178f65767be423b50') in 0.00064275 seconds
+Start importing Assets/Imports/Fonts/Megahertz In Regular SDF.asset using Guid(e454897a0fcfdbd42a554ba94c2302ae) (NativeFormatImporter) -> (artifact id: '898985f979b565d5e8bc3ebf3e4f2fdf') in 0.000743916 seconds
+Start importing Assets/TextMesh Pro/Fonts/Orbitron-VariableFont_wght SDF.asset using Guid(384bb11c1fa15014591838a6229e947c) (NativeFormatImporter) -> (artifact id: '639aa93d27d95b28f388a0e50891a4cf') in 0.001330542 seconds
+Start importing Assets/TextMesh Pro/Fonts/Orbitron_Main_Menu.asset using Guid(a9aeab6d3f84ed54f96da6ae0b36e175) (NativeFormatImporter) -> (artifact id: '2d5f7fa6d67c033844398eae2646384b') in 0.0013125 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset using Guid(8a89fa14b10d46a99122fd4f73fca9a2) (NativeFormatImporter) -> (artifact id: 'a87692139d087bdc2c8b17a72b0479e0') in 0.000822084 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic Highway Sign SDF.asset using Guid(dc36b3fdc14f47ebb36fd484a67e268a) (NativeFormatImporter) -> (artifact id: '3327bd87b8e34626de2a6cd3e364f11f') in 0.00063525 seconds
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) (NativeFormatImporter) -> (artifact id: '58220e5b8fc9561f358a9b8c0f5b9d16') in 0.000646833 seconds
+Refreshing native plugins compatible for Editor in 0.81 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=56a7a5305acc14934a13ef6463c7c30b): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Thread 0x334f07000 may have been prematurely finalized
+[Licensing::IpcConnector] License Notification channel disconnected successfully.
+[Licensing::IpcConnector] License Client channel disconnected successfully.
+Thread 0x16be93000 may have been prematurely finalized
+Thread 0x16bd7b000 may have been prematurely finalized
+Thread 0x16be07000 may have been prematurely finalized
+AcceleratorClientConnectionCallback - disconnected - :0
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+Cleanup mono
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 3 is unloading
+18:13:42.497 |V| RiderPlugin                    | :1                             | AppDomain.CurrentDomain.DomainUnload lifetimeDefinition.Terminate
+debugger-agent: Unable to listen on 45
+[Performance] Application.InitializeProject                                                                                  :        1 samples, Peak.  13.8 s (1.0x), Avg.  13.8 s, Total. 13.77 s (23.8%)
+[Performance] Application.PackageManager.StartServer                                                                         :        1 samples, Peak.  2.81 ms (1.0x), Avg.  2.81 ms, Total. 2.811 ms (0.0%)
+[Performance] Application.AcquireProjectLock                                                                                 :        1 samples, Peak.  11.4 ms (1.0x), Avg.  11.4 ms, Total. 11.37 ms (0.0%)
+[Performance] Application.InitializeEngineNoGraphics                                                                         :        1 samples, Peak.  94.6 ms (1.0x), Avg.  94.6 ms, Total. 94.55 ms (0.2%)
+[Performance] Application.PackageManager.Initialize                                                                          :        1 samples, Peak.  1.32 s (1.0x), Avg.  1.32 s, Total. 1.320 s (2.3%)
+[Performance] Connecting to Package Manager                                                                                  :      133 samples, Peak.  53.4 us (37.1x), Avg.  1.44 us, Total. 191.4 us (0.0%)
+[Performance] Application.EngineGraphics.Initialize                                                                          :        1 samples, Peak.   118 ms (1.0x), Avg.   118 ms, Total. 117.6 ms (0.2%)
+[Performance] Application.GI.Initialize                                                                                      :        1 samples, Peak.   528 us (1.0x), Avg.   528 us, Total. 527.9 us (0.0%)
+[Performance] Application.LoadAllDefaultResourcesFromEditor                                                                  :        1 samples, Peak.  1.00 ms (1.0x), Avg.  1.00 ms, Total. 1.001 ms (0.0%)
+[Performance] Application.LoadMonoAssemblies                                                                                 :        1 samples, Peak.   494 ms (1.0x), Avg.   494 ms, Total. 493.9 ms (0.9%)
+[Performance] RestoreManagedReferences                                                                                       :        2 samples, Peak.  55.4 ms (2.0x), Avg.  27.7 ms, Total. 55.42 ms (0.1%)
+[Performance] AssemblyReloadEvents.afterAssemblyReload: UnityEditor.SceneTemplate.SceneTemplateService.AfterAssemblyReload   :        2 samples, Peak.  2.55 ms (1.7x), Avg.  1.48 ms, Total. 2.953 ms (0.0%)
+[Performance] ProcessService.EditorAfterLoadAllAssemblies                                                                    :        2 samples, Peak.   298 us (1.0x), Avg.   285 us, Total. 570.7 us (0.0%)
+[Performance] Application.ReadLicenseInfo                                                                                    :        1 samples, Peak.  14.1 ms (1.0x), Avg.  14.1 ms, Total. 14.09 ms (0.0%)
+[Performance] Application.InitialRefresh                                                                                     :        1 samples, Peak.  10.9 s (1.0x), Avg.  10.9 s, Total. 10.94 s (18.9%)
+[Performance] AssetDatabase.InitialRefresh                                                                                   :        1 samples, Peak.  10.9 s (1.0x), Avg.  10.9 s, Total. 10.94 s (18.9%)
+[Performance] Compiling Scripts                                                                                              :        1 samples, Peak.   900 ms (1.0x), Avg.   900 ms, Total. 900.2 ms (1.6%)
+[Performance] AssemblyReloadEvents.beforeAssemblyReload: UnityEditor.SceneTemplate.SceneTemplateService.BeforeAssemblyReload :        1 samples, Peak.   517 us (1.0x), Avg.   517 us, Total. 516.9 us (0.0%)
+[Performance] EditorResources.Load                                                                                           :       20 samples, Peak.  47.4 ms (18.8x), Avg.  2.52 ms, Total. 50.43 ms (0.1%)
+[Performance] DidReloadScriptsTestRunnerWindow.CompilationCallback                                                           :        1 samples, Peak.   122 us (1.0x), Avg.   122 us, Total. 121.8 us (0.0%)
+[Performance] DidReloadScriptsTestListCache.ScriptReloaded                                                                   :        1 samples, Peak.   695 us (1.0x), Avg.   695 us, Total. 694.6 us (0.0%)
+[Performance] DidReloadScriptsLookDev.OnEditorReload                                                                         :        1 samples, Peak.   134 us (1.0x), Avg.   134 us, Total. 133.7 us (0.0%)
+[Performance] DidReloadScriptsDebugWindow.OnEditorReload                                                                     :        1 samples, Peak.  2.88 ms (1.0x), Avg.  2.88 ms, Total. 2.882 ms (0.0%)
+[Performance] DidReloadScriptsVolumeComponentEditor.OnEditorReload                                                           :        1 samples, Peak.  42.1 ms (1.0x), Avg.  42.1 ms, Total. 42.14 ms (0.1%)
+[Performance] DidReloadScriptsAdvancedDropdownWindow.OnScriptReload                                                          :        2 samples, Peak.   302 us (1.4x), Avg.   222 us, Total. 443.3 us (0.0%)
+[Performance] DidReloadScriptsCinemachineVirtualCameraBase.OnScriptReload                                                    :        1 samples, Peak.  73.0 us (1.0x), Avg.  73.0 us, Total. 73.00 us (0.0%)
+[Performance] DidReloadScriptsCinemachineExtension.OnScriptReload                                                            :        1 samples, Peak.   316 us (1.0x), Avg.   316 us, Total. 316.0 us (0.0%)
+[Performance] DidReloadScriptsEditorMenuExtensions.FindAndCloseAllContextMenus                                               :        1 samples, Peak.  2.20 ms (1.0x), Avg.  2.20 ms, Total. 2.198 ms (0.0%)
+[Performance] PresetManagerPostProcessor.OnPreprocessAsset                                                                   :       81 samples, Peak.   549 us (25.6x), Avg.  21.5 us, Total. 1.741 ms (0.0%)
+[Performance] CancelSplashScreenOnAssetChange.OnPreprocessAsset                                                              :       81 samples, Peak.   125 us (36.7x), Avg.  3.42 us, Total. 276.6 us (0.0%)
+[Performance] ShaderGraphAssetPostProcessor.OnPreprocessAsset                                                                :       81 samples, Peak.   125 us (17.7x), Avg.  7.06 us, Total. 571.6 us (0.0%)
+[Performance] EditorApplication.projectChanged: UnityEditor.Audio.MixerEffectDefinitionReloader.OnProjectChanged             :        1 samples, Peak.   375 us (1.0x), Avg.   375 us, Total. 374.6 us (0.0%)
+[Performance] EditorApplication.projectChanged: UnityEngine.InputSystem.LowLevel.NativeInputRuntime.OnProjectChanged         :        1 samples, Peak.   201 us (1.0x), Avg.   201 us, Total. 200.8 us (0.0%)
+[Performance] AssetDatabase.ImportAssets                                                                                     :       11 samples, Peak.  59.7 ms (4.5x), Avg.  13.2 ms, Total. 144.9 ms (0.2%)
+[Performance] VersionControl.Task.Wait                                                                                       :        1 samples, Peak.   367 us (1.0x), Avg.   367 us, Total. 367.5 us (0.0%)
+[Performance] SamplePostprocessor.OnPostprocessAllAssets                                                                     :       30 samples, Peak.   202 us (7.8x), Avg.  25.9 us, Total. 778.5 us (0.0%)
+[Performance] TMPro_TexturePostProcessor.OnPostprocessAllAssets                                                              :       10 samples, Peak.   532 us (1.8x), Avg.   303 us, Total. 3.030 ms (0.0%)
+[Performance] CinemachineSettings.OnPostprocessAllAssets                                                                     :       10 samples, Peak.   198 us (4.6x), Avg.  43.0 us, Total. 429.5 us (0.0%)
+[Performance] WindowAssetPostprocessingWatcher_Internal.OnPostprocessAllAssets                                               :       10 samples, Peak.  1.04 ms (3.9x), Avg.   267 us, Total. 2.675 ms (0.0%)
+[Performance] AssetPostprocessor.OnPostprocessAllAssets                                                                      :       10 samples, Peak.   181 us (4.7x), Avg.  38.2 us, Total. 382.3 us (0.0%)
+[Performance] BuilderAssetPostprocessor.OnPostprocessAllAssets                                                               :       10 samples, Peak.  4.87 ms (5.0x), Avg.   983 us, Total. 9.834 ms (0.0%)
+[Performance] AddressablesAssetPostProcessor.OnPostprocessAllAssets                                                          :       10 samples, Peak.  16.4 ms (4.2x), Avg.  3.92 ms, Total. 39.23 ms (0.1%)
+[Performance] ArtifactBrowserPostProcessor.OnPostprocessAllAssets                                                            :       10 samples, Peak.   453 us (4.9x), Avg.  93.1 us, Total. 931.1 us (0.0%)
+[Performance] AssetEvents.OnPostprocessAllAssets                                                                             :       20 samples, Peak.   126 us (6.7x), Avg.  18.8 us, Total. 375.2 us (0.0%)
+[Performance] AudioContainerPostProcessor.OnPostprocessAllAssets                                                             :       10 samples, Peak.  59.5 us (4.5x), Avg.  13.1 us, Total. 130.8 us (0.0%)
+[Performance] AudioMixerPostprocessor.OnPostprocessAllAssets                                                                 :       10 samples, Peak.   224 us (4.8x), Avg.  46.3 us, Total. 462.7 us (0.0%)
+[Performance] StyleCatalogPostProcessor.OnPostprocessAllAssets                                                               :       10 samples, Peak.  20.5 ms (5.0x), Avg.  4.10 ms, Total. 41.04 ms (0.1%)
+[Performance] BuildCatalog                                                                                                   :        1 samples, Peak.  19.6 ms (1.0x), Avg.  19.6 ms, Total. 19.63 ms (0.0%)
+[Performance] ModelImporterPostProcessor.OnPostprocessAllAssets                                                              :       10 samples, Peak.  1.02 ms (4.5x), Avg.   228 us, Total. 2.284 ms (0.0%)
+[Performance] AssetDatabaseProxy.OnPostprocessAllAssets                                                                      :       10 samples, Peak.   262 ms (5.0x), Avg.  52.6 ms, Total. 526.0 ms (0.9%)
+[Performance] MaterialPostprocessor.OnPostprocessAllAssets                                                                   :       20 samples, Peak.   692 us (4.6x), Avg.   152 us, Total. 3.041 ms (0.0%)
+[Performance] UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets                                      :       10 samples, Peak.  11.1 ms (5.0x), Avg.  2.22 ms, Total. 22.15 ms (0.0%)
+[Performance] RetainedModeAssetPostprocessor.OnPostprocessAllAssets                                                          :       10 samples, Peak.  1.53 ms (4.9x), Avg.   314 us, Total. 3.143 ms (0.0%)
+[Performance] AssetChangedListener.OnPostprocessAllAssets                                                                    :       10 samples, Peak.   980 us (3.9x), Avg.   254 us, Total. 2.541 ms (0.0%)
+[Performance] PostProcessor.OnPostprocessAllAssets                                                                           :       10 samples, Peak.   490 us (3.1x), Avg.   157 us, Total. 1.570 ms (0.0%)
+[Performance] ShaderGraphAssetPostProcessor.OnPostprocessAllAssets                                                           :       10 samples, Peak.  3.43 ms (3.4x), Avg.  1.01 ms, Total. 10.11 ms (0.0%)
+[Performance] SpeedTreePostProcessor.OnPostprocessAllAssets                                                                  :       10 samples, Peak.   141 us (4.5x), Avg.  31.6 us, Total. 316.0 us (0.0%)
+[Performance] TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets                                                      :       10 samples, Peak.   370 us (4.8x), Avg.  76.4 us, Total. 764.2 us (0.0%)
+[Performance] TextAssetPostProcessor.OnPostprocessAllAssets                                                                  :       10 samples, Peak.   451 us (2.4x), Avg.   189 us, Total. 1.894 ms (0.0%)
+[Performance] SpriteEditorTexturePostprocessor.OnPostprocessAllAssets                                                        :       10 samples, Peak.   427 us (4.0x), Avg.   106 us, Total. 1.062 ms (0.0%)
+[Performance] AssetPathToTypes.OnPostprocessAllAssets                                                                        :       10 samples, Peak.   370 us (4.9x), Avg.  76.0 us, Total. 760.2 us (0.0%)
+[Performance] SyncVS.PostprocessSyncProject                                                                                  :        5 samples, Peak.   984 us (3.4x), Avg.   291 us, Total. 1.454 ms (0.0%)
+[Performance] Application.ImportPackagesAndSetTemplateWhenCreatingProject                                                    :        1 samples, Peak.  20.5 ms (1.0x), Avg.  20.5 ms, Total. 20.53 ms (0.0%)
+[Performance] Application.SyncCurrentColorSpace                                                                              :        1 samples, Peak.  13.3 ms (1.0x), Avg.  13.3 ms, Total. 13.30 ms (0.0%)
+[Performance] Application.OnUsbDevicesChanged                                                                                :        1 samples, Peak.   437 us (1.0x), Avg.   437 us, Total. 437.4 us (0.0%)
+[Performance] Application.AssetInstanceCacheUpdate                                                                           :        1 samples, Peak.   250 ns (1.0x), Avg.   250 ns, Total. 250.0 ns (0.0%)
+[Performance] Application.UnityExtensions.Initialize                                                                         :        1 samples, Peak.  17.6 ms (1.0x), Avg.  17.6 ms, Total. 17.65 ms (0.0%)
+[Performance] CodeEditorProjectSync.SyncEditorProject                                                                        :        1 samples, Peak.  98.9 ms (1.0x), Avg.  98.9 ms, Total. 98.94 ms (0.2%)
+[Performance] Application.ExecuteStartups                                                                                    :        1 samples, Peak.  24.7 ms (1.0x), Avg.  24.7 ms, Total. 24.66 ms (0.0%)
+[Performance] Menu.RegisterMenuInterface                                                                                     :       26 samples, Peak.   917 ns (7.2x), Avg.   127 ns, Total. 3.290 us (0.0%)
+[Performance] Gizmo.RebuildRenderers                                                                                         :        1 samples, Peak.  22.9 ms (1.0x), Avg.  22.9 ms, Total. 22.86 ms (0.0%)
+[Performance] Gizmo.AddGizmoRenderers                                                                                        :      153 samples, Peak.  1.12 ms (36.1x), Avg.  31.1 us, Total. 4.758 ms (0.0%)
+[Performance] Application.editorInitializingProject                                                                          :        1 samples, Peak.  17.8 ms (1.0x), Avg.  17.8 ms, Total. 17.80 ms (0.0%)
+[Performance] Application.InitializeMenu                                                                                     :        1 samples, Peak.   167 ms (1.0x), Avg.   167 ms, Total. 167.2 ms (0.3%)
+[Performance] Menu.RebuildAll                                                                                                :        1 samples, Peak.   167 ms (1.0x), Avg.   167 ms, Total. 167.2 ms (0.3%)
+[Performance] Menu.BuildRegisteredMenuInterfaces                                                                             :        1 samples, Peak.   166 ms (1.0x), Avg.   166 ms, Total. 166.3 ms (0.3%)
+[Performance] Menu.FilterMenuItem                                                                                            :      988 samples, Peak.  12.6 ms (970.0x), Avg.  13.0 us, Total. 12.87 ms (0.0%)
+[Performance] UpdateAllMenus                                                                                                 :        1 samples, Peak.   435 us (1.0x), Avg.   435 us, Total. 434.9 us (0.0%)
+[Performance] EditorSceneManager.sceneClosing: UnityEditor.SceneVisibilityManager.EditorSceneManagerOnSceneClosing           :        2 samples, Peak.   135 us (1.8x), Avg.  75.2 us, Total. 150.4 us (0.0%)
+[Performance] GUIView.RepaintAll.PlayerLoopController                                                                        :        2 samples, Peak.  1.71 us (1.4x), Avg.  1.19 us, Total. 2.376 us (0.0%)
+[Performance] EditorSceneManager.newSceneCreated: UnityEditor.SceneTemplate.SceneTemplateService.OnNewSceneCreated           :        2 samples, Peak.   156 us (1.9x), Avg.  81.6 us, Total. 163.2 us (0.0%)
+[Performance] EditorSceneManager.newSceneCreated: UnityEditor.SceneVisibilityManager.EditorSceneManagerOnNewSceneCreated     :        2 samples, Peak.   192 us (1.9x), Avg.   100 us, Total. 200.4 us (0.0%)
+[Performance] EditorSceneManager.newSceneCreated: UnityEditor.SceneManagement.StageNavigationManager.OnNewSceneCreated       :        2 samples, Peak.  42.2 us (1.4x), Avg.  29.2 us, Total. 58.37 us (0.0%)
+[Performance] Application.InvokeFinishedLoadingProject                                                                       :        1 samples, Peak.  21.3 ms (1.0x), Avg.  21.3 ms, Total. 21.26 ms (0.0%)
+[Performance] ProcessService.OnProjectLoaded                                                                                 :        1 samples, Peak.  92.9 us (1.0x), Avg.  92.9 us, Total. 92.92 us (0.0%)
+[Performance] StateMacroSavedEvent.OnWillSaveAssets                                                                          :        4 samples, Peak.   566 us (2.2x), Avg.   258 us, Total. 1.032 ms (0.0%)
+[Performance] FlowMacroSavedEvent.OnWillSaveAssets                                                                           :        4 samples, Peak.   306 us (2.4x), Avg.   130 us, Total. 520.1 us (0.0%)
+[Performance] AssetModificationProcessor.OnWillSaveAssets                                                                    :        4 samples, Peak.   114 us (3.9x), Avg.  29.2 us, Total. 116.9 us (0.0%)
+[Performance] BuilderAssetModificationProcessor.OnWillSaveAssets                                                             :        4 samples, Peak.   190 us (3.8x), Avg.  49.8 us, Total. 199.0 us (0.0%)
+[Performance] TerrainModificationProcessor.OnWillSaveAssets                                                                  :        4 samples, Peak.   392 us (4.0x), Avg.  99.0 us, Total. 396.1 us (0.0%)
+[Performance] AudioContainerModificationProcessor.OnWillSaveAssets                                                           :        4 samples, Peak.  32.3 us (3.5x), Avg.  9.22 us, Total. 36.87 us (0.0%)
+[Performance] ShaderImporter.SourceAssetModified                                                                             :        3 samples, Peak.  2.96 us (2.3x), Avg.  1.31 us, Total. 3.917 us (0.0%)
+[Performance] ShaderIncludeImporter.SourceAssetModified                                                                      :        3 samples, Peak.  1.21 us (1.7x), Avg.   694 ns, Total. 2.083 us (0.0%)
+[Performance] GenerateAssemblyTypeInfos                                                                                      :        2 samples, Peak.  47.6 ms (1.0x), Avg.  47.3 ms, Total. 94.58 ms (0.2%)
+[Performance] AssetDatabase.Refresh                                                                                          :        1 samples, Peak.   521 ms (1.0x), Avg.   521 ms, Total. 520.8 ms (0.9%)
+[Performance] Application.Shutdown.SaveDefaultWindowPreferences                                                              :        1 samples, Peak.  64.8 us (1.0x), Avg.  64.8 us, Total. 64.79 us (0.0%)
+[Performance] Application.Shutdown.SaveSceneManagerSetup                                                                     :        1 samples, Peak.   124 us (1.0x), Avg.   124 us, Total. 124.1 us (0.0%)
+[Performance] Application.Shutdown.CleanupAllContainerWindows                                                                :        1 samples, Peak.   417 ns (1.0x), Avg.   417 ns, Total. 417.0 ns (0.0%)
+[Performance] EditorApplication.quitting: Unity.Burst.Editor.BurstLoader.OnEditorApplicationQuitting                         :        1 samples, Peak.  27.6 us (1.0x), Avg.  27.6 us, Total. 27.58 us (0.0%)
+[Performance] EditorApplication.quitting: callback in TMPro.EditorEventCallbacks                                             :        1 samples, Peak.   116 ms (1.0x), Avg.   116 ms, Total. 116.3 ms (0.2%)
+[Performance] EditorApplication.quitting: callback in UnityEditor.TextCore.Text.EditorEventCallbacks                         :        1 samples, Peak.  8.63 ms (1.0x), Avg.  8.63 ms, Total. 8.626 ms (0.0%)
+[Performance] EditorApplication.quitting: ThreadingManager.WaitForOutstandingTasks                                           :        1 samples, Peak.   405 us (1.0x), Avg.   405 us, Total. 404.6 us (0.0%)
+[Performance] Application.Shutdown.PauseProfilerSession                                                                      :        1 samples, Peak.  1.25 ms (1.0x), Avg.  1.25 ms, Total. 1.249 ms (0.0%)
+[Performance] Application.Shutdown.PauseAssetImportWorkers                                                                   :        1 samples, Peak.  91.9 us (1.0x), Avg.  91.9 us, Total. 91.88 us (0.0%)
+[Performance] Application.Shutdown.SaveAssets                                                                                :        1 samples, Peak.  62.5 ms (1.0x), Avg.  62.5 ms, Total. 62.53 ms (0.1%)
+[Performance] Application.Shutdown.CleanupRenderPipeline                                                                     :        1 samples, Peak.  1.83 us (1.0x), Avg.  1.83 us, Total. 1.833 us (0.0%)
+[Performance] Application.Shutdown.StopPreloadManager                                                                        :        1 samples, Peak.  11.1 ms (1.0x), Avg.  11.1 ms, Total. 11.07 ms (0.0%)
+[Performance] Application.Shutdown.DestroyWorld                                                                              :        1 samples, Peak.   433 us (1.0x), Avg.   433 us, Total. 432.8 us (0.0%)
+[Performance] Application.Shutdown.CleanupAfterLoad                                                                          :        1 samples, Peak.   298 ms (1.0x), Avg.   298 ms, Total. 297.9 ms (0.5%)
+[Performance] Application.Shutdown.Progress                                                                                  :        1 samples, Peak.   376 us (1.0x), Avg.   376 us, Total. 376.2 us (0.0%)
+[Performance] Application.Shutdown.GICleanupManagers                                                                         :        1 samples, Peak.  4.46 ms (1.0x), Avg.  4.46 ms, Total. 4.457 ms (0.0%)
+[Performance] Application.Shutdown.MenuCleanupClass                                                                          :        1 samples, Peak.   718 us (1.0x), Avg.   718 us, Total. 718.0 us (0.0%)
+[Performance] Application.Shutdown.ADBSaveStateBeforeShutdown                                                                :        1 samples, Peak.  8.42 us (1.0x), Avg.  8.42 us, Total. 8.417 us (0.0%)
+[Performance] Application.Shutdown.RemoteShutdown                                                                            :        1 samples, Peak.   708 ns (1.0x), Avg.   708 ns, Total. 708.0 ns (0.0%)
+[Performance] Application.Shutdown.CleanupVCProvider                                                                         :        1 samples, Peak.  56.1 us (1.0x), Avg.  56.1 us, Total. 56.13 us (0.0%)
+[Performance] Application.Shutdown.InputShutdown                                                                             :        1 samples, Peak.   253 us (1.0x), Avg.   253 us, Total. 253.0 us (0.0%)
+[Performance] Application.Shutdown.GizmoManagerDestroy                                                                       :        1 samples, Peak.   670 us (1.0x), Avg.   670 us, Total. 669.9 us (0.0%)
+[Performance] Application.Shutdown.ProfilerSession                                                                           :        1 samples, Peak.   904 us (1.0x), Avg.   904 us, Total. 904.2 us (0.0%)
+[Performance] Application.Shutdown.ReleaseGfxWindowOnAllGUIViews                                                             :        1 samples, Peak.  4.33 us (1.0x), Avg.  4.33 us, Total. 4.333 us (0.0%)
+[Performance] Application.Shutdown.CleanupEngine                                                                             :        1 samples, Peak.   112 ms (1.0x), Avg.   112 ms, Total. 111.9 ms (0.2%)
+[Performance] Application.Shutdown.CleanupAssetDatabase                                                                      :        1 samples, Peak.  22.6 ms (1.0x), Avg.  22.6 ms, Total. 22.63 ms (0.0%)
+[Performance] Application.Shutdown.ScriptCompilationCleanUp                                                                  :        1 samples, Peak.  28.6 us (1.0x), Avg.  28.6 us, Total. 28.62 us (0.0%)
+[Performance] Application.Shutdown.DestroyJobSystem                                                                          :        1 samples, Peak.   263 us (1.0x), Avg.   263 us, Total. 262.6 us (0.0%)
+[Performance] Application.Shutdown.CleanupPersistentManager                                                                  :        1 samples, Peak.  4.38 ms (1.0x), Avg.  4.38 ms, Total. 4.385 ms (0.0%)
+[Performance] Application.Shutdown.CleanupAsyncReadManager                                                                   :        1 samples, Peak.   494 us (1.0x), Avg.   494 us, Total. 493.5 us (0.0%)
+[Performance] Application.Shutdown.CleanupMono                                                                               :        1 samples, Peak.   275 ms (1.0x), Avg.   275 ms, Total. 275.0 ms (0.5%)
+[Performance] Application.Shutdown.CleanupStdConverters                                                                      :        1 samples, Peak.  5.96 us (1.0x), Avg.  5.96 us, Total. 5.958 us (0.0%)
+[Performance] Application.Shutdown.UnloadAllPlatformSupportModuleNativeDlls                                                  :        1 samples, Peak.   583 ns (1.0x), Avg.   583 ns, Total. 583.0 ns (0.0%)
+[Performance] Application.Shutdown.UnloadAllPlatformSupportNativeLibraries                                                   :        1 samples, Peak.   167 ns (1.0x), Avg.   167 ns, Total. 167.0 ns (0.0%)
+[Performance] Application.Shutdown.CleanupAutoDocumentation                                                                  :        1 samples, Peak.   108 us (1.0x), Avg.   108 us, Total. 108.2 us (0.0%)
+[Performance] Application.Shutdown.ShaderNameManagerDestroy                                                                  :        1 samples, Peak.  18.2 us (1.0x), Avg.  18.2 us, Total. 18.17 us (0.0%)
+[Performance] Application.Shutdown.CleanupCacheServer                                                                        :        1 samples, Peak.   167 ns (1.0x), Avg.   167 ns, Total. 167.0 ns (0.0%)
+[Performance] Application.Shutdown.Virtualization_Shutdown                                                                   :        1 samples, Peak.   292 ns (1.0x), Avg.   292 ns, Total. 292.0 ns (0.0%)
+[Performance] Application.Shutdown.DevConnections                                                                            :        1 samples, Peak.   469 us (1.0x), Avg.   469 us, Total. 468.7 us (0.0%)
+Thread: ID 8468979328, CleanupSafetyData: safetyData 11cbd59d0
+Thread: ID 8468979328, CleanupSafetyData: safetyData 11cbd6c60
+Thread: ID 8468979328, CleanupSafetyData: safetyData 11cbd6cf0
+Thread: ID 8468979328, CleanupSafetyData: safetyData 11dceaae0
+Thread: ID 8468979328, CleanupSafetyData: safetyData 11defb3b0
+[Package Manager] Server process was shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+Memory Statistics:
+[ALLOC_TEMP_TLS] TLS Allocator
+  StackAllocators : 
+    [ALLOC_TEMP_CurlRequest]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_MAIN]
+      Initial Block Size 16.0 MB
+      Current Block Size 123.1 MB
+      Peak Allocated Bytes 116.5 MB
+      Overflow Count 1
+    [ALLOC_TEMP_Background Job.worker 4]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Loading.PreloadManager]
+      Initial Block Size 32.0 MB
+      Current Block Size 32.0 MB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 3]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 11]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 7]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_EditorTaskManager]
+      Initial Block Size 64.0 KB
+      Current Block Size 80.0 KB
+      Peak Allocated Bytes 64.0 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 6]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_CloudJob.worker 0]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 5.0 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Profiler.Dispatcher]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 12]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 2]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 107 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 10]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 15]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 5]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_Background Job.worker 8]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 13]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 0]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_AssetGarbageCollectorHelper] x 9
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 9]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 6]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 7]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 4]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 0]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 6]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_Job.worker 8]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_Background Job.worker 14]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_AUDIO_Audio Mixer Thread]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 1]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BatchDeleteObjects]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_BakingJobs.worker 5]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_AUDIO_FMOD stream thread]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_CoreBusinessMetricsCache]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 7.4 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 9]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 0]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 4]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_Background Job.worker 1]
+      Initial Block Size 32.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 117.7 KB
+      Overflow Count 4103
+    [ALLOC_TEMP_AssetDatabase.IOService]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 1]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_BakingJobs.worker 3]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.worker 5]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 3]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_BakingJobs.worker 2]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.worker 2]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_Job.worker 7]
+      Initial Block Size 256.0 KB
+      Current Block Size 1.0 MB
+      Peak Allocated Bytes 1.0 MB
+      Overflow Count 1
+    [ALLOC_TEMP_BakingJobs.worker 8]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Loading.AsyncRead]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 128 B
+      Overflow Count 0
+[ALLOC_MEMORYPROFILER]
+  Requested Block Size 1.0 MB
+  Peak Block count 3
+  Peak Allocated memory 2.4 MB
+  Peak Large allocation bytes 0 B
+[ALLOC_DEFAULT] Dual Thread Allocator
+  Peak main deferred allocation count 2836
+    [ALLOC_BUCKET]
+      Large Block size 32.0 MB
+      Used Block count 2
+      Peak Allocated bytes 24.8 MB
+    [ALLOC_DEFAULT_MAIN]
+      Requested Block Size 16.0 MB
+      Peak Block count 63
+      Peak Allocated memory 0.96 GB
+      Peak Large allocation bytes 0 B
+    [ALLOC_DEFAULT_THREAD]
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 86.0 MB
+      Peak Large allocation bytes 86.0 MB
+[ALLOC_TEMP_JOB_1_FRAME]
+  Initial Block Size 2.0 MB
+  Used Block Count 0
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_2_FRAMES]
+  Initial Block Size 2.0 MB
+  Used Block Count 0
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_4_FRAMES (JobTemp)]
+  Initial Block Size 2.0 MB
+  Used Block Count 1
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_ASYNC (Background)]
+  Initial Block Size 1.0 MB
+  Used Block Count 1
+  Overflow Count (too large) 4
+  Overflow Count (full) 0
+[ALLOC_GFX] Dual Thread Allocator
+  Peak main deferred allocation count 180
+    [ALLOC_BUCKET]
+      Large Block size 32.0 MB
+      Used Block count 2
+      Peak Allocated bytes 24.8 MB
+    [ALLOC_GFX_MAIN]
+      Requested Block Size 16.0 MB
+      Peak Block count 9
+      Peak Allocated memory 140.5 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_GFX_THREAD]
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 56.6 KB
+      Peak Large allocation bytes 0 B
+[ALLOC_CACHEOBJECTS] Dual Thread Allocator
+  Peak main deferred allocation count 38331
+    [ALLOC_BUCKET]
+      Large Block size 32.0 MB
+      Used Block count 2
+      Peak Allocated bytes 24.8 MB
+    [ALLOC_CACHEOBJECTS_MAIN]
+      Requested Block Size 4.0 MB
+      Peak Block count 14
+      Peak Allocated memory 113.2 MB
+      Peak Large allocation bytes 65.7 MB
+    [ALLOC_CACHEOBJECTS_THREAD]
+      Requested Block Size 4.0 MB
+      Peak Block count 0
+      Peak Allocated memory 0 B
+      Peak Large allocation bytes 0 B
+[ALLOC_TYPETREE] Dual Thread Allocator
+  Peak main deferred allocation count 1304
+    [ALLOC_BUCKET]
+      Large Block size 32.0 MB
+      Used Block count 2
+      Peak Allocated bytes 24.8 MB
+    [ALLOC_TYPETREE_MAIN]
+      Requested Block Size 2.0 MB
+      Peak Block count 6
+      Peak Allocated memory 11.8 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_TYPETREE_THREAD]
+      Requested Block Size 2.0 MB
+      Peak Block count 0
+      Peak Allocated memory 0 B
+      Peak Large allocation bytes 0 B
+[ALLOC_PROFILER]
+  Requested Block Size 16.0 MB
+  Peak Block count 1
+  Peak Allocated memory 0.6 MB
+  Peak Large allocation bytes 0 B
+    [ALLOC_PROFILER_BUCKET]
+      Large Block size 32.0 MB
+      Used Block count 1
+      Peak Allocated bytes 11.0 KB
+[ALLOC_PROFILER_EDITOR]
+  Requested Block Size 1.0 MB
+  Peak Block count 0
+  Peak Allocated memory 0 B
+  Peak Large allocation bytes 0 B
+    [ALLOC_PROFILER_BUCKET]
+      Large Block size 32.0 MB
+      Used Block count 1
+      Peak Allocated bytes 11.0 KB
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1787274822817,"processId":13119,"allocatedMemory":23409795,"memoryLabels":[{"Default":12701},{"Permanent":15320},{"Thread":1084616},{"Manager":28494},{"VertexData":8},{"Geometry":408},{"Texture":160},{"Shader":77359},{"Material":24},{"GfxDevice":37744},{"Animation":344},{"Audio":3960},{"Font":3840774},{"FontEngine":240},{"Physics":369},{"Serialization":696},{"Input":8944},{"JobScheduler":33024},{"Mono":32},{"ScriptingNativeRuntime":155032},{"BaseObject":1619328},{"Resource":912},{"Renderer":2336},{"Transform":4654},{"File":692},{"WebCam":32},{"Culling":32},{"Terrain":857},{"Wind":24},{"String":29675},{"DynamicArray":120944},{"HashMap":96072},{"Utility":2659280},{"Curl":1040},{"PoolAlloc":1568},{"AI":72},{"TypeTree":4493},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7280},{"Director":8064},{"CloudService":15416},{"WebRequest":776},{"VR":45577},{"SceneManager":504},{"Video":1088},{"LazyScriptCache":32},{"NativeArray":8},{"Camera":17},{"Secure":9497},{"Image":4194304},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57504},{"StaticSafetyDebugInfo":278528},{"Analytics":536},{"Gui":80},{"EditorUtility":27710},{"VersionControl":4},{"Undo":640},{"AssetDatabase":8852394},{"EditorGi":328},{"UnityConnect":24992},{"Collab":593},{"Upm":1496},{"DrivenProperties":72},{"LocalIPC":202},{"ProfilerEditor":9730},{"CoreBusinessMetrics":13635},{"Licensing":3544},{"AssetReference":32},{"IPCStream":32}]}
